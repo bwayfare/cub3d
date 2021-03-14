@@ -15,7 +15,7 @@ int 	prs_res(t_mprms *mprms, char *line)
 		mprms->res.y = ft_atoi(&line);
 	else
 		return (-1);
-	if (ft_jmp_sp(&line, '\0') == -1 || mprms->res.x <= 0 || mprms->res.y <= 0)
+	if (ft_jmp_sp(&line, '\0') == -1 || mprms->res.x < 1 || mprms->res.y < 1)
 	    return (-1);
 	mprms->full.res = 1;
 	return (1);
@@ -40,7 +40,8 @@ int		prs_clr1(t_mprms *mprms, char *line)
 		return (-1);
 	if (ft_jmp_sp(&line, '\0') == -1)
 		return (-1);
-	mprms->full.c_clr = 1;
+	if (ft_check_clr(mprms) != -1)
+		mprms->full.c_clr = 1;
 	return (1);
 }
 
@@ -48,8 +49,7 @@ int		prs_clr(t_mprms *mprms, char *line)
 {
 	if (*line == 'F')
 	{
-		line++;
-		if (*line != 32 || mprms->full.f_clr == 1)
+		if (*++line != 32|| mprms->full.f_clr == 1)
 			return (-1);
 		if (ft_jmp_sp(&line, '0') != -1)
 			mprms->colors.floor_color.r = ft_atoi(&line);
@@ -65,14 +65,14 @@ int		prs_clr(t_mprms *mprms, char *line)
 			return (-1);
 		if (ft_jmp_sp(&line, '\0') == -1)
 			return (-1);
-		mprms->full.f_clr = 1;
+		if (ft_check_clr(mprms) != -1)
+			mprms->full.f_clr = 1;
 		return (ft_check_clr(mprms));
 	}
 	else
 		if (prs_clr1(mprms, line) != -1)
-			return ft_check_clr(mprms);
-		else
-			return (-1);
+			return (ft_check_clr(mprms));
+	return (-1);
 }
 
 
