@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bwayfare/C_Project/cub3D/cub3d.h
+fcntl.h
+-
+stdlib.h
+-
+unistd.h
+-
+get_next_line/get_next_line.h
+/home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
+libft/libft.h
+/home/bwayfare/C_Project/cub3D/libft/libft.h
+
+/home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
+stdlib.h
+-
+fcntl.h
+-
+unistd.h
+-
+
+/home/bwayfare/C_Project/cub3D/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+
+/home/bwayfare/C_Project/cub3D/parse_path.c
+cub3d.h
+/home/bwayfare/C_Project/cub3D/cub3d.h
+

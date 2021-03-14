@@ -1,0 +1,72 @@
+#ifndef CUB_CUB3D_H
+# define CUB_CUB3D_H
+
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "get_next_line/get_next_line.h"
+# include "libft/libft.h"
+
+# define NO_MAP_ERROR "Need map file as argument!\n"
+
+typedef struct		s_res {
+	int				x;
+	int				y;
+}					t_res;
+
+typedef struct		s_fclr {
+	int				r;
+	int 			g;
+	int 			b;
+}					t_fclr;
+
+typedef struct		s_cclr {
+	int				r;
+	int				g;
+	int 			b;
+}					t_cclr;
+
+typedef struct		s_clrs {
+	t_fclr			floor_color;
+	t_cclr			cell_color;
+}					t_clrs;
+
+typedef struct		s_paths {
+	char			*no;
+	char 			*so;
+	char			*we;
+	char 			*ea;
+	char			*sprt;
+}					t_paths;
+
+typedef struct 		s_full_set
+{
+	int 			f_clr;
+	int 			c_clr;
+	int 			res;
+	int 			no;
+	int 			so;
+	int 			we;
+	int 			ea;
+	int 			sprt;
+}					t_full;
+
+typedef struct		s_mprms {
+	t_res			res;
+	t_clrs			colors;
+	t_paths			paths;
+	t_full 			full;
+}					t_mprms;
+
+
+void				cub_init(t_mprms *map_params);
+
+void 				ft_trimm_sp(char **line);
+int    				parse_line(t_mprms *mparams, char *line);
+int					ft_jmp_sp(char **line, char flag);
+int					ft_size_n(int n);
+int 				ft_res_check(char *line);
+int 				ft_check_clr(t_mprms *mprms);
+int					prs_pth(mprms, line);
+
+#endif //CUB_CUB3D_H
