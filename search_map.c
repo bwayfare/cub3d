@@ -12,7 +12,7 @@ int ft_search_map(char *line)
 	if (*tmp == '0' || *tmp == '1' || *tmp == '2' || *tmp == 'N' ||
 			*tmp == 'S' || *tmp == 'E' || *tmp == 'W')
 		return (0);
-	return (1);
+	return (-1);
 }
 
 void size_map(t_list *list, t_mprms *mprms)
@@ -37,11 +37,13 @@ void size_map(t_list *list, t_mprms *mprms)
 	}
 }
 
-void map_copy(char *line, char *mprms, int len)
+void map_copy(void *str, char *mprms, int len)
 {
 	int i;
+	char *line;
 
 	i = 0;
+	line = (char *)str;
 	while (i < len)
 	{
 		if (line[i])
@@ -65,28 +67,26 @@ void input_map(t_list **list, t_mprms *mprms)
 	head = *list;
 	while (*list)
 	{
-		map_copy((char *)((*list)->content), mprms->map.map[i], mprms->map.len);
+		map_copy((*list)->content, mprms->map.map[i], mprms->map.len);
 		(*list) = (*list)->next;
 		i++;
 	}
-	while (head)
+	while (head->next)
 	{
 		tmp = head;
-		while (tmp->next != NULL && tmp->next->next != NULL)
-			tmp = tmp->next;
-		free(ft_lstlast(head));
-		if (head->next == NULL)
-			head = NULL;
-		tmp->next = NULL;
+		head = head->next;
+		free(tmp->content);
+		free(tmp);
 	}
-	//free(head);
+	free(head->content);
+	free(head);
 }
 
 int map_creator(t_list **list, t_mprms *mprms)
 {
-	if (*list && (*list)->content != NULL)
+	if (*list)
 	{
-		size_map((*list), mprms);
+		size_map(*list, mprms);
 		input_map(list, mprms);
 		return (1);
 	}

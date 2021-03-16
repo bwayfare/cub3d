@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-const char		*ft_gofast(const char **str)
+char		*ft_gofast(char **str)
 {
 	while (*str && (**str == ' ' || **str == '\n' || **str == '\t' ||
 		**str == '\v' || **str == '\f' || **str == '\r'))
@@ -20,7 +20,7 @@ const char		*ft_gofast(const char **str)
 	return (*str);
 }
 
-const char		*ft_znak(const char **str, int *znak)
+char		*ft_znak(char **str, int *znak)
 {
 	if (**str == '-')
 	{
@@ -32,7 +32,7 @@ const char		*ft_znak(const char **str, int *znak)
 	return (*str);
 }
 
-void			ft_getres(const char **str, long int *res, int *i)
+void			ft_getres(char **str, long int *res, int *i)
 {
 	while (**str && **str >= '0' && **str <= '9' && *i < 20)
 	{
@@ -42,7 +42,7 @@ void			ft_getres(const char **str, long int *res, int *i)
 	}
 }
 
-int				ft_atoi(const char **str)
+int				ft_atoi(char **str)
 {
 	long int	res;
 	int			znak;

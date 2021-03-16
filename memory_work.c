@@ -30,6 +30,9 @@ void struct_init(t_mprms *mprms)
 
 void clean_struct(t_mprms *mprms)
 {
+	int i;
+
+	i = 0;
 	if (mprms->paths.sprt != NULL)
 		free(mprms->paths.sprt);
 	if (mprms->paths.we != NULL)
@@ -40,4 +43,10 @@ void clean_struct(t_mprms *mprms)
 		free(mprms->paths.no);
 	if (mprms->paths.so != NULL)
 		free(mprms->paths.so);
+	while(mprms->map.map[i] != NULL)
+	{
+		free(mprms->map.map[i]);
+		i++;
+	}
+	free(mprms->map.map);
 }
