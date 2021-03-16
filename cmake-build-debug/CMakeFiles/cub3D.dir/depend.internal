@@ -6,14 +6,9 @@ CMakeFiles/cub3D.dir/additional_ft.c.o
  /home/bwayfare/C_Project/cub3D/cub3d.h
  /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
  /home/bwayfare/C_Project/cub3D/libft/libft.h
-CMakeFiles/cub3D.dir/check_clr.c.o
- /home/bwayfare/C_Project/cub3D/check_clr.c
+CMakeFiles/cub3D.dir/checks.c.o
+ /home/bwayfare/C_Project/cub3D/checks.c
  /home/bwayfare/C_Project/cub3D/cub3d.h
- /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
- /home/bwayfare/C_Project/cub3D/libft/libft.h
-CMakeFiles/cub3D.dir/ft_cub_init.c.o
- /home/bwayfare/C_Project/cub3D/cub3d.h
- /home/bwayfare/C_Project/cub3D/ft_cub_init.c
  /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
  /home/bwayfare/C_Project/cub3D/libft/libft.h
 CMakeFiles/cub3D.dir/ft_parser.c.o
@@ -161,6 +156,11 @@ CMakeFiles/cub3D.dir/main.c.o
  /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
  /home/bwayfare/C_Project/cub3D/libft/libft.h
  /home/bwayfare/C_Project/cub3D/main.c
+CMakeFiles/cub3D.dir/memory_work.c.o
+ /home/bwayfare/C_Project/cub3D/cub3d.h
+ /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
+ /home/bwayfare/C_Project/cub3D/libft/libft.h
+ /home/bwayfare/C_Project/cub3D/memory_work.c
 CMakeFiles/cub3D.dir/parse_path.c.o
  /home/bwayfare/C_Project/cub3D/cub3d.h
  /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h

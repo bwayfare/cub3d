@@ -51,15 +51,19 @@ typedef struct 		s_full_set
 	int 			sprt;
 }					t_full;
 
-typedef struct		s_mprms {
+typedef struct		s_mprms
+{
 	t_res			res;
 	t_clrs			colors;
 	t_paths			paths;
 	t_full 			full;
 }					t_mprms;
 
+typedef struct 		s_map
+{
+	char 			**map;
+}					t_map;
 
-void				cub_init(t_mprms *map_params);
 
 void 				ft_trimm_sp(char **line);
 int    				parse_line(t_mprms *mparams, char *line);
@@ -67,6 +71,9 @@ int					ft_jmp_sp(char **line, char flag);
 int					ft_size_n(int n);
 int 				ft_res_check(char *line);
 int 				ft_check_clr(t_mprms *mprms);
-int					prs_pth(mprms, line);
+int					prs_pth(t_mprms *mprms, char *line);
+void 				struct_init(t_mprms *mprms);
+void 				clean_struct(t_mprms *mprms);
+int					ft_check_full(t_mprms *mprms);
 
 #endif //CUB_CUB3D_H

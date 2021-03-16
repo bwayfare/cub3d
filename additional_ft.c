@@ -5,7 +5,7 @@ void ft_trimm_sp(char **line)
 	char *str1;
 	char *str2;
 
-	if (*line == NULL)
+	if (*line == NULL && **line == '\0')
 		return;
 	str1 = *line;
 	str2 = *line;

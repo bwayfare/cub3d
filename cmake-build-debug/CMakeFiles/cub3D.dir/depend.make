@@ -6,15 +6,10 @@ CMakeFiles/cub3D.dir/additional_ft.c.o: ../cub3d.h
 CMakeFiles/cub3D.dir/additional_ft.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/additional_ft.c.o: ../libft/libft.h
 
-CMakeFiles/cub3D.dir/check_clr.c.o: ../check_clr.c
-CMakeFiles/cub3D.dir/check_clr.c.o: ../cub3d.h
-CMakeFiles/cub3D.dir/check_clr.c.o: ../get_next_line/get_next_line.h
-CMakeFiles/cub3D.dir/check_clr.c.o: ../libft/libft.h
-
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: ../cub3d.h
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: ../ft_cub_init.c
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: ../get_next_line/get_next_line.h
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: ../libft/libft.h
+CMakeFiles/cub3D.dir/checks.c.o: ../checks.c
+CMakeFiles/cub3D.dir/checks.c.o: ../cub3d.h
+CMakeFiles/cub3D.dir/checks.c.o: ../get_next_line/get_next_line.h
+CMakeFiles/cub3D.dir/checks.c.o: ../libft/libft.h
 
 CMakeFiles/cub3D.dir/ft_parser.c.o: ../cub3d.h
 CMakeFiles/cub3D.dir/ft_parser.c.o: ../ft_parser.c
@@ -160,6 +155,11 @@ CMakeFiles/cub3D.dir/main.c.o: ../cub3d.h
 CMakeFiles/cub3D.dir/main.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/main.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/main.c.o: ../main.c
+
+CMakeFiles/cub3D.dir/memory_work.c.o: ../cub3d.h
+CMakeFiles/cub3D.dir/memory_work.c.o: ../get_next_line/get_next_line.h
+CMakeFiles/cub3D.dir/memory_work.c.o: ../libft/libft.h
+CMakeFiles/cub3D.dir/memory_work.c.o: ../memory_work.c
 
 CMakeFiles/cub3D.dir/parse_path.c.o: ../cub3d.h
 CMakeFiles/cub3D.dir/parse_path.c.o: ../get_next_line/get_next_line.h

@@ -18,10 +18,6 @@ get_next_line/get_next_line.h
 libft/libft.h
 /home/bwayfare/C_Project/cub3D/libft/libft.h
 
-/home/bwayfare/C_Project/cub3D/ft_parser.c
-cub3d.h
-/home/bwayfare/C_Project/cub3D/cub3d.h
-
 /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.h
 stdlib.h
 -
@@ -35,4 +31,10 @@ stdlib.h
 -
 unistd.h
 -
+
+/home/bwayfare/C_Project/cub3D/main.c
+stdio.h
+-
+cub3d.h
+/home/bwayfare/C_Project/cub3D/cub3d.h
 

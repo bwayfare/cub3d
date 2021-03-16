@@ -5,8 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/bwayfare/C_Project/cub3D/additional_ft.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/additional_ft.c.o"
-  "/home/bwayfare/C_Project/cub3D/check_clr.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/check_clr.c.o"
-  "/home/bwayfare/C_Project/cub3D/ft_cub_init.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/ft_cub_init.c.o"
+  "/home/bwayfare/C_Project/cub3D/checks.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/checks.c.o"
   "/home/bwayfare/C_Project/cub3D/ft_parser.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/ft_parser.c.o"
   "/home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
   "/home/bwayfare/C_Project/cub3D/get_next_line/get_next_line_utils.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
@@ -54,6 +53,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/bwayfare/C_Project/cub3D/libft/ft_tolower.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/libft/ft_tolower.c.o"
   "/home/bwayfare/C_Project/cub3D/libft/ft_toupper.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/libft/ft_toupper.c.o"
   "/home/bwayfare/C_Project/cub3D/main.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/main.c.o"
+  "/home/bwayfare/C_Project/cub3D/memory_work.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/memory_work.c.o"
   "/home/bwayfare/C_Project/cub3D/parse_path.c" "/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/parse_path.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

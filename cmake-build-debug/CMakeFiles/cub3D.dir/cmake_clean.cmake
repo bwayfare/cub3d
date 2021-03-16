@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/additional_ft.c.o"
-  "CMakeFiles/cub3D.dir/check_clr.c.o"
-  "CMakeFiles/cub3D.dir/ft_cub_init.c.o"
+  "CMakeFiles/cub3D.dir/checks.c.o"
   "CMakeFiles/cub3D.dir/ft_parser.c.o"
   "CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
   "CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
@@ -49,6 +48,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/libft/ft_tolower.c.o"
   "CMakeFiles/cub3D.dir/libft/ft_toupper.c.o"
   "CMakeFiles/cub3D.dir/main.c.o"
+  "CMakeFiles/cub3D.dir/memory_work.c.o"
   "CMakeFiles/cub3D.dir/parse_path.c.o"
   "cub3D"
   "cub3D.pdb"

@@ -6,9 +6,10 @@ void ft_createmap(t_list **list, int size)
 	int i = 0;
 	t_list *head = *list;
 	t_mprms mprms;
-	cub_init(&mprms);
-	char **map = ft_calloc(size + 1, sizeof(char *));
+	char **map;
 
+	map = ft_calloc(size + 1, sizeof(char *));
+	struct_init(&mprms);
 	while (head)
 	{
 		map[i++] = head->content;
@@ -18,11 +19,13 @@ void ft_createmap(t_list **list, int size)
 //	while (map[i])
 //		ft_putendl_fd(map[i++], 1);
 //	i = 0;
-	while (i<50)
+	while ((parse_line(&mprms, map[i]) != -1) && (ft_check_full(&mprms) != 8))
 	{
-		printf("%s \t\t====> %d\n", map[i], parse_line(&mprms, map[i]));
+		printf("%s\n", map[i]);
 		i++;
 	}
+	printf("%s\n", map[i]);
+
 	return;
 }
 
@@ -31,7 +34,7 @@ int main(int argc, char **argv) {
     char *line;
     int fd;
 	argc = 2;
-	argv[1] = "/home/bwayfare/C_Project/cub3D/map.cub";
+	argv[1] = "/home/bwayfare/C_Project/cub3D/map1.cub";
     fd = open(argv[1], O_RDONLY);
     line = NULL;
     while (get_next_line(fd, &line) != 0)

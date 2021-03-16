@@ -170,59 +170,32 @@ additional_ft.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/additional_ft.c.s
 .PHONY : additional_ft.c.s
 
-check_clr.o: check_clr.c.o
+checks.o: checks.c.o
 
-.PHONY : check_clr.o
-
-# target to build an object file
-check_clr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_clr.c.o
-.PHONY : check_clr.c.o
-
-check_clr.i: check_clr.c.i
-
-.PHONY : check_clr.i
-
-# target to preprocess a source file
-check_clr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_clr.c.i
-.PHONY : check_clr.c.i
-
-check_clr.s: check_clr.c.s
-
-.PHONY : check_clr.s
-
-# target to generate assembly for a file
-check_clr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_clr.c.s
-.PHONY : check_clr.c.s
-
-ft_cub_init.o: ft_cub_init.c.o
-
-.PHONY : ft_cub_init.o
+.PHONY : checks.o
 
 # target to build an object file
-ft_cub_init.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/ft_cub_init.c.o
-.PHONY : ft_cub_init.c.o
+checks.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/checks.c.o
+.PHONY : checks.c.o
 
-ft_cub_init.i: ft_cub_init.c.i
+checks.i: checks.c.i
 
-.PHONY : ft_cub_init.i
+.PHONY : checks.i
 
 # target to preprocess a source file
-ft_cub_init.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/ft_cub_init.c.i
-.PHONY : ft_cub_init.c.i
+checks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/checks.c.i
+.PHONY : checks.c.i
 
-ft_cub_init.s: ft_cub_init.c.s
+checks.s: checks.c.s
 
-.PHONY : ft_cub_init.s
+.PHONY : checks.s
 
 # target to generate assembly for a file
-ft_cub_init.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/ft_cub_init.c.s
-.PHONY : ft_cub_init.c.s
+checks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/checks.c.s
+.PHONY : checks.c.s
 
 ft_parser.o: ft_parser.c.o
 
@@ -1493,6 +1466,33 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/main.c.s
 .PHONY : main.c.s
 
+memory_work.o: memory_work.c.o
+
+.PHONY : memory_work.o
+
+# target to build an object file
+memory_work.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/memory_work.c.o
+.PHONY : memory_work.c.o
+
+memory_work.i: memory_work.c.i
+
+.PHONY : memory_work.i
+
+# target to preprocess a source file
+memory_work.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/memory_work.c.i
+.PHONY : memory_work.c.i
+
+memory_work.s: memory_work.c.s
+
+.PHONY : memory_work.s
+
+# target to generate assembly for a file
+memory_work.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/memory_work.c.s
+.PHONY : memory_work.c.s
+
 parse_path.o: parse_path.c.o
 
 .PHONY : parse_path.o
@@ -1532,12 +1532,9 @@ help:
 	@echo "... additional_ft.o"
 	@echo "... additional_ft.i"
 	@echo "... additional_ft.s"
-	@echo "... check_clr.o"
-	@echo "... check_clr.i"
-	@echo "... check_clr.s"
-	@echo "... ft_cub_init.o"
-	@echo "... ft_cub_init.i"
-	@echo "... ft_cub_init.s"
+	@echo "... checks.o"
+	@echo "... checks.i"
+	@echo "... checks.s"
 	@echo "... ft_parser.o"
 	@echo "... ft_parser.i"
 	@echo "... ft_parser.s"
@@ -1679,6 +1676,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... memory_work.o"
+	@echo "... memory_work.i"
+	@echo "... memory_work.s"
 	@echo "... parse_path.o"
 	@echo "... parse_path.i"
 	@echo "... parse_path.s"

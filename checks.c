@@ -22,3 +22,13 @@ int ft_check_clr(t_mprms *mprms)
 	}
 	return (1);
 }
+
+int ft_check_full(t_mprms *mprms)
+{
+	int count;
+
+	count = mprms->full.f_clr +	mprms->full.c_clr +	mprms->full.sprt +
+	mprms->full.we + mprms->full.ea + mprms->full.no + mprms->full.so +
+	mprms->full.res;
+	return (count);
+}

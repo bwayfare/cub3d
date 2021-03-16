@@ -79,13 +79,10 @@
 		<Unit filename="/home/bwayfare/C_Project/cub3D/additional_ft.c">
 			<Option target="cub3D"/>
 		</Unit>
-		<Unit filename="/home/bwayfare/C_Project/cub3D/check_clr.c">
+		<Unit filename="/home/bwayfare/C_Project/cub3D/checks.c">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/home/bwayfare/C_Project/cub3D/cub3d.h">
-			<Option target="cub3D"/>
-		</Unit>
-		<Unit filename="/home/bwayfare/C_Project/cub3D/ft_cub_init.c">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/home/bwayfare/C_Project/cub3D/ft_parser.c">
@@ -233,6 +230,9 @@
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/home/bwayfare/C_Project/cub3D/main.c">
+			<Option target="cub3D"/>
+		</Unit>
+		<Unit filename="/home/bwayfare/C_Project/cub3D/memory_work.c">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/home/bwayfare/C_Project/cub3D/parse_path.c">

@@ -90,35 +90,22 @@ CMakeFiles/cub3D.dir/additional_ft.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/additional_ft.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/additional_ft.c -o CMakeFiles/cub3D.dir/additional_ft.c.s
 
-CMakeFiles/cub3D.dir/check_clr.c.o: CMakeFiles/cub3D.dir/flags.make
-CMakeFiles/cub3D.dir/check_clr.c.o: ../check_clr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cub3D.dir/check_clr.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/check_clr.c.o   -c /home/bwayfare/C_Project/cub3D/check_clr.c
+CMakeFiles/cub3D.dir/checks.c.o: CMakeFiles/cub3D.dir/flags.make
+CMakeFiles/cub3D.dir/checks.c.o: ../checks.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cub3D.dir/checks.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/checks.c.o   -c /home/bwayfare/C_Project/cub3D/checks.c
 
-CMakeFiles/cub3D.dir/check_clr.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/check_clr.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bwayfare/C_Project/cub3D/check_clr.c > CMakeFiles/cub3D.dir/check_clr.c.i
+CMakeFiles/cub3D.dir/checks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/checks.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bwayfare/C_Project/cub3D/checks.c > CMakeFiles/cub3D.dir/checks.c.i
 
-CMakeFiles/cub3D.dir/check_clr.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/check_clr.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/check_clr.c -o CMakeFiles/cub3D.dir/check_clr.c.s
-
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: CMakeFiles/cub3D.dir/flags.make
-CMakeFiles/cub3D.dir/ft_cub_init.c.o: ../ft_cub_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cub3D.dir/ft_cub_init.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/ft_cub_init.c.o   -c /home/bwayfare/C_Project/cub3D/ft_cub_init.c
-
-CMakeFiles/cub3D.dir/ft_cub_init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/ft_cub_init.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bwayfare/C_Project/cub3D/ft_cub_init.c > CMakeFiles/cub3D.dir/ft_cub_init.c.i
-
-CMakeFiles/cub3D.dir/ft_cub_init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/ft_cub_init.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/ft_cub_init.c -o CMakeFiles/cub3D.dir/ft_cub_init.c.s
+CMakeFiles/cub3D.dir/checks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/checks.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/checks.c -o CMakeFiles/cub3D.dir/checks.c.s
 
 CMakeFiles/cub3D.dir/ft_parser.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/ft_parser.c.o: ../ft_parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cub3D.dir/ft_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cub3D.dir/ft_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/ft_parser.c.o   -c /home/bwayfare/C_Project/cub3D/ft_parser.c
 
 CMakeFiles/cub3D.dir/ft_parser.c.i: cmake_force
@@ -131,7 +118,7 @@ CMakeFiles/cub3D.dir/ft_parser.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o: ../get_next_line/get_next_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o   -c /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line.c
 
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.i: cmake_force
@@ -144,7 +131,7 @@ CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o: ../get_next_line/get_next_line_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o   -c /home/bwayfare/C_Project/cub3D/get_next_line/get_next_line_utils.c
 
 CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.i: cmake_force
@@ -157,7 +144,7 @@ CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_atoi.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/cub3D.dir/libft/ft_atoi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/cub3D.dir/libft/ft_atoi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_atoi.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_atoi.c
 
 CMakeFiles/cub3D.dir/libft/ft_atoi.c.i: cmake_force
@@ -170,7 +157,7 @@ CMakeFiles/cub3D.dir/libft/ft_atoi.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_bzero.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_bzero.c.o: ../libft/ft_bzero.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/cub3D.dir/libft/ft_bzero.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/cub3D.dir/libft/ft_bzero.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_bzero.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_bzero.c
 
 CMakeFiles/cub3D.dir/libft/ft_bzero.c.i: cmake_force
@@ -183,7 +170,7 @@ CMakeFiles/cub3D.dir/libft/ft_bzero.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_calloc.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_calloc.c.o: ../libft/ft_calloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/cub3D.dir/libft/ft_calloc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/cub3D.dir/libft/ft_calloc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_calloc.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_calloc.c
 
 CMakeFiles/cub3D.dir/libft/ft_calloc.c.i: cmake_force
@@ -196,7 +183,7 @@ CMakeFiles/cub3D.dir/libft/ft_calloc.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_isalnum.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_isalnum.c.o: ../libft/ft_isalnum.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/cub3D.dir/libft/ft_isalnum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/cub3D.dir/libft/ft_isalnum.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_isalnum.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_isalnum.c
 
 CMakeFiles/cub3D.dir/libft/ft_isalnum.c.i: cmake_force
@@ -209,7 +196,7 @@ CMakeFiles/cub3D.dir/libft/ft_isalnum.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_isalpha.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_isalpha.c.o: ../libft/ft_isalpha.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/cub3D.dir/libft/ft_isalpha.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/cub3D.dir/libft/ft_isalpha.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_isalpha.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_isalpha.c
 
 CMakeFiles/cub3D.dir/libft/ft_isalpha.c.i: cmake_force
@@ -222,7 +209,7 @@ CMakeFiles/cub3D.dir/libft/ft_isalpha.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_isascii.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_isascii.c.o: ../libft/ft_isascii.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/cub3D.dir/libft/ft_isascii.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/cub3D.dir/libft/ft_isascii.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_isascii.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_isascii.c
 
 CMakeFiles/cub3D.dir/libft/ft_isascii.c.i: cmake_force
@@ -235,7 +222,7 @@ CMakeFiles/cub3D.dir/libft/ft_isascii.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_isdigit.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/cub3D.dir/libft/ft_isdigit.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/cub3D.dir/libft/ft_isdigit.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_isdigit.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_isdigit.c
 
 CMakeFiles/cub3D.dir/libft/ft_isdigit.c.i: cmake_force
@@ -248,7 +235,7 @@ CMakeFiles/cub3D.dir/libft/ft_isdigit.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_isprint.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_isprint.c.o: ../libft/ft_isprint.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/cub3D.dir/libft/ft_isprint.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/cub3D.dir/libft/ft_isprint.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_isprint.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_isprint.c
 
 CMakeFiles/cub3D.dir/libft/ft_isprint.c.i: cmake_force
@@ -261,7 +248,7 @@ CMakeFiles/cub3D.dir/libft/ft_isprint.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_itoa.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_itoa.c.o: ../libft/ft_itoa.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/cub3D.dir/libft/ft_itoa.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/cub3D.dir/libft/ft_itoa.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_itoa.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_itoa.c
 
 CMakeFiles/cub3D.dir/libft/ft_itoa.c.i: cmake_force
@@ -274,7 +261,7 @@ CMakeFiles/cub3D.dir/libft/ft_itoa.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.o: ../libft/ft_lstadd_back.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstadd_back.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.i: cmake_force
@@ -287,7 +274,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstadd_back.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.o: ../libft/ft_lstadd_front.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstadd_front.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.i: cmake_force
@@ -300,7 +287,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstadd_front.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstclear.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstclear.c.o: ../libft/ft_lstclear.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstclear.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstclear.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstclear.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstclear.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstclear.c.i: cmake_force
@@ -313,7 +300,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstclear.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.o: ../libft/ft_lstdelone.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstdelone.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.i: cmake_force
@@ -326,7 +313,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstdelone.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstiter.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstiter.c.o: ../libft/ft_lstiter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstiter.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstiter.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstiter.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstiter.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstiter.c.i: cmake_force
@@ -339,7 +326,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstiter.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstlast.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstlast.c.o: ../libft/ft_lstlast.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstlast.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstlast.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstlast.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstlast.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstlast.c.i: cmake_force
@@ -352,7 +339,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstlast.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstmap.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstmap.c.o: ../libft/ft_lstmap.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstmap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstmap.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstmap.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstmap.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstmap.c.i: cmake_force
@@ -365,7 +352,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstmap.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstnew.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstnew.c.o: ../libft/ft_lstnew.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstnew.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstnew.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstnew.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstnew.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstnew.c.i: cmake_force
@@ -378,7 +365,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstnew.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_lstsize.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_lstsize.c.o: ../libft/ft_lstsize.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstsize.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/cub3D.dir/libft/ft_lstsize.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_lstsize.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_lstsize.c
 
 CMakeFiles/cub3D.dir/libft/ft_lstsize.c.i: cmake_force
@@ -391,7 +378,7 @@ CMakeFiles/cub3D.dir/libft/ft_lstsize.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memccpy.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memccpy.c.o: ../libft/ft_memccpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/cub3D.dir/libft/ft_memccpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/cub3D.dir/libft/ft_memccpy.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memccpy.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memccpy.c
 
 CMakeFiles/cub3D.dir/libft/ft_memccpy.c.i: cmake_force
@@ -404,7 +391,7 @@ CMakeFiles/cub3D.dir/libft/ft_memccpy.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memchr.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memchr.c.o: ../libft/ft_memchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/cub3D.dir/libft/ft_memchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/cub3D.dir/libft/ft_memchr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memchr.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memchr.c
 
 CMakeFiles/cub3D.dir/libft/ft_memchr.c.i: cmake_force
@@ -417,7 +404,7 @@ CMakeFiles/cub3D.dir/libft/ft_memchr.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memcmp.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memcmp.c.o: ../libft/ft_memcmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/cub3D.dir/libft/ft_memcmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/cub3D.dir/libft/ft_memcmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memcmp.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memcmp.c
 
 CMakeFiles/cub3D.dir/libft/ft_memcmp.c.i: cmake_force
@@ -430,7 +417,7 @@ CMakeFiles/cub3D.dir/libft/ft_memcmp.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memcpy.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memcpy.c.o: ../libft/ft_memcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/cub3D.dir/libft/ft_memcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/cub3D.dir/libft/ft_memcpy.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memcpy.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memcpy.c
 
 CMakeFiles/cub3D.dir/libft/ft_memcpy.c.i: cmake_force
@@ -443,7 +430,7 @@ CMakeFiles/cub3D.dir/libft/ft_memcpy.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memmove.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memmove.c.o: ../libft/ft_memmove.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/cub3D.dir/libft/ft_memmove.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/cub3D.dir/libft/ft_memmove.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memmove.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memmove.c
 
 CMakeFiles/cub3D.dir/libft/ft_memmove.c.i: cmake_force
@@ -456,7 +443,7 @@ CMakeFiles/cub3D.dir/libft/ft_memmove.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_memset.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_memset.c.o: ../libft/ft_memset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/cub3D.dir/libft/ft_memset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/cub3D.dir/libft/ft_memset.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_memset.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_memset.c
 
 CMakeFiles/cub3D.dir/libft/ft_memset.c.i: cmake_force
@@ -469,7 +456,7 @@ CMakeFiles/cub3D.dir/libft/ft_memset.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.o: ../libft/ft_putchar_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_putchar_fd.c
 
 CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.i: cmake_force
@@ -482,7 +469,7 @@ CMakeFiles/cub3D.dir/libft/ft_putchar_fd.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.o: ../libft/ft_putendl_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_putendl_fd.c
 
 CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.i: cmake_force
@@ -495,7 +482,7 @@ CMakeFiles/cub3D.dir/libft/ft_putendl_fd.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.o: ../libft/ft_putnbr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_putnbr_fd.c
 
 CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.i: cmake_force
@@ -508,7 +495,7 @@ CMakeFiles/cub3D.dir/libft/ft_putnbr_fd.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.o: ../libft/ft_putstr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_putstr_fd.c
 
 CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.i: cmake_force
@@ -521,7 +508,7 @@ CMakeFiles/cub3D.dir/libft/ft_putstr_fd.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_split.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_split.c.o: ../libft/ft_split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/cub3D.dir/libft/ft_split.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/cub3D.dir/libft/ft_split.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_split.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_split.c
 
 CMakeFiles/cub3D.dir/libft/ft_split.c.i: cmake_force
@@ -534,7 +521,7 @@ CMakeFiles/cub3D.dir/libft/ft_split.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strchr.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/cub3D.dir/libft/ft_strchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/cub3D.dir/libft/ft_strchr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strchr.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strchr.c
 
 CMakeFiles/cub3D.dir/libft/ft_strchr.c.i: cmake_force
@@ -547,7 +534,7 @@ CMakeFiles/cub3D.dir/libft/ft_strchr.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strdup.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strdup.c.o: ../libft/ft_strdup.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/cub3D.dir/libft/ft_strdup.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/cub3D.dir/libft/ft_strdup.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strdup.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strdup.c
 
 CMakeFiles/cub3D.dir/libft/ft_strdup.c.i: cmake_force
@@ -560,7 +547,7 @@ CMakeFiles/cub3D.dir/libft/ft_strdup.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strjoin.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strjoin.c.o: ../libft/ft_strjoin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/cub3D.dir/libft/ft_strjoin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/cub3D.dir/libft/ft_strjoin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strjoin.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strjoin.c
 
 CMakeFiles/cub3D.dir/libft/ft_strjoin.c.i: cmake_force
@@ -573,7 +560,7 @@ CMakeFiles/cub3D.dir/libft/ft_strjoin.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strlcat.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strlcat.c.o: ../libft/ft_strlcat.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlcat.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlcat.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strlcat.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strlcat.c
 
 CMakeFiles/cub3D.dir/libft/ft_strlcat.c.i: cmake_force
@@ -586,7 +573,7 @@ CMakeFiles/cub3D.dir/libft/ft_strlcat.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.o: ../libft/ft_strlcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strlcpy.c
 
 CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.i: cmake_force
@@ -599,7 +586,7 @@ CMakeFiles/cub3D.dir/libft/ft_strlcpy.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strlen.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strlen.c.o: ../libft/ft_strlen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/cub3D.dir/libft/ft_strlen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strlen.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strlen.c
 
 CMakeFiles/cub3D.dir/libft/ft_strlen.c.i: cmake_force
@@ -612,7 +599,7 @@ CMakeFiles/cub3D.dir/libft/ft_strlen.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strmapi.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strmapi.c.o: ../libft/ft_strmapi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/cub3D.dir/libft/ft_strmapi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/cub3D.dir/libft/ft_strmapi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strmapi.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strmapi.c
 
 CMakeFiles/cub3D.dir/libft/ft_strmapi.c.i: cmake_force
@@ -625,7 +612,7 @@ CMakeFiles/cub3D.dir/libft/ft_strmapi.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strncmp.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strncmp.c.o: ../libft/ft_strncmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/cub3D.dir/libft/ft_strncmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/cub3D.dir/libft/ft_strncmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strncmp.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strncmp.c
 
 CMakeFiles/cub3D.dir/libft/ft_strncmp.c.i: cmake_force
@@ -638,7 +625,7 @@ CMakeFiles/cub3D.dir/libft/ft_strncmp.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strnstr.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strnstr.c.o: ../libft/ft_strnstr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/cub3D.dir/libft/ft_strnstr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/cub3D.dir/libft/ft_strnstr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strnstr.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strnstr.c
 
 CMakeFiles/cub3D.dir/libft/ft_strnstr.c.i: cmake_force
@@ -651,7 +638,7 @@ CMakeFiles/cub3D.dir/libft/ft_strnstr.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strrchr.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strrchr.c.o: ../libft/ft_strrchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/cub3D.dir/libft/ft_strrchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/cub3D.dir/libft/ft_strrchr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strrchr.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strrchr.c
 
 CMakeFiles/cub3D.dir/libft/ft_strrchr.c.i: cmake_force
@@ -664,7 +651,7 @@ CMakeFiles/cub3D.dir/libft/ft_strrchr.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_strtrim.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_strtrim.c.o: ../libft/ft_strtrim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/cub3D.dir/libft/ft_strtrim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/cub3D.dir/libft/ft_strtrim.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_strtrim.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_strtrim.c
 
 CMakeFiles/cub3D.dir/libft/ft_strtrim.c.i: cmake_force
@@ -677,7 +664,7 @@ CMakeFiles/cub3D.dir/libft/ft_strtrim.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_substr.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_substr.c.o: ../libft/ft_substr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/cub3D.dir/libft/ft_substr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/cub3D.dir/libft/ft_substr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_substr.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_substr.c
 
 CMakeFiles/cub3D.dir/libft/ft_substr.c.i: cmake_force
@@ -690,7 +677,7 @@ CMakeFiles/cub3D.dir/libft/ft_substr.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_tolower.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_tolower.c.o: ../libft/ft_tolower.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/cub3D.dir/libft/ft_tolower.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/cub3D.dir/libft/ft_tolower.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_tolower.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_tolower.c
 
 CMakeFiles/cub3D.dir/libft/ft_tolower.c.i: cmake_force
@@ -703,7 +690,7 @@ CMakeFiles/cub3D.dir/libft/ft_tolower.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/libft/ft_toupper.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/libft/ft_toupper.c.o: ../libft/ft_toupper.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/cub3D.dir/libft/ft_toupper.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/cub3D.dir/libft/ft_toupper.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/libft/ft_toupper.c.o   -c /home/bwayfare/C_Project/cub3D/libft/ft_toupper.c
 
 CMakeFiles/cub3D.dir/libft/ft_toupper.c.i: cmake_force
@@ -716,7 +703,7 @@ CMakeFiles/cub3D.dir/libft/ft_toupper.c.s: cmake_force
 
 CMakeFiles/cub3D.dir/main.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/cub3D.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/cub3D.dir/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/main.c.o   -c /home/bwayfare/C_Project/cub3D/main.c
 
 CMakeFiles/cub3D.dir/main.c.i: cmake_force
@@ -726,6 +713,19 @@ CMakeFiles/cub3D.dir/main.c.i: cmake_force
 CMakeFiles/cub3D.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/main.c -o CMakeFiles/cub3D.dir/main.c.s
+
+CMakeFiles/cub3D.dir/memory_work.c.o: CMakeFiles/cub3D.dir/flags.make
+CMakeFiles/cub3D.dir/memory_work.c.o: ../memory_work.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bwayfare/C_Project/cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/cub3D.dir/memory_work.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/memory_work.c.o   -c /home/bwayfare/C_Project/cub3D/memory_work.c
+
+CMakeFiles/cub3D.dir/memory_work.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/memory_work.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bwayfare/C_Project/cub3D/memory_work.c > CMakeFiles/cub3D.dir/memory_work.c.i
+
+CMakeFiles/cub3D.dir/memory_work.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/memory_work.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bwayfare/C_Project/cub3D/memory_work.c -o CMakeFiles/cub3D.dir/memory_work.c.s
 
 CMakeFiles/cub3D.dir/parse_path.c.o: CMakeFiles/cub3D.dir/flags.make
 CMakeFiles/cub3D.dir/parse_path.c.o: ../parse_path.c
@@ -743,8 +743,7 @@ CMakeFiles/cub3D.dir/parse_path.c.s: cmake_force
 # Object files for target cub3D
 cub3D_OBJECTS = \
 "CMakeFiles/cub3D.dir/additional_ft.c.o" \
-"CMakeFiles/cub3D.dir/check_clr.c.o" \
-"CMakeFiles/cub3D.dir/ft_cub_init.c.o" \
+"CMakeFiles/cub3D.dir/checks.c.o" \
 "CMakeFiles/cub3D.dir/ft_parser.c.o" \
 "CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o" \
 "CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o" \
@@ -792,14 +791,14 @@ cub3D_OBJECTS = \
 "CMakeFiles/cub3D.dir/libft/ft_tolower.c.o" \
 "CMakeFiles/cub3D.dir/libft/ft_toupper.c.o" \
 "CMakeFiles/cub3D.dir/main.c.o" \
+"CMakeFiles/cub3D.dir/memory_work.c.o" \
 "CMakeFiles/cub3D.dir/parse_path.c.o"
 
 # External object files for target cub3D
 cub3D_EXTERNAL_OBJECTS =
 
 cub3D: CMakeFiles/cub3D.dir/additional_ft.c.o
-cub3D: CMakeFiles/cub3D.dir/check_clr.c.o
-cub3D: CMakeFiles/cub3D.dir/ft_cub_init.c.o
+cub3D: CMakeFiles/cub3D.dir/checks.c.o
 cub3D: CMakeFiles/cub3D.dir/ft_parser.c.o
 cub3D: CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o
 cub3D: CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o
@@ -847,6 +846,7 @@ cub3D: CMakeFiles/cub3D.dir/libft/ft_substr.c.o
 cub3D: CMakeFiles/cub3D.dir/libft/ft_tolower.c.o
 cub3D: CMakeFiles/cub3D.dir/libft/ft_toupper.c.o
 cub3D: CMakeFiles/cub3D.dir/main.c.o
+cub3D: CMakeFiles/cub3D.dir/memory_work.c.o
 cub3D: CMakeFiles/cub3D.dir/parse_path.c.o
 cub3D: CMakeFiles/cub3D.dir/build.make
 cub3D: CMakeFiles/cub3D.dir/link.txt
