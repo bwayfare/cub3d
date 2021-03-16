@@ -23,6 +23,9 @@ void struct_init(t_mprms *mprms)
 	mprms->paths.ea = NULL;
 	mprms->paths.we = NULL;
 	mprms->paths.sprt = NULL;
+	mprms->map.size = 0;
+	mprms->map.len = 0;
+	mprms->map.map = NULL;
 }
 
 void clean_struct(t_mprms *mprms)

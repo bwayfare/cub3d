@@ -1520,6 +1520,33 @@ parse_path.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/parse_path.c.s
 .PHONY : parse_path.c.s
 
+search_map.o: search_map.c.o
+
+.PHONY : search_map.o
+
+# target to build an object file
+search_map.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/search_map.c.o
+.PHONY : search_map.c.o
+
+search_map.i: search_map.c.i
+
+.PHONY : search_map.i
+
+# target to preprocess a source file
+search_map.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/search_map.c.i
+.PHONY : search_map.c.i
+
+search_map.s: search_map.c.s
+
+.PHONY : search_map.s
+
+# target to generate assembly for a file
+search_map.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/search_map.c.s
+.PHONY : search_map.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1682,6 +1709,9 @@ help:
 	@echo "... parse_path.o"
 	@echo "... parse_path.i"
 	@echo "... parse_path.s"
+	@echo "... search_map.o"
+	@echo "... search_map.i"
+	@echo "... search_map.s"
 .PHONY : help
 
 

@@ -166,3 +166,8 @@ CMakeFiles/cub3D.dir/parse_path.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/parse_path.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/parse_path.c.o: ../parse_path.c
 
+CMakeFiles/cub3D.dir/search_map.c.o: ../cub3d.h
+CMakeFiles/cub3D.dir/search_map.c.o: ../get_next_line/get_next_line.h
+CMakeFiles/cub3D.dir/search_map.c.o: ../libft/libft.h
+CMakeFiles/cub3D.dir/search_map.c.o: ../search_map.c
+

@@ -238,6 +238,9 @@
 		<Unit filename="/home/bwayfare/C_Project/cub3D/parse_path.c">
 			<Option target="cub3D"/>
 		</Unit>
+		<Unit filename="/home/bwayfare/C_Project/cub3D/search_map.c">
+			<Option target="cub3D"/>
+		</Unit>
 		<Unit filename="/home/bwayfare/C_Project/cub3D/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
