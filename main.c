@@ -1,5 +1,23 @@
 #include "cub3d.h"
 
+void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
+{
+	if(ft_search_map(*line) != 0)
+		free(*line);
+	else
+		ft_lstadd_back(list, ft_lstnew(*line));
+	while (get_next_line(*fd, line) > 0 && ft_search_map(*line) > -1)
+		if(ft_search_map(*line) == 0)
+			ft_lstadd_back(list, ft_lstnew(*line));
+		else
+			free(*line);
+	if (ft_search_map(*line) == 0)
+		ft_lstadd_back(list, ft_lstnew(*line));
+	else
+		free(*line);
+	map_creator(*list, mprms);
+}
+
 int ft_creat_mprms(char *argv)
 {
 	t_mprms mprms;
@@ -11,23 +29,13 @@ int ft_creat_mprms(char *argv)
 	struct_init(&mprms);
 	if (!(fd = open(argv, O_RDONLY)))
 		return (0);
-	while ((get_next_line(fd, &line) > 0) &&
+
+	while (mprms.check && (get_next_line(fd, &line) == 1) &&
 			(parse_line(&mprms, line) != -1) && (ft_check_full(&mprms) != 8))
 		free(line);
-	if(ft_search_map(line) != 0)
-		free(line);
-	else
-		ft_lstadd_back(&list, ft_lstnew(line));
-	while (get_next_line(fd, &line) > 0 && ft_search_map(line) > -1)
-		if(ft_search_map(line) == 0)
-			ft_lstadd_back(&list, ft_lstnew(line));
-		else
-			free(line);
-	if (ft_search_map(line) == 0)
-		ft_lstadd_back(&list, ft_lstnew(line));
-	else
-		free(line);
-	map_creator(&list, &mprms);
+
+	f_get_map(&line, &list, &fd, &mprms);
+	free_list(&list);
 	clean_struct(&mprms);
 	return (1);
 }

@@ -57,36 +57,24 @@ void map_copy(void *str, char *mprms, int len)
 	}
 }
 
-void input_map(t_list **list, t_mprms *mprms)
+void input_map(t_list *list, t_mprms *mprms)
 {
-	t_list *head;
-	t_list *tmp;
 	int i;
 
 	i= 0;
-	head = *list;
-	while (*list)
+	while (list)
 	{
-		map_copy((*list)->content, mprms->map.map[i], mprms->map.len);
-		(*list) = (*list)->next;
+		map_copy(list->content, mprms->map.map[i], mprms->map.len);
+		list = list->next;
 		i++;
 	}
-	while (head->next)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp->content);
-		free(tmp);
-	}
-	free(head->content);
-	free(head);
 }
 
-int map_creator(t_list **list, t_mprms *mprms)
+int map_creator(t_list *list, t_mprms *mprms)
 {
-	if (*list)
+	if (list)
 	{
-		size_map(*list, mprms);
+		size_map(list, mprms);
 		input_map(list, mprms);
 		return (1);
 	}

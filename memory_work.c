@@ -26,6 +26,7 @@ void struct_init(t_mprms *mprms)
 	mprms->map.size = 0;
 	mprms->map.len = 0;
 	mprms->map.map = NULL;
+	mprms->check = 1;
 }
 
 void clean_struct(t_mprms *mprms)
@@ -49,4 +50,19 @@ void clean_struct(t_mprms *mprms)
 		i++;
 	}
 	free(mprms->map.map);
+}
+
+void free_list(t_list **head)
+{
+	t_list *tmp;
+
+	while ((*head)->next)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp->content);
+		free(tmp);
+	}
+	free((*head)->content);
+	free(*head);
 }

@@ -61,6 +61,7 @@ typedef struct 		s_map
 
 typedef struct		s_mprms
 {
+	int				check;
 	t_res			res;
 	t_clrs			colors;
 	t_paths			paths;
@@ -80,6 +81,7 @@ void 				struct_init(t_mprms *mprms);
 void 				clean_struct(t_mprms *mprms);
 int					ft_check_full(t_mprms *mprms);
 int					ft_search_map(char *line);
-int 				map_creator(t_list **list, t_mprms *mprms);
+int 				map_creator(t_list *list, t_mprms *mprms);
+void 				free_list(t_list **head);
 
 #endif //CUB_CUB3D_H
