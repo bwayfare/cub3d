@@ -13,8 +13,7 @@ int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 	tmp = line;
 	while (tmp && *tmp == 32)
 		tmp++;
-	if ((*tmp == '0' || *tmp == '1' || *tmp == '2' || *tmp == 'N' ||
-			*tmp == 'S' || *tmp == 'E' || *tmp == 'W') && *res != 2)
+	if (*tmp == '1' && *res != 2)
 	{
 		*res = 1;
 		return (0);
