@@ -44,25 +44,31 @@ void clean_struct(t_mprms *mprms)
 		free(mprms->paths.no);
 	if (mprms->paths.so != NULL)
 		free(mprms->paths.so);
-	while(mprms->map.map[i] != NULL)
+	if (mprms->map.map)
 	{
-		free(mprms->map.map[i]);
-		i++;
+		while (mprms->map.map[i] != NULL)
+		{
+			free(mprms->map.map[i]);
+			i++;
+		}
+		free(mprms->map.map);
 	}
-	free(mprms->map.map);
 }
 
 void free_list(t_list **head)
 {
 	t_list *tmp;
 
-	while ((*head)->next)
+	if (*head)
 	{
-		tmp = *head;
-		*head = (*head)->next;
-		free(tmp->content);
-		free(tmp);
+		while ((*head)->next)
+		{
+			tmp = *head;
+			*head = (*head)->next;
+			free(tmp->content);
+			free(tmp);
+		}
+		free((*head)->content);
+		free(*head);
 	}
-	free((*head)->content);
-	free(*head);
 }

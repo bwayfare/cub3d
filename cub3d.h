@@ -80,7 +80,7 @@ int					prs_pth(t_mprms *mprms, char *line);
 void 				struct_init(t_mprms *mprms);
 void 				clean_struct(t_mprms *mprms);
 int					ft_check_full(t_mprms *mprms);
-int					ft_search_map(char *line);
+int					ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res);
 int 				map_creator(t_list *list, t_mprms *mprms);
 void 				free_list(t_list **head);
 

@@ -1,17 +1,29 @@
 #include "cub3d.h"
 
-int ft_search_map(char *line)
+int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 {
 	char *tmp;
 
 	if (!line || *line == '\0')
+	{
+		if (*res == 1)
+			*res = 2;
 		return (1);
+	}
 	tmp = line;
 	while (tmp && *tmp == 32)
 		tmp++;
-	if (*tmp == '0' || *tmp == '1' || *tmp == '2' || *tmp == 'N' ||
-			*tmp == 'S' || *tmp == 'E' || *tmp == 'W')
+	if ((*tmp == '0' || *tmp == '1' || *tmp == '2' || *tmp == 'N' ||
+			*tmp == 'S' || *tmp == 'E' || *tmp == 'W') && *res != 2)
+	{
+		*res = 1;
 		return (0);
+	}
+	else
+	{
+		*res = 2;
+		mprms->check = 0;
+	}
 	return (-1);
 }
 
