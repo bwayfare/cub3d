@@ -31,11 +31,7 @@ int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 	char *tmp;
 
 	if (!line || *line == '\0')
-	{
-//		if (*res == 1)
-//			*res = 2;
 		return (1);
-	}
 	tmp = line;
 	while (tmp && *tmp == 32)
 		tmp++;
@@ -59,13 +55,14 @@ void size_map(t_list *list, t_mprms *mprms)
 
 	len = 0;
 	i = 0;
-	mprms->map.size = ft_lstsize(list);
+	mprms->map.size = ft_lstsize(list) + 1;
 	while (list)
 	{
 		if ((len = ft_strlen((char *)(list->content))) > mprms->map.len)
 			mprms->map.len = len;
 		list = list->next;
 	}
+	mprms->map.len += 1;
 	mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof (char *));
 	while(i < mprms->map.size)
 	{
@@ -81,9 +78,9 @@ void map_copy(void *str, char *mprms, int len)
 
 	i = 0;
 	line = (char *)str;
-	while (i < len)
+	while (i < len + 1)
 	{
-		if (*line)
+		if (line &&*line && i > 0)
 		{
 			mprms[i] = *line++;
 			i++;
@@ -99,13 +96,18 @@ void input_map(t_list *list, t_mprms *mprms)
 {
 	int i;
 
-	i= 0;
+	i = 0;
 	while (list)
 	{
-		map_copy(list->content, mprms->map.map[i], mprms->map.len);
+		if (i > 0)
+			map_copy(list->content, mprms->map.map[i], mprms->map.len);
+		else
+			map_copy(NULL, mprms->map.map[i], mprms->map.len);
 		list = list->next;
 		i++;
 	}
+	map_copy(NULL, mprms->map.map[i], mprms->map.len);
+	mprms->map.map[i + 1] = NULL;
 }
 
 int map_creator(t_list *list, t_mprms *mprms)

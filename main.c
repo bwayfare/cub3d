@@ -22,13 +22,9 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	int res;
 
 	res = 0;
-//	if(ft_search_map(*line, mprms, *list, &res) != 0)
-//		free(*line);
-//	else
-//		ft_lstadd_back(list, ft_lstnew(*line));
 	while (get_next_line(*fd, line) > 0
 			&& ft_search_map(*line, mprms, *list, &res) > -1)
-		if(res == 1)//ft_search_map(*line, mprms, *list, &res) == 0)
+		if(res == 1)
 			ft_lstadd_back(list, ft_lstnew(*line));
 		else
 			free(*line);
@@ -56,7 +52,8 @@ int ft_creat_mprms(char *argv)
 	while (mprms.check && (get_next_line(fd, &line) == 1) &&
 			(parse_line(&mprms, line) != -1) && (ft_check_full(&mprms) != 8))
 		free(line);
-	free(line);
+	if (line)
+		free(line);
 	f_get_map(&line, &list, &fd, &mprms);
 	print(&mprms);
 	free_list(&list);
