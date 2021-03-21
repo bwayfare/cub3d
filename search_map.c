@@ -64,9 +64,13 @@ void size_map(t_list *list, t_mprms *mprms)
 	}
 	mprms->map.len += 2;
 	mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof (char *));
-	while(i < mprms->map.size)
+	if(!mprms->map.map)
+		mprms->check = 0;
+	while(i < mprms->map.size && mprms->check)
 	{
 		mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof (char));
+		if (!mprms->map.map[i])
+			mprms->check = 0;
 		i++;
 	}
 }
