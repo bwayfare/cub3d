@@ -55,18 +55,18 @@ void size_map(t_list *list, t_mprms *mprms)
 
 	len = 0;
 	i = 0;
-	mprms->map.size = ft_lstsize(list) + 1;
+	mprms->map.size = ft_lstsize(list) + 2;
 	while (list)
 	{
 		if ((len = ft_strlen((char *)(list->content))) > mprms->map.len)
 			mprms->map.len = len;
 		list = list->next;
 	}
-	mprms->map.len += 1;
+	mprms->map.len += 2;
 	mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof (char *));
 	while(i < mprms->map.size)
 	{
-		mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof (char *));
+		mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof (char));
 		i++;
 	}
 }
@@ -78,7 +78,7 @@ void map_copy(void *str, char *mprms, int len)
 
 	i = 0;
 	line = (char *)str;
-	while (i < len + 1)
+	while (i < len)
 	{
 		if (line &&*line && i > 0)
 		{
@@ -100,10 +100,12 @@ void input_map(t_list *list, t_mprms *mprms)
 	while (list)
 	{
 		if (i > 0)
+		{
 			map_copy(list->content, mprms->map.map[i], mprms->map.len);
+			list = list->next;
+		}
 		else
 			map_copy(NULL, mprms->map.map[i], mprms->map.len);
-		list = list->next;
 		i++;
 	}
 	map_copy(NULL, mprms->map.map[i], mprms->map.len);

@@ -36,6 +36,8 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 		return;
 	if (mprms->check)
 		map_creator(*list, mprms);
+	ft_ch_elem_map(mprms);
+	ch_wall(mprms);
 }
 
 int ft_creat_mprms(char *argv)

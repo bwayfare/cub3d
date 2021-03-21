@@ -59,6 +59,11 @@ typedef struct 		s_map
 	int 			size;
 }					t_map;
 
+typedef struct 		s_player
+{
+	char 			pl;
+}					t_plr;
+
 typedef struct		s_mprms
 {
 	int				check;
@@ -67,6 +72,7 @@ typedef struct		s_mprms
 	t_paths			paths;
 	t_full 			full;
 	t_map 			map;
+	t_plr			plr;
 }					t_mprms;
 
 
@@ -83,5 +89,7 @@ int					ft_check_full(t_mprms *mprms);
 int					ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res);
 int 				map_creator(t_list *list, t_mprms *mprms);
 void 				free_list(t_list **head);
+int 				ft_ch_elem_map(t_mprms *mprms);
+int					ch_wall(t_mprms *mprms);
 
 #endif //CUB_CUB3D_H

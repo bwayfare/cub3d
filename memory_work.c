@@ -27,6 +27,7 @@ void struct_init(t_mprms *mprms)
 	mprms->map.len = 0;
 	mprms->map.map = NULL;
 	mprms->check = 1;
+	mprms->plr.pl = '\0';
 }
 
 void clean_struct(t_mprms *mprms)
