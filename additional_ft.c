@@ -1,15 +1,15 @@
 #include "cub3d.h"
 
-void ft_trimm_sp(char **line)
+void	ft_trimm_sp(char **line)
 {
 	char *str1;
 	char *str2;
 
 	if (*line == NULL && **line == '\0')
-		return;
+		return ;
 	str1 = *line;
 	str2 = *line;
-	while(*str1)
+	while (*str1)
 	{
 		*str2 = *str1;
 		if (*str1 == 32)
@@ -23,14 +23,13 @@ void ft_trimm_sp(char **line)
 	*str2 = '\0';
 }
 
-int ft_jmp_sp(char **line, char eof)
+int	ft_jmp_sp(char **line, char *str, char eof)
 {
-	char	*str;
-	int		flag;
+	int	flag;
 
 	flag = 0;
-	str = *line;
-	while(*str >= '0' && *str <= '9' || *str == ' ' || (*str == ',' && eof != '\0'))
+	while (*str >= '0' && *str <= '9' || *str == ' ' ||
+	(*str == ',' && eof != '\0'))
 	{
 		if (*str >= '0' && *str <= '9' && eof != '\0')
 		{
@@ -53,7 +52,7 @@ int ft_jmp_sp(char **line, char eof)
 	return (eof == '\0' && !(*str) ? 1 : -1);
 }
 
-int		ft_size_n(int n)
+int	ft_size_n(int n)
 {
 	int size;
 
@@ -66,12 +65,12 @@ int		ft_size_n(int n)
 	return (size);
 }
 
-int ft_res_check(char *str)
+int	ft_res_check(char *str)
 {
 	char *line;
 
 	line = str;
-	while(*line)
+	while (*line)
 	{
 		if (*line != ' ')
 			if (!(*line >= '0' && *line <= '9'))

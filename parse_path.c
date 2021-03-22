@@ -1,26 +1,18 @@
 #include "cub3d.h"
 
-int check_path(char *str)
+int	check_path(char *str)
 {
-	int fd;
-	char *end;
+	int		fd;
+	char	*end;
 
 	if (str == NULL)
 		return (-1);
 	end = str;
-	while (*end) //X.xpm
+	while (*end)
 		end++;
-	if (*--end != 'm')
+	if (*--end != 'm' || *--end != 'p' || *--end != 'x' ||
+	*--end != '.' || !ft_isalnum(*--end))
 		return (-1);
-	if (*--end != 'p')
-		return (-1);
-	if (*--end != 'x')
-		return (-1);
-	if (*--end != '.')
-		return (-1);
-	if (!ft_isalnum(*--end))
-		return (-1);
-
 	fd = open(str, O_RDONLY);
 	if (fd > 0)
 	{
@@ -31,12 +23,12 @@ int check_path(char *str)
 	return (-1);
 }
 
-char *get_path(char *line)
+char	*get_path(char *line)
 {
 	char	*tmp;
-	int		len;
-	char 	*str;
-	char 	*head;
+	int	len;
+	char	*str;
+	char	*head;
 
 	len = 0;
 	while (*line == 32)
@@ -51,14 +43,14 @@ char *get_path(char *line)
 		len++;
 		str++;
 	}
-	tmp = (char *)ft_calloc(len + 1, sizeof (char));
+	tmp = (char *)ft_calloc(len + 1, sizeof(char));
 	head = tmp;
 	while (*line != 32 && *line)
 		*tmp++ = *line++;
 	return (head);
 }
 
-int prs_pth_third(t_mprms *mprms, char *line)
+int	prs_pth_third(t_mprms *mprms, char *line)
 {
 	if (*line == 'S' || mprms->full.sprt != 1)
 	{
@@ -73,7 +65,7 @@ int prs_pth_third(t_mprms *mprms, char *line)
 	return (-1);
 }
 
-int prs_pth_second(t_mprms *mprms, char *line)
+int	prs_pth_second(t_mprms *mprms, char *line)
 {
 	if (*line == 'W')
 	{
@@ -100,7 +92,7 @@ int prs_pth_second(t_mprms *mprms, char *line)
 	return (prs_pth_third(mprms, line));
 }
 
-int prs_pth(t_mprms *mprms, char *line)
+int	prs_pth(t_mprms *mprms, char *line)
 {
 	if (*line == 'N')
 	{

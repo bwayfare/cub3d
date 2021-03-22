@@ -56,7 +56,8 @@ int ft_creat_mprms(char *argv)
 		free(line);
 	if (line)
 		free(line);
-	f_get_map(&line, &list, &fd, &mprms);
+	if (mprms.check)
+		f_get_map(&line, &list, &fd, &mprms);
 	print(&mprms);
 	free_list(&list);
 	clean_struct(&mprms);

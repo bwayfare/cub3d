@@ -51,22 +51,22 @@ void ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 				   arr[i - 1][j] == ' ' || arr[i - 1][j] == '1'))
 		mprms->check = 0;
 	if(i != (mprms->map.size - 1) && i != 0 && !(arr[i + 1][j + 1] == '\0' ||
-												 arr[i + 1][j + 1] == ' ' || arr[i + 1][j + 1] == '1'))
+		arr[i + 1][j + 1] == ' ' || arr[i + 1][j + 1] == '1'))
 		mprms->check = 0;
 	if(j != 0 && !(arr[i][j - 1] == '\0' ||
-				   arr[i][j - 1] == ' ' || arr[i][j - 1] == '1'))
+		arr[i][j - 1] == ' ' || arr[i][j - 1] == '1'))
 		mprms->check = 0;
 	if(i != (mprms->map.size - 1) && !(arr[i][j + 1] == '\0' ||
-									   arr[i][j + 1] == ' ' || arr[i][j + 1] == '1'))
+		arr[i][j + 1] == ' ' || arr[i][j + 1] == '1'))
 		mprms->check = 0;
 	if(i != (mprms->map.size - 1) && j != 0 && !(arr[i + 1][j - 1] == '\0' ||
-												 arr[i + 1][j - 1] == ' ' || arr[i + 1][j - 1] == '1'))
+		arr[i + 1][j - 1] == ' ' || arr[i + 1][j - 1] == '1'))
 		mprms->check = 0;
 	if(i != (mprms->map.size - 1) && !(arr[i + 1][j] == '\0' ||
-									   arr[i + 1][j] == ' ' || arr[i + 1][j] == '1'))
+		arr[i + 1][j] == ' ' || arr[i + 1][j] == '1'))
 		mprms->check = 0;
 	if(i != (mprms->map.size - 1) && !(arr[i + 1][j + 1] == '\0' ||
-									   arr[i + 1][j + 1] == ' ' || arr[i + 1][j + 1] == '1'))
+		arr[i + 1][j + 1] == ' ' || arr[i + 1][j + 1] == '1'))
 		mprms->check = 0;
 }
 

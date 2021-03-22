@@ -78,7 +78,7 @@ typedef struct		s_mprms
 
 void 				ft_trimm_sp(char **line);
 int    				parse_line(t_mprms *mparams, char *line);
-int					ft_jmp_sp(char **line, char flag);
+int					ft_jmp_sp(char **line, char *str, char flag);
 int					ft_size_n(int n);
 int 				ft_res_check(char *line);
 int 				ft_check_clr(t_mprms *mprms);

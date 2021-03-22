@@ -1,31 +1,5 @@
 #include "cub3d.h"
 
-//int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
-//{
-//	char *tmp;
-//
-//	if (!line || *line == '\0')
-//	{
-//		if (*res == 1)
-//			*res = 2;
-//		return (1);
-//	}
-//	tmp = line;
-//	while (tmp && *tmp == 32)
-//		tmp++;
-//	if (*tmp == '1' && *res != 2)
-//	{
-//		*res = 1;
-//		return (0);
-//	}
-//	else
-//	{
-//		*res = 2;
-//		mprms->check = 0;
-//	}
-//	return (-1);
-//}
-
 int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 {
 	char *tmp;
@@ -84,7 +58,7 @@ void map_copy(void *str, char *mprms, int len)
 	line = (char *)str;
 	while (i < len)
 	{
-		if (line &&*line && i > 0)
+		if (line && *line && i > 0)
 		{
 			mprms[i] = *line++;
 			i++;
@@ -121,8 +95,10 @@ int map_creator(t_list *list, t_mprms *mprms)
 	if (list)
 	{
 		size_map(list, mprms);
-		input_map(list, mprms);
-		return (1);
+		if (mprms->check)
+			input_map(list, mprms);
+		else
+			return (0);
 	}
-	return (0);
+	return (1);
 }
