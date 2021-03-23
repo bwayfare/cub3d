@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 int		ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 {

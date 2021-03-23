@@ -1,6 +1,6 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
-int ft_check_clr(t_mprms *mprms)
+int		ft_check_clr(t_mprms *mprms)
 {
 	if (mprms->full.c_clr == 1 || mprms->colors.cell_color.r != -1)
 	{
@@ -29,7 +29,7 @@ int ft_check_clr(t_mprms *mprms)
 	return (1);
 }
 
-int ft_check_full(t_mprms *mprms)
+int		ft_check_full(t_mprms *mprms)
 {
 	int count;
 

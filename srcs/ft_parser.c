@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 int	prs_res(t_mprms *mprms, char *line)
 {

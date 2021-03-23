@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	ft_ch_elem_if(t_mprms *mprms, char tmp)
 {
@@ -19,7 +19,7 @@ void	ft_ch_elem_if(t_mprms *mprms, char tmp)
 				}
 }
 
-int	ft_ch_elem_map(t_mprms *mprms)
+int		ft_ch_elem_map(t_mprms *mprms)
 {
 	int		i;
 	int		j;
