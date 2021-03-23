@@ -27,11 +27,17 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 		if(res == 1)
 			ft_lstadd_back(list, ft_lstnew(*line));
 		else
+		{
 			free(*line);
+			*line = NULL;
+		}
 	if (ft_search_map(*line, mprms, *list, &res) == 0)
 		ft_lstadd_back(list, ft_lstnew(*line));
 	else
+	{
 		free(*line);
+		*line = NULL;
+	}
 	if (mprms->check == 0)
 		return;
 	if (mprms->check)
@@ -51,11 +57,12 @@ int ft_creat_mprms(char *argv)
 	struct_init(&mprms);
 	if (!(fd = open(argv, O_RDONLY)))
 		return (0);
-	while (mprms.check && (get_next_line(fd, &line) == 1) &&
-			(parse_line(&mprms, line) != -1) && (ft_check_full(&mprms) != 8))
+	while (mprms.check && ft_check_full(&mprms) != 8 && get_next_line(fd, &line) == 1 &&
+			(parse_line(&mprms, line) != -1))
+	{
 		free(line);
-	if (line)
-		free(line);
+		line = NULL;
+	}
 	if (mprms.check)
 		f_get_map(&line, &list, &fd, &mprms);
 	print(&mprms);

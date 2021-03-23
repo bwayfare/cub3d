@@ -22,7 +22,7 @@ int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 	return (-1);
 }
 
-void size_map(t_list *list, t_mprms *mprms)
+int size_map(t_list *list, t_mprms *mprms)
 {
 	int len;
 	int i;
@@ -37,16 +37,17 @@ void size_map(t_list *list, t_mprms *mprms)
 		list = list->next;
 	}
 	mprms->map.len += 2;
-	mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof (char *));
-	if(!mprms->map.map)
-		mprms->check = 0;
+	if (!(mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof(char *))))
+		return (mprms->check = 0);
+	mprms->map.map[mprms->map.size] = NULL;
 	while(i < mprms->map.size && mprms->check)
 	{
-		mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof (char));
-		if (!mprms->map.map[i])
-			mprms->check = 0;
+		if (!(mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof(char))))
+			return (mprms->check = 0);
+		mprms->map.map[i][mprms->map.len] = '\0';
 		i++;
 	}
+	return (1);
 }
 
 void map_copy(void *str, char *mprms, int len)
@@ -83,10 +84,10 @@ void input_map(t_list *list, t_mprms *mprms)
 			list = list->next;
 		}
 		else
-			map_copy(NULL, mprms->map.map[i], mprms->map.len);
+			map_copy(" ", mprms->map.map[i], mprms->map.len);
 		i++;
 	}
-	map_copy(NULL, mprms->map.map[i], mprms->map.len);
+	map_copy(" ", mprms->map.map[i], mprms->map.len);
 	mprms->map.map[i + 1] = NULL;
 }
 
@@ -94,8 +95,7 @@ int map_creator(t_list *list, t_mprms *mprms)
 {
 	if (list)
 	{
-		size_map(list, mprms);
-		if (mprms->check)
+		if (size_map(list, mprms))
 			input_map(list, mprms);
 		else
 			return (0);
