@@ -65,6 +65,8 @@ void	free_list(t_list **head)
 {
 	t_list *tmp;
 
+	if (*head == NULL)
+		return	;
 	if (*head)
 	{
 		while ((*head)->next)
