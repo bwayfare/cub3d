@@ -44,7 +44,7 @@ int		ft_ch_elem_map(t_mprms *mprms)
 
 void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 {
-	if (i > 0 && !(arr[i - 1][j - 1] == '\0' ||
+	if (i != 0 && j != 0 && !(arr[i - 1][j - 1] == '\0' ||
 		arr[i - 1][j - 1] == ' ' || arr[i - 1][j - 1] == '1'))
 		mprms->check = 0;
 	if (i > 0 && !(arr[i - 1][j] == '\0' ||
