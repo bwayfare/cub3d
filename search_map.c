@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
+int		ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 {
 	char *tmp;
 
@@ -22,7 +22,7 @@ int ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 	return (-1);
 }
 
-int size_map(t_list *list, t_mprms *mprms)
+int		size_map(t_list *list, t_mprms *mprms)
 {
 	int len;
 	int i;
@@ -40,7 +40,7 @@ int size_map(t_list *list, t_mprms *mprms)
 	if (!(mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof(char *))))
 		return (mprms->check = 0);
 	mprms->map.map[mprms->map.size] = NULL;
-	while(i < mprms->map.size && mprms->check)
+	while (i < mprms->map.size && mprms->check)
 	{
 		if (!(mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof(char))))
 			return (mprms->check = 0);
@@ -50,10 +50,10 @@ int size_map(t_list *list, t_mprms *mprms)
 	return (1);
 }
 
-void map_copy(void *str, char *mprms, int len)
+void	map_copy(void *str, char *mprms, int len)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	line = (char *)str;
@@ -71,7 +71,7 @@ void map_copy(void *str, char *mprms, int len)
 	mprms[i] = '\0';
 }
 
-void input_map(t_list *list, t_mprms *mprms)
+void	input_map(t_list *list, t_mprms *mprms)
 {
 	int i;
 
@@ -91,12 +91,15 @@ void input_map(t_list *list, t_mprms *mprms)
 	mprms->map.map[i + 1] = NULL;
 }
 
-int map_creator(t_list *list, t_mprms *mprms)
+int		map_creator(t_list *list, t_mprms *mprms)
 {
+	t_list *tmp;
+
+	tmp = list;
 	if (list)
 	{
-		if (size_map(list, mprms))
-			input_map(list, mprms);
+		if (size_map(tmp, mprms))
+			input_map(tmp, mprms);
 		else
 			return (0);
 	}

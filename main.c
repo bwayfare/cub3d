@@ -4,7 +4,7 @@ void print(t_mprms *mprms)
 {
 	printf("R = %d %d\n", mprms->res.x, mprms->res.y);
 	printf("C = %d %d %d\n", mprms->colors.cell_color.r, mprms->colors.cell_color.g, mprms->colors.cell_color.b);
-	printf("F = %d % d %d\n", mprms->colors.floor_color.r, mprms->colors.floor_color.g, mprms->colors.floor_color.b);
+	printf("F = %d %d %d\n", mprms->colors.floor_color.r, mprms->colors.floor_color.g, mprms->colors.floor_color.b);
 	printf("S = %s\n", mprms->paths.sprt);
 	printf("SO = %s\n", mprms->paths.so);
 	printf("NO = %s\n", mprms->paths.no);
@@ -57,8 +57,13 @@ int ft_creat_mprms(char *argv)
 	struct_init(&mprms);
 	if (!(fd = open(argv, O_RDONLY)))
 		return (0);
-	while (mprms.check && ft_check_full(&mprms) != 8 && get_next_line(fd, &line) == 1 &&
-			(parse_line(&mprms, line) != -1))
+	while (mprms.check && ft_check_full(&mprms) != 8 &&
+	get_next_line(fd, &line) == 1 && (parse_line(&mprms, line) != -1))
+	{
+		free(line);
+		line = NULL;
+	}
+	if (line)
 	{
 		free(line);
 		line = NULL;

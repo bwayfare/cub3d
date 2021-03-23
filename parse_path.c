@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	check_path(char *str)
+int		check_path(char *str)
 {
 	int		fd;
 	char	*end;
@@ -26,7 +26,7 @@ int	check_path(char *str)
 char	*get_path(char *line)
 {
 	char	*tmp;
-	int	len;
+	int		len;
 	char	*str;
 	char	*head;
 
@@ -50,7 +50,7 @@ char	*get_path(char *line)
 	return (head);
 }
 
-int	prs_pth_third(t_mprms *mprms, char *line)
+int		prs_pth_third(t_mprms *mprms, char *line)
 {
 	if (*line == 'S' || mprms->full.sprt != 1)
 	{
@@ -65,7 +65,7 @@ int	prs_pth_third(t_mprms *mprms, char *line)
 	return (-1);
 }
 
-int	prs_pth_second(t_mprms *mprms, char *line)
+int		prs_pth_second(t_mprms *mprms, char *line)
 {
 	if (*line == 'W')
 	{
@@ -92,7 +92,7 @@ int	prs_pth_second(t_mprms *mprms, char *line)
 	return (prs_pth_third(mprms, line));
 }
 
-int	prs_pth(t_mprms *mprms, char *line)
+int		prs_pth(t_mprms *mprms, char *line)
 {
 	if (*line == 'N')
 	{

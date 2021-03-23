@@ -2,8 +2,8 @@
 
 void	ft_trimm_sp(char **line)
 {
-	char *str1;
-	char *str2;
+	char	*str1;
+	char	*str2;
 
 	if (*line == NULL && **line == '\0')
 		return ;
@@ -23,7 +23,7 @@ void	ft_trimm_sp(char **line)
 	*str2 = '\0';
 }
 
-int	ft_jmp_sp(char **line, char *str, char eof)
+int		ft_jmp_sp(char **line, char *str, char eof)
 {
 	int	flag;
 
@@ -38,21 +38,21 @@ int	ft_jmp_sp(char **line, char *str, char eof)
 				return (-1);
 			return (1);
 		}
-		else if (*str == ',')
+		if (*str == ',')
 		{
 			if (flag < 1)
 				flag = 1;
 			else
 				return (-1);
 		}
-		else if (*str != ' ' && eof == '\0')
+		if (*str != ' ' && eof == '\0')
 			return (-1);
 		str++;
 	}
 	return (eof == '\0' && !(*str) ? 1 : -1);
 }
 
-int	ft_size_n(int n)
+int		ft_size_n(int n)
 {
 	int size;
 
@@ -65,7 +65,7 @@ int	ft_size_n(int n)
 	return (size);
 }
 
-int	ft_res_check(char *str)
+int		ft_res_check(char *str)
 {
 	char *line;
 

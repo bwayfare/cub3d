@@ -1,6 +1,15 @@
 #include "cub3d.h"
 
-void struct_init(t_mprms *mprms)
+void	struct_init_2(t_mprms *mprms)
+{
+	mprms->map.size = 0;
+	mprms->map.len = 0;
+	mprms->map.map = NULL;
+	mprms->check = 1;
+	mprms->plr.pl = '\0';
+}
+
+void	struct_init(t_mprms *mprms)
 {
 	mprms->colors.floor_color.r = -1;
 	mprms->colors.floor_color.g = -1;
@@ -23,14 +32,10 @@ void struct_init(t_mprms *mprms)
 	mprms->paths.ea = NULL;
 	mprms->paths.we = NULL;
 	mprms->paths.sprt = NULL;
-	mprms->map.size = 0;
-	mprms->map.len = 0;
-	mprms->map.map = NULL;
-	mprms->check = 1;
-	mprms->plr.pl = '\0';
+	struct_init_2(mprms);
 }
 
-void clean_struct(t_mprms *mprms)
+void	clean_struct(t_mprms *mprms)
 {
 	int i;
 
@@ -56,7 +61,7 @@ void clean_struct(t_mprms *mprms)
 	}
 }
 
-void free_list(t_list **head)
+void	free_list(t_list **head)
 {
 	t_list *tmp;
 

@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int 	prs_res(t_mprms *mprms, char *line)
+int	prs_res(t_mprms *mprms, char *line)
 {
 	line++;
 	if (*line != 32 || mprms->full.res == 1)
@@ -16,13 +16,13 @@ int 	prs_res(t_mprms *mprms, char *line)
 	else
 		return (-1 + (mprms->check = 0));
 	if (ft_jmp_sp(&line, line, '\0') == -1 || mprms->res.x < 1 ||
-	mprms->res.y < 1)
-	    return (-1 + (mprms->check = 0));
+		mprms->res.y < 1)
+		return (-1 + (mprms->check = 0));
 	mprms->full.res = 1;
 	return (1);
 }
 
-int		prs_clr1(t_mprms *mprms, char *line)
+int	prs_clr1(t_mprms *mprms, char *line)
 {
 	line++;
 	if (*line != 32 || mprms->full.c_clr == 1)
@@ -46,11 +46,11 @@ int		prs_clr1(t_mprms *mprms, char *line)
 	return (1);
 }
 
-int		prs_clr(t_mprms *mprms, char *line)
+int	prs_clr(t_mprms *mprms, char *line)
 {
 	if (*line == 'F')
 	{
-		if (*++line != 32|| mprms->full.f_clr == 1)
+		if (*++line != 32 || mprms->full.f_clr == 1)
 			return (-1 + (mprms->check = 0));
 		if (ft_jmp_sp(&line, line, '0') != -1)
 			mprms->colors.floor_color.r = ft_atoi(&line);
@@ -70,14 +70,12 @@ int		prs_clr(t_mprms *mprms, char *line)
 			mprms->full.f_clr = 1;
 		return (ft_check_clr(mprms));
 	}
-	else
-		if (prs_clr1(mprms, line) != -1)
-			return (ft_check_clr(mprms));
+	if (prs_clr1(mprms, line) != -1)
+		return (ft_check_clr(mprms));
 	return (-1 + (mprms->check = 0));
 }
 
-
-int    parse_line(t_mprms *mprms, char *line)
+int	parse_line(t_mprms *mprms, char *line)
 {
 	ft_trimm_sp(&line);
 	if (ft_strlen(line) == 1)
