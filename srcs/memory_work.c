@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory_work.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/25 22:13:23 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	struct_init_2(t_mprms *mprms)
@@ -66,7 +78,7 @@ void	free_list(t_list **head)
 	t_list *tmp;
 
 	if (*head == NULL)
-		return	;
+		return ;
 	if (*head)
 	{
 		while ((*head)->next)

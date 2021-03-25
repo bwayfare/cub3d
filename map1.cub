@@ -1,4 +1,4 @@
-R 200 200
+R 200 100
 
  SO /home/bwayfare/C_Project/cub3D/test.xpm
          NO              /home/bwayfare/C_Project/cub3D/test.xpm
@@ -10,12 +10,9 @@ S /home/bwayfare/C_Project/cub3D/test.xpm
 
 F 200, 125, 168
 
- C 254, 125, 168
-
-111111
-1N1111
-111111
-
-11111111111111
-10000000000001
-11111111111111
+C 254, 125, 168
+111111111111
+1000000N2001
+100020202021
+120010001111
+111111111111
