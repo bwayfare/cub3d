@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:14:09 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:14:26 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ int		ft_check_clr(t_mprms *mprms)
 	{
 		if (mprms->colors.cell_color.r < 0 ||
 				mprms->colors.cell_color.r > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid ceil color\n")));
 		if (mprms->colors.cell_color.g < 0 ||
 				mprms->colors.cell_color.g > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid ceil color\n")));
 		if (mprms->colors.cell_color.b < 0 ||
 				mprms->colors.cell_color.b > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid ceil color\n")));
 	}
 	if (mprms->full.f_clr == 1 || mprms->colors.floor_color.r != -1)
 	{
 		if (mprms->colors.floor_color.r < 0 ||
 				mprms->colors.floor_color.r > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid floor color\n")));
 		if (mprms->colors.floor_color.g < 0 ||
 				mprms->colors.floor_color.g > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid floor color\n")));
 		if (mprms->colors.floor_color.b < 0 ||
 				mprms->colors.floor_color.b > 255)
-			return (-1 + (mprms->check = 0));
+			return (-1 + (mprms->check = put_error("Invalid floor color\n")));
 	}
 	return (1);
 }

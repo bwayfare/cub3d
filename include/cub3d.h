@@ -6,9 +6,10 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:15:08 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:25:18 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/25 22:25:22 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef CUB_CUB3D_H
 # define CUB_CUB3D_H
 
@@ -100,5 +101,6 @@ int					map_creator(t_list *list, t_mprms *mprms);
 void				free_list(t_list **head);
 int					ft_ch_elem_map(t_mprms *mprms);
 int					ch_wall(t_mprms *mprms);
+int					put_error(char *str);
 
 #endif

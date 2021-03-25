@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:11:47 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:11:56 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 		*res = 2;
 		mprms->check = 0;
 	}
-	return (-1);
+	return (-1 + put_error("Invalid map\n"));
 }
 
 int		size_map(t_list *list, t_mprms *mprms)
@@ -50,12 +50,12 @@ int		size_map(t_list *list, t_mprms *mprms)
 	}
 	mprms->map.len += 2;
 	if (!(mprms->map.map = ft_calloc(mprms->map.size + 1, sizeof(char *))))
-		return (mprms->check = 0);
+		return (mprms->check = put_error("Invalid malloc\n"));
 	mprms->map.map[mprms->map.size] = NULL;
 	while (i < mprms->map.size && mprms->check)
 	{
 		if (!(mprms->map.map[i] = ft_calloc(mprms->map.len + 1, sizeof(char))))
-			return (mprms->check = 0);
+			return (mprms->check = put_error("Invalid malloc\n"));
 		mprms->map.map[i][mprms->map.len] = '\0';
 		i++;
 	}

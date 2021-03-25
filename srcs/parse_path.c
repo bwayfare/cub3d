@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:36 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:14:26 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int		check_path(char *str)
 	char	*end;
 
 	if (str == NULL)
-		return (-1);
+		return (-1 + (put_error("Invalid path\n")));
 	end = str;
 	while (*end)
 		end++;
 	if (*--end != 'm' || *--end != 'p' || *--end != 'x' ||
 	*--end != '.' || !ft_isalnum(*--end))
-		return (-1);
+		return (-1 + (put_error("Invalid path\n")));
 	fd = open(str, O_RDONLY);
 	if (fd > 0)
 	{
@@ -32,7 +32,7 @@ int		check_path(char *str)
 		return (1);
 	}
 	close(fd);
-	return (-1);
+	return (-1 + (put_error("Invalid path\n")));
 }
 
 char	*get_path(char *line)
@@ -72,9 +72,9 @@ int		prs_pth_third(t_mprms *mprms, char *line)
 			mprms->paths.sprt = get_path(line);
 			return ((mprms->full.sprt = check_path(mprms->paths.sprt)));
 		}
-		return (-1);
+		return (-1 + (mprms->check = 0));
 	}
-	return (-1);
+	return (-1 + (mprms->check = 0));
 }
 
 int		prs_pth_second(t_mprms *mprms, char *line)
@@ -88,7 +88,7 @@ int		prs_pth_second(t_mprms *mprms, char *line)
 				mprms->paths.we = get_path(line);
 				return ((mprms->full.we = check_path(mprms->paths.we)));
 			}
-		return (-1);
+		return (-1 + (mprms->check = 0));
 	}
 	else if (*line == 'E')
 	{
@@ -99,7 +99,7 @@ int		prs_pth_second(t_mprms *mprms, char *line)
 				mprms->paths.ea = get_path(line);
 				return ((mprms->full.ea = check_path(mprms->paths.ea)));
 			}
-		return (-1);
+		return (-1 + (mprms->check = 0));
 	}
 	return (prs_pth_third(mprms, line));
 }
@@ -115,7 +115,7 @@ int		prs_pth(t_mprms *mprms, char *line)
 				mprms->paths.no = get_path(line);
 				return ((mprms->full.no = check_path(mprms->paths.no)));
 			}
-		return (-1);
+		return (-1 + (mprms->check = 0));
 	}
 	else if (*line == 'S' && *(line + 1) == 'O')
 	{
@@ -126,7 +126,7 @@ int		prs_pth(t_mprms *mprms, char *line)
 				mprms->paths.so = get_path(line);
 				return ((mprms->full.so = check_path(mprms->paths.so)));
 			}
-		return (-1);
+		return (-1 + (mprms->check = 0));
 	}
 	else
 		return (prs_pth_second(mprms, line));
