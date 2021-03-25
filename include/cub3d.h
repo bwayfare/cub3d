@@ -6,10 +6,9 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:15:08 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:25:22 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/26 00:28:44 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef CUB_CUB3D_H
 # define CUB_CUB3D_H
 
