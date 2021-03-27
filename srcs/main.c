@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:14:33 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/27 17:06:09 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/27 22:04:25 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void print(t_mprms *mprms)
 		   mprms->full.sprt, mprms->full.so, mprms->full.no, mprms->full.ea, mprms->full.we, mprms->check);
 	for(int i = 0; mprms->map.map && mprms->map.map[i]; i++)
 		printf("%s\n", mprms->map.map[i]);
-	printf("size map = %d %d", mprms->map.len, mprms->map.size);
+	printf("size map = %d %d\n", mprms->map.len, mprms->map.size);
+	printf("player position x = %d y = %d\n", mprms->plr.x, mprms->plr.y);
 }
 
 void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
@@ -53,8 +54,8 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	if (mprms->check)
 	{
 		map_creator(*list, mprms);
-		ft_ch_elem_map(mprms);
-		ch_wall(mprms);
+		if (ft_ch_elem_map(mprms))
+			ch_wall(mprms, mprms->map.map);
 	}
 }
 

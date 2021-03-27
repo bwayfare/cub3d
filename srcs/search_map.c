@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:11:47 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:12:20 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
 		*res = 2;
 		mprms->check = 0;
 	}
-	return (-1 + put_rtfm("Invalid map\n"));
+	return (-1 + (mprms->check = put_rtfm("Invalid map or double param\n")));
 }
 
 int		size_map(t_list *list, t_mprms *mprms)

@@ -19,6 +19,8 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->map.map = NULL;
 	mprms->check = 1;
 	mprms->plr.pl = '\0';
+	mprms->plr.x = 0;
+	mprms->plr.y = 0;
 }
 
 void	struct_init(t_mprms *mprms)

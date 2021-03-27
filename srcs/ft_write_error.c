@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 00:22:05 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/26 22:33:19 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:24:09 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int		put_rtfm(char *str)
 {
 	write(1, str, ft_strlen(str));
-	return (0);
+	exit(0);
 }

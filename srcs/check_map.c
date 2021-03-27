@@ -82,14 +82,12 @@ void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 		mprms->check = 0;
 }
 
-int		ch_wall(t_mprms *mprms)
+int		ch_wall(t_mprms *mprms, char **arr)
 {
 	int		i;
 	int		j;
-	char	**arr;
 
 	i = 0;
-	arr = mprms->map.map;
 	while (i < mprms->map.size && mprms->check)
 	{
 		j = 0;
@@ -97,11 +95,17 @@ int		ch_wall(t_mprms *mprms)
 		{
 			if (arr[i][j] == ' ')
 				ch_wall_if(mprms, arr, i, j);
+			if (arr[i][j] == 'N' || arr[i][j] == 'E' || arr[i][j] == 'S'
+				|| arr[i][j] == 'W')
+			{
+				mprms->plr.x = i;
+				mprms->plr.y = 1;
+			}
 			j++;
 		}
 		i++;
 	}
 	if (mprms->check == 0)
-		put_rtfm("Invalid map\n");
+		put_rtfm("Invalid wall in map\n");
 	return (mprms->check);
 }

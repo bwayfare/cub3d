@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:15:08 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/26 00:28:44 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/27 22:04:24 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB_CUB3D_H
@@ -71,6 +71,8 @@ typedef struct		s_map
 typedef struct		s_player
 {
 	char			pl;
+	int 			x;
+	int 			y;
 }					t_plr;
 
 typedef struct		s_mprms
@@ -90,7 +92,7 @@ int					ft_jmp_sp(char **line, char *str, char flag);
 int					ft_size_n(int n);
 int					ft_res_check(char *line);
 int					ft_check_clr(t_mprms *mprms);
-int					prs_pth(t_mprms *mprms, char *line);
+int					prs_pth(t_mprms *mprms, char *st);
 void				struct_init(t_mprms *mprms);
 void				clean_struct(t_mprms *mprms);
 int					ft_check_full(t_mprms *mprms);
@@ -99,7 +101,7 @@ int					ft_search_map(char *line, t_mprms *mprms,
 int					map_creator(t_list *list, t_mprms *mprms);
 void				free_list(t_list **head);
 int					ft_ch_elem_map(t_mprms *mprms);
-int					ch_wall(t_mprms *mprms);
+int					ch_wall(t_mprms *mprms, char **arr);
 int					put_rtfm(char *str);
 
 #endif
