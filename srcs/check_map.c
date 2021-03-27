@@ -24,10 +24,10 @@ void	ft_ch_elem_if(t_mprms *mprms, char tmp)
 						if (mprms->plr.pl == '\0')
 							mprms->plr.pl = tmp;
 						else
-							mprms->check = put_error("Invalid map\n");
+							mprms->check = put_rtfm("Invalid map\n");
 					}
 					else
-						mprms->check = put_error("Invalid map\n");
+						mprms->check = put_rtfm("Invalid map\n");
 				}
 }
 
@@ -50,7 +50,7 @@ int		ft_ch_elem_map(t_mprms *mprms)
 		i++;
 	}
 	if (mprms->plr.pl == '\0')
-		mprms->check = put_error("Invalid element in map\n");
+		mprms->check = put_rtfm("Invalid element in map\n");
 	return (mprms->check);
 }
 
@@ -102,6 +102,6 @@ int		ch_wall(t_mprms *mprms)
 		i++;
 	}
 	if (mprms->check == 0)
-		put_error("Invalid map\n");
+		put_rtfm("Invalid map\n");
 	return (mprms->check);
 }

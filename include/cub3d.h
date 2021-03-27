@@ -100,6 +100,6 @@ int					map_creator(t_list *list, t_mprms *mprms);
 void				free_list(t_list **head);
 int					ft_ch_elem_map(t_mprms *mprms);
 int					ch_wall(t_mprms *mprms);
-int					put_error(char *str);
+int					put_rtfm(char *str);
 
 #endif
