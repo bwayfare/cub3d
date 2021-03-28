@@ -52,7 +52,7 @@ int		ft_jmp_sp(char **line, char *str, char eof)
 		}
 		if (*str == ',')
 		{
-			if (flag < 1)
+			if (flag < 1 && eof == ',')
 				flag = 1;
 			else
 				return (-1);

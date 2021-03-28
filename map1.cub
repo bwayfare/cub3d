@@ -1,16 +1,17 @@
-R 200 200
+R 1 111
 
  SO /home/bwayfare/C_Project/cub3D/test.xpm
-         NO              /home/bwayfare/C_Project/cub3D/test.xpm
+ NO /home/bwayfare/C_Project/cub3D/test.xpm
 
 
-WE /home/bwayfare/C_Project/cub3D/test.xpm
-EA /home/bwayfare/C_Project/cub3D/test.xpm
-S /home/bwayfare/C_Project/cub3D/test.xpm
+ WE /home/bwayfare/C_Project/cub3D/test.xpm
+ EA /home/bwayfare/C_Project/cub3D/test.xpm
+ S /home/bwayfare/C_Project/cub3D/test.xpm
 
-F 200, 125, 166
+F 254, 123, 254
 
-C 254, 125, 168
+C 52, 254, 253
+
 111111111111
 1000100N2001
 100020202021
