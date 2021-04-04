@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:15:08 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/27 22:04:24 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:47:27 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB_CUB3D_H
@@ -18,6 +18,7 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include <stdio.h>
+# include "../mlx/mlx.h"
 
 typedef struct		s_res {
 	int				x;
@@ -71,9 +72,17 @@ typedef struct		s_map
 typedef struct		s_player
 {
 	char			pl;
-	int 			x;
-	int 			y;
+	double 			x;
+	double 			y;
+	double 			dir_x;
+	double 			dir_y;
 }					t_plr;
+
+typedef struct 		s_ray
+{
+	double 			x;
+	double 			y;
+}					t_ray;
 
 typedef struct		s_mprms
 {
@@ -84,6 +93,7 @@ typedef struct		s_mprms
 	t_full			full;
 	t_map			map;
 	t_plr			plr;
+	t_ray 			ray;
 }					t_mprms;
 
 void				ft_trimm_sp(char **line);

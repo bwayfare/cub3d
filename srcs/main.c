@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:14:33 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/27 22:04:25 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/31 22:19:06 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void print(t_mprms *mprms)
 	for(int i = 0; mprms->map.map && mprms->map.map[i]; i++)
 		printf("%s\n", mprms->map.map[i]);
 	printf("size map = %d %d\n", mprms->map.len, mprms->map.size);
-	printf("player position x = %d y = %d\n", mprms->plr.x, mprms->plr.y);
+	printf("player position x = %f y = %f\n", mprms->plr.x, mprms->plr.y);
 }
 
 void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
@@ -94,5 +94,9 @@ int main(int argc, char **argv) {
 	fd = 0;
 	if (argc == 2 || argc == 3)
 		ft_creat_mprms(&fd, argv[1]);
+
+
+
+
 	return (0);
 }

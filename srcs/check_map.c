@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:13 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/31 22:20:44 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		ch_wall(t_mprms *mprms, char **arr)
 				|| arr[i][j] == 'W')
 			{
 				mprms->plr.x = i;
-				mprms->plr.y = 1;
+				mprms->plr.y = j;
 			}
 			j++;
 		}

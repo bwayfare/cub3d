@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:23 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/25 22:20:08 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:47:27 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->plr.pl = '\0';
 	mprms->plr.x = 0;
 	mprms->plr.y = 0;
+	mprms->plr.dir_x = 0;
+	mprms->plr.dir_y = 0;
+	mprms->ray.x = 0;
+	mprms->ray.y = 0;
 }
 
 void	struct_init(t_mprms *mprms)
