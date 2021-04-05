@@ -98,3 +98,9 @@ void	free_list(t_list **head)
 		free(*head);
 	}
 }
+
+void 	free_line(char **line)
+{
+	free(*line);
+	*line = NULL;
+}

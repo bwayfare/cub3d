@@ -35,22 +35,16 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	int res;
 
 	res = 0;
-	while (get_next_line(*fd, line) > 0
-			&& ft_search_map(*line, mprms, *list, &res) > -1)
-		if (res == 1 || res == 3)
+	while (get_next_line(*fd, line) > 0)
+		if (ft_search_map(*line, mprms, *list, &res) > -1
+			&& (res == 1 || res == 3))
 			ft_lstadd_back(list, ft_lstnew(*line));
 		else
-		{
-			free(*line);
-			*line = NULL;
-		}
+			free_line(line);
 	if (ft_search_map(*line, mprms, *list, &res) == 0)
 		ft_lstadd_back(list, ft_lstnew(*line));
 	else
-	{
-		free(*line);
-		*line = NULL;
-	}
+		free_line(line);
 	if (mprms->check)
 	{
 		map_creator(*list, mprms);
@@ -59,44 +53,34 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	}
 }
 
-int ft_creat_mprms(int *fd, char *argv)
+int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms)
 {
-	t_mprms		mprms;
 	t_list		*list;
 	char		*line;
 
 	list = NULL;
-	struct_init(&mprms);
+	struct_init(mprms);
 	if (!(*fd = open(argv, O_RDONLY)))
 		return (0);
-	while (mprms.check && ft_check_full(&mprms) != 8 &&
-	get_next_line(*fd, &line) > 0 && (parse_line(&mprms, line) != -1))
-	{
-		free(line);
-		line = NULL;
-	}
+	while (mprms->check && ft_check_full(mprms) != 8 &&
+	get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
+		free_line(&line);
 	if (line)
-	{
-		free(line);
-		line = NULL;
-	}
-	if (mprms.check)
-		f_get_map(&line, &list, fd, &mprms);
-	print(&mprms);
+		free_line(&line);
+	if (mprms->check)
+		f_get_map(&line, &list, fd, mprms);
+	print(mprms);
 	free_list(&list);
-	clean_struct(&mprms);
+	clean_struct(mprms);
 	return (1);
 }
 
 int main(int argc, char **argv) {
 	int fd;
+	t_mprms mprms;
 
 	fd = 0;
 	if (argc == 2 || argc == 3)
-		ft_creat_mprms(&fd, argv[1]);
-
-
-
-
+		ft_creat_mprms(&fd, argv[1], &mprms);
 	return (0);
 }

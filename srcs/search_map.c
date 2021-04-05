@@ -14,11 +14,9 @@
 
 int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
 {
-//	if (!tmp || *tmp == '\0')
-//		return (1);
 	while (tmp && *tmp == 32)
 		tmp++;
-	if (*tmp == '1' && *res != 2 || *tmp == '\0')
+	if ((*tmp == '1' || *tmp == '\0') && *res != 2)
 	{
 		if (*tmp == '\0')
 		{

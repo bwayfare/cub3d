@@ -40,7 +40,7 @@ int		ft_jmp_sp(char **line, char *str, char eof)
 	int	flag;
 
 	flag = 0;
-	while (*str >= '0' && *str <= '9' || *str == ' ' ||
+	while ((*str >= '0' && *str <= '9') || *str == ' ' ||
 	(*str == ',' && eof != '\0'))
 	{
 		if (*str >= '0' && *str <= '9' && eof != '\0')

@@ -113,5 +113,6 @@ void				free_list(t_list **head);
 int					ft_ch_elem_map(t_mprms *mprms);
 int					ch_wall(t_mprms *mprms, char **arr);
 int					put_rtfm(char *str);
+void				free_line(char **line);
 
 #endif
