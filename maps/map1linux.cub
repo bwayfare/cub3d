@@ -1,0 +1,23 @@
+R 1 21474830000
+
+ SO /home/bwayfare/C_Project/cub3D/textures/te.xpm
+ NO /home/bwayfare/C_Project/cub3D/textures/tex1.xpm
+
+
+ WE /home/bwayfare/C_Project/cub3D/textures/tex2.xpm
+ EA /home/bwayfare/C_Project/cub3D/textures/tex3.xpm
+ S /home/bwayfare/C_Project/cub3D/textures/tex4.xpm
+
+F 254, 123, 254
+
+C 52, 254, 253
+111111111111
+100010002001
+1000202N2021
+120010001111
+111111111111
+
+11111111
+10020211
+10200001
+11111111
