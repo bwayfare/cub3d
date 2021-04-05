@@ -14,7 +14,7 @@
 
 void print(t_mprms *mprms)
 {
-	printf("R = %d %d\n", mprms->res.x, mprms->res.y);
+	printf("R = %ld %ld\n", mprms->res.x, mprms->res.y);
 	printf("C = %d %d %d\n", mprms->colors.cell_color.r, mprms->colors.cell_color.g, mprms->colors.cell_color.b);
 	printf("F = %d %d %d\n", mprms->colors.floor_color.r, mprms->colors.floor_color.g, mprms->colors.floor_color.b);
 	printf("S = %s\n", mprms->paths.sprt);
@@ -37,7 +37,7 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	res = 0;
 	while (get_next_line(*fd, line) > 0
 			&& ft_search_map(*line, mprms, *list, &res) > -1)
-		if (res == 1)
+		if (res == 1 || res == 3)
 			ft_lstadd_back(list, ft_lstnew(*line));
 		else
 		{

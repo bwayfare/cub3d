@@ -1,20 +1,20 @@
-R 1 214748367
+R 1 21474830000
 
- SO /home/bwayfare/C_Project/cub3D/textures/te1.xpm
- NO /home/bwayfare/C_Project/cub3D/textures/te2.xpm
+ SO /Users/bwayfare/Learn/cub3d/test.xpm
+ NO /Users/bwayfare/Learn/cub3d/test.xpm
 
 
- WE /home/bwayfare/C_Project/cub3D/textures/te3.xpm
- EA /home/bwayfare/C_Project/cub3D/textures/te.xpm
- S /home/bwayfare/C_Project/cub3D/textures/barrel.xpm
+ WE /Users/bwayfare/Learn/cub3d/test.xpm
+ EA /Users/bwayfare/Learn/cub3d/test.xpm
+ S /Users/bwayfare/Learn/cub3d/test.xpm
 
 F 254, 123, 254
 
 C 52, 254, 253
-
+ 
 111111111111
-1000100N2001
-100020202021
+100010002001
+1000202N2021
 120010001111
 111111111111
 

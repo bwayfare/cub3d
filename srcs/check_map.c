@@ -50,7 +50,7 @@ int		ft_ch_elem_map(t_mprms *mprms)
 		i++;
 	}
 	if (mprms->plr.pl == '\0')
-		mprms->check = put_rtfm("Invalid element in map\n");
+		mprms->check = put_rtfm("No player\n");
 	return (mprms->check);
 }
 

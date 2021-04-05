@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/bwayfare/Learn/cub3d/libft/ft_atoi.c
+libft.h
+/Users/bwayfare/Learn/cub3d/libft/libft.h
+
+/Users/bwayfare/Learn/cub3d/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+

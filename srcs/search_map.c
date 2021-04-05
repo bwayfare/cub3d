@@ -12,17 +12,22 @@
 
 #include "../include/cub3d.h"
 
-int		ft_search_map(char *line, t_mprms *mprms, t_list *list, int *res)
+int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
 {
-	char *tmp;
-
-	if (!line || *line == '\0')
-		return (1);
-	tmp = line;
+//	if (!tmp || *tmp == '\0')
+//		return (1);
 	while (tmp && *tmp == 32)
 		tmp++;
-	if (*tmp == '1' && *res != 2)
+	if (*tmp == '1' && *res != 2 || *tmp == '\0')
 	{
+		if (*tmp == '\0')
+		{
+			if (*res == 3)
+				*res = 0;
+			if (*res == 1)
+				*res = 3;
+			return (1);
+		}
 		*res = 1;
 		return (0);
 	}

@@ -21,8 +21,8 @@
 # include "../mlx/mlx.h"
 
 typedef struct		s_res {
-	int				x;
-	int				y;
+	long			x;
+	long			y;
 }					t_res;
 
 typedef struct		s_fclr {

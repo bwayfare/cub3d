@@ -41,21 +41,20 @@ void			ft_getres(char **str, long int *res)
 	}
 }
 
-int				ft_atoi(char **str)
+long			ft_atoi(char **str)
 {
-	long int	res;
+	long		res;
 	int			znak;
-	int			i;
 
 	res = 0;
 	znak = 1;
 	*str = ft_gofast(str);
 	*str = ft_znak(str, &znak);
 	ft_getres(str, &res);
-	if (res > 2147483647 && znak == 1)
-		return (-1);
-	else if (res > -2147483648 && znak == -1)
-		return (0);
-	else
+//	if (res > 2147483647 && znak == 1)
+//		return (-1);
+//	else if (res > -2147483648 && znak == -1)
+//		return (0);
+//	else
 		return (res * znak);
 }
