@@ -18,7 +18,30 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include <stdio.h>
-# include "../mlx/mlx.h"
+# include "../minilibx/mlx.h"
+# include <math.h>
+
+# define W mprms->res.x
+# define H mprms->res.y
+# define WORLDMAP mprms->map.map
+# define WWORLDMAP mprms->map.map
+# define screenWidth 640
+# define screenHeight 480
+# define texWidth 64
+# define texHeight 64
+# define mapWidth 24
+# define mapHeight 24
+
+typedef struct	s_data
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	void		*mlx;
+	void		*win;
+}				t_data;
 
 typedef struct		s_res {
 	long			x;
@@ -76,13 +99,42 @@ typedef struct		s_player
 	double 			y;
 	double 			dir_x;
 	double 			dir_y;
+	double 			pl_x;
+	double 			pl_y;
 }					t_plr;
 
-typedef struct 		s_ray
+typedef struct	s_ray
 {
-	double 			x;
-	double 			y;
-}					t_ray;
+	double		cameraX; // = 2 * x / (double)w - 1; //x-coordinate in camera space
+	double		rayDirX; // = dirX + planeX*cameraX;
+	double		rayDirY; // = dirY + planeY*cameraX;
+	int			mapX; // = int(posX);
+	int			mapY; // = int(posY);
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX; // = std::abs(1 / rayDirX);
+	double		deltaDistY; // = std::abs(1 / rayDirY);
+	double		perpWallDist;
+	int			stepX;
+	int			stepY;
+	int			color;
+	int			hit; // = 0; //was there a wall hit?
+	int			side; //was a NS or a EW wall hit?
+	int			lineHeight; // = (int)(h / perpWallDist);
+	int			drawStart; // = -lineHeight / 2 + h / 2;
+	int			drawEnd; // = lineHeight / 2 + h / 2;
+	int			texNum; // = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
+	double		wallX; //where exactly the wall was hit
+	int			texX; // = int(wallX * double(texWidth));
+	double		step; // = 1.0 * texHeight / lineHeight;
+	double		texPos; // = (drawStart - h / 2 + lineHeight / 2) * step;
+	int			texY; // = (int)texPos & (texHeight - 1);
+	double		frameTime; //= (time - oldTime) / 1000.0; //frametime is the time this frame has taken, in seconds
+	double		moveSpeed; // = frameTime * 5.0; //the constant value is in squares/second
+	double		rotSpeed; // = frameTime * 3.0; //the constant value is in radians/second
+	double		oldDirX; // = dirX;
+	double		oldPlaneX; // = planeX;
+}				t_ray;
 
 typedef struct		s_mprms
 {
@@ -94,6 +146,7 @@ typedef struct		s_mprms
 	t_map			map;
 	t_plr			plr;
 	t_ray 			ray;
+	t_data 			data;
 }					t_mprms;
 
 void				ft_trimm_sp(char **line);

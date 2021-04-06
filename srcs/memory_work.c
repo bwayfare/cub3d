@@ -23,8 +23,6 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->plr.y = 0;
 	mprms->plr.dir_x = 0;
 	mprms->plr.dir_y = 0;
-	mprms->ray.x = 0;
-	mprms->ray.y = 0;
 }
 
 void	struct_init(t_mprms *mprms)
