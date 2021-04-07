@@ -57,7 +57,7 @@ char	*get_path(char *line)
 	}
 	tmp = (char *)ft_calloc(len + 1, sizeof(char));
 	head = tmp;
-	while (*line != 32 && *line)
+	while (*line)
 		*tmp++ = *line++;
 	return (head);
 }

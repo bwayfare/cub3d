@@ -76,7 +76,7 @@ int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms)
 	return (1);
 }
 
-void            my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
+/*void            my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
 {
 	char    *dst;
 
@@ -227,7 +227,7 @@ int		draw(t_mprms *mprms)
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
 	return 1;
-}
+}*/
 
 
 int main(int argc, char **argv) {
@@ -241,7 +241,7 @@ int main(int argc, char **argv) {
 	if (argc == 2 || argc == 3)
 		ft_creat_mprms(&fd, argv[1], &mprms);
 
-	mprms.data.mlx = mlx_init();
+	/*mprms.data.mlx = mlx_init();
 	mprms.data.win = mlx_new_window(mprms.data.mlx, 500, 500, "Hui w rot!");
 	mprms.data.img = mlx_new_image(mprms.data.mlx, 500, 500);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);
@@ -254,7 +254,7 @@ int main(int argc, char **argv) {
 	mprms.plr.dir_y = 0.0;
 	mprms.plr.pl_x = 0.66;
 	mprms.plr.pl_y = -0.66;
-	draw(&mprms);
+	draw(&mprms);*/
 //	while (++x < W)
 //	{
 //		all.ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
@@ -392,7 +392,7 @@ int main(int argc, char **argv) {
 //	}
 
 //	my_mlx_pixel_put(&img, 0, 0, 0x00FF0000);
-	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
-	mlx_loop(mprms.data.mlx);
+	/*mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
+	mlx_loop(mprms.data.mlx);*/
 	return (0);
 }
