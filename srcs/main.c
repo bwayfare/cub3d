@@ -64,7 +64,7 @@ int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms)
 	if (!(*fd = open(argv, O_RDONLY)))
 		return (0);
 	while (mprms->check && ft_check_full(mprms) != 8 &&
-	get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
+		   get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
 		free_line(&line);
 	if (line)
 		free_line(&line);
@@ -248,12 +248,12 @@ int main(int argc, char **argv) {
 //	mlx_put_image_to_window(all.data.mlx, all.data.win, all.data.img, 0, 0);
 
 	x = -1;
-	mprms.plr.x = 5.0;
-	mprms.plr.y = 5.0;
+//	mprms.plr.x = 5.0;
+//	mprms.plr.y = 5.0;
 	mprms.plr.dir_x = -1.0;
 	mprms.plr.dir_y = 0.0;
-	mprms.plr.pl_x = 0.0;
-	mprms.plr.pl_y = 0.66;
+	mprms.plr.pl_x = 0.66;
+	mprms.plr.pl_y = -0.66;
 	draw(&mprms);
 //	while (++x < W)
 //	{
