@@ -23,7 +23,7 @@
 
 # define W mprms->res.x
 # define H mprms->res.y
-# define WORLDMAP mprms->map.map
+# define WORLDMAP mprms.map.map
 # define WWORLDMAP mprms->map.map
 # define screenWidth 640
 # define screenHeight 480
