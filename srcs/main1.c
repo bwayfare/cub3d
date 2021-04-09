@@ -330,7 +330,7 @@ int main(int argc, char **argv)
 	mprms.colors.cell_color.trns = create_trgb(mprms.colors.cell_color.r, mprms.colors.cell_color.g, mprms.colors.cell_color.b);
 	mprms.plr.dir_x = -1.0;
 	mprms.plr.dir_y = 0.0;
-	mprms.plr.pl_x = -0.66;
+	mprms.plr.pl_x = 0.0;
 	mprms.plr.pl_y = 0.66;
 	draw(&mprms);
 
