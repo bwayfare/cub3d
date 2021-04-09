@@ -20,6 +20,12 @@ void print(t_mprms *mprms)
 	printf("player position x = %f y = %f\n", mprms->plr.x, mprms->plr.y);
 }
 
+int		create_trgb(int r, int g, int b)
+{
+	return(r << 16 | g << 8 | b);
+}
+
+
 void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 {
 	int res;
@@ -69,29 +75,109 @@ void            my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int		key_press(int key, t_mprms *mprms)
+int 		key_press(int key, t_mprms *mprms)
 {
-	if(key == 25)
+		printf("key = %d \n", key);
+//100
+//97
+	if (key == 119)
+		mprms->pres.up = 1;
+	if (key == 115)
+		mprms->pres.down = 1;
+	if (key == 100)
+		mprms->pres.right = 1;
+	if (key == 97)
+		mprms->pres.left = 1;
+	write(1, "press\n", 6);
+	return (0);
+}
+
+int 		key_release(int key, t_mprms * mprms)
+{
+	if (key == 119)
+		mprms->pres.up = 0;
+	if (key == 115)
+		mprms->pres.down = 0;
+	if (key == 100)
+		mprms->pres.right = 0;
+	if (key == 97)
+		mprms->pres.left = 0;
+	write(1, "releas\n", 7);
+	return (0);
+}
+
+int 		move_plr(t_mprms *mprms)
+{
+//		write(1, "test\n", 5);
+//	printf("key = %d \n", key);
+	if(mprms->pres.up)
 	{
-		if(mprms->map.map[(int)(mprms->plr.x + mprms->plr.dir_x * 0.5)][(int)(mprms->plr.y)] != '1')
-			mprms->plr.x += mprms->plr.dir_x * 0.5;
-		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y + mprms->plr.dir_y * 0.5)] != '1')
-			mprms->plr.y += mprms->plr.dir_y * 0.5;
+		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * 0.005)] != '1')
+			mprms->plr.x += mprms->plr.dir_x * 0.005;
+		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * 0.005)][(int)(mprms->plr.x)] != '1')
+			mprms->plr.y += mprms->plr.dir_y * 0.005;
 		write(1, "test\n", 5);
 	}
 	//move backwards if no wall behind you
-	if(key == 39)
+	if(mprms->pres.down)
 	{
-		if(mprms->map.map[(int)(mprms->plr.x - mprms->plr.dir_x * 0.5)][(int)(mprms->plr.y)] != '1')
-			mprms->plr.x -= mprms->plr.dir_x * 0.5;
-		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y - mprms->plr.dir_y * 0.5)] != '1')
-			mprms->plr.y -= mprms->plr.dir_y * 0.5;
+		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * 0.005)] != '1')
+			mprms->plr.x -= mprms->plr.dir_x * 0.005;
+		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * 0.005)][(int)(mprms->plr.x)] != '1')
+			mprms->plr.y -= mprms->plr.dir_y * 0.005;
 		write(1, "test2\n", 6);
 	}
+	if (mprms->pres.right)
+	{
+		//both camera direction and camera plane must be rotated
+		mprms->ray.oldDirX = mprms->plr.dir_x;
+		mprms->plr.dir_x = mprms->plr.dir_x * cos(-0.005) - mprms->plr.dir_y * sin(-0.005);
+		mprms->plr.dir_y = mprms->ray.oldDirX * sin(-0.005) + mprms->plr.dir_y * cos(-0.005);
+		mprms->ray.oldPlaneX = mprms->plr.pl_x;
+		mprms->plr.pl_x = mprms->plr.pl_x * cos(-0.005) - mprms->plr.pl_y * sin(-0.005);
+		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(-0.005) + mprms->plr.pl_y * cos(-0.005);
+	}
+	//rotate to the left
+	if (mprms->pres.left)
+	{
+		//both camera direction and camera plane must be rotated
+		mprms->ray.oldDirX = mprms->plr.dir_x;
+		mprms->plr.dir_x = mprms->plr.dir_x * cos(0.005) - mprms->plr.dir_y * sin(0.005);
+		mprms->plr.dir_y = mprms->ray.oldDirX * sin(0.005) + mprms->plr.dir_y * cos(0.005);
+		mprms->ray.oldPlaneX = mprms->plr.pl_x;
+		mprms->plr.pl_x = mprms->plr.pl_x * cos(0.005) - mprms->plr.pl_y * sin(0.005);
+		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(0.005) + mprms->plr.pl_y * cos(0.005);
+	}
+//	mprms->ray.color += 1;
 	draw(mprms);
 	return (0);
-	//rotate to the right
 }
+
+//int		key_press(int key, t_mprms *mprms)
+//{
+////	write(1, "test\n", 5);
+//	printf("key = %d \n", key);
+//	if(key == 119)
+//	{
+//		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * 0.5)] != '1')
+//			mprms->plr.x += mprms->plr.dir_x * 0.5;
+//		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * 0.05)][(int)(mprms->plr.x)] != '1')
+//			mprms->plr.y += mprms->plr.dir_y * 0.5;
+//		write(1, "test\n", 5);
+//	}
+//	//move backwards if no wall behind you
+//	if(key == 115)
+//	{
+//		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * 0.5)] != '1')
+//			mprms->plr.x -= mprms->plr.dir_x * 0.5;
+//		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * 0.5)][(int)(mprms->plr.x)] != '1')
+//			mprms->plr.y -= mprms->plr.dir_y * 0.5;
+//		write(1, "test2\n", 6);
+//	}
+//	draw(mprms);
+//	return (0);
+//	//rotate to the right
+//}
 
 int		draw(t_mprms *mprms)
 {
@@ -109,8 +195,11 @@ int		draw(t_mprms *mprms)
 		mprms->ray.mapY = (int)mprms->plr.y;
 
 		//length of ray from one x or y-side to next x or y-side
-		mprms->ray.deltaDistX = fabs(1 / mprms->ray.rayDirX);
-		mprms->ray.deltaDistY = fabs(1 / mprms->ray.rayDirY);
+//		mprms->ray.deltaDistX = fabs(1 / mprms->ray.rayDirX);
+//		mprms->ray.deltaDistY = fabs(1 / mprms->ray.rayDirY);
+
+		mprms->ray.deltaDistX = (mprms->ray.rayDirY == 0) ? 0 : ((mprms->ray.rayDirX == 0) ? 1 : fabs(1 / mprms->ray.rayDirX));
+		mprms->ray.deltaDistY = (mprms->ray.rayDirX == 0) ? 0 : ((mprms->ray.rayDirY == 0) ? 1 : fabs(1 / mprms->ray.rayDirY));
 
 		mprms->ray.hit = 0; //was there a wall hit?
 		mprms->ray.sideDistX = 0;
@@ -150,9 +239,15 @@ int		draw(t_mprms *mprms)
 				mprms->ray.side = 1;
 			}
 			//Check if ray has hit a wall
-			if (WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX] == '1') mprms->ray.hit = 1;
+//			write(1, "tes1\n", 5);
+//			printf("x = %d y = %d\n\n", mprms->ray.mapY, mprms->ray.mapX);
+//			printf("%c", WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX]);
+			if (WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX] == '1')
+				mprms->ray.hit = 1;
+//			write(1, "tes2\n", 5);
 		}
 		//Calculate distance of perpendicular ray (Euclidean distance will give fisheye effect!)
+//		write(1, "test\n", 5);
 		if (mprms->ray.side == 0)
 		{
 			mprms->ray.perpWallDist = (mprms->ray.mapX - mprms->plr.x + (1.0 - mprms->ray.stepX) / 2) / mprms->ray.rayDirX;
@@ -201,10 +296,16 @@ int		draw(t_mprms *mprms)
 			mprms->ray.texPos += mprms->ray.step;
 			if(mprms->ray.side == 1) mprms->ray.color = 0xff00ff; // (mprms->ray.color >> 1) & 8355711;
 //			printf("x - %d, y - %d\n", x, y);
-			my_mlx_pixel_put(mprms, x, y, 0xff0000); // mprms->ray.color);
+			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor_color.trns);
+			my_mlx_pixel_put(mprms, x, y, mprms->ray.color); // mprms->ray.color);
 		}
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
+	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
+	mprms->data.addr = NULL;
+	mprms->data.img = NULL;
+	mprms->data.img = mlx_new_image(mprms->data.mlx, 500, 500);
+	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
 }
 
 int main(int argc, char **argv)
@@ -225,14 +326,18 @@ int main(int argc, char **argv)
 	mprms.data.img = mlx_new_image(mprms.data.mlx, 500, 500);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);
 
+	mprms.colors.floor_color.trns = create_trgb(mprms.colors.floor_color.r, mprms.colors.floor_color.g, mprms.colors.floor_color.b);
+	mprms.colors.cell_color.trns = create_trgb(mprms.colors.cell_color.r, mprms.colors.cell_color.g, mprms.colors.cell_color.b);
 	mprms.plr.dir_x = -1.0;
 	mprms.plr.dir_y = 0.0;
-	mprms.plr.pl_x = 0.66;
-	mprms.plr.pl_y = 0.00;
+	mprms.plr.pl_x = -0.66;
+	mprms.plr.pl_y = 0.66;
 	draw(&mprms);
 
-
+//	mlx_key_hook(mprms.data.win, key_press, &mprms);
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
+	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
+	mlx_loop_hook(mprms.data.mlx, &move_plr, &mprms);
 	mlx_loop(mprms.data.mlx);
 	free_list(&list);
 	clean_struct(&mprms);

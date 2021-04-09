@@ -12,3 +12,5 @@ file(GLOB SOURCE_FILES srcs/*.c include/*.h libft/*.c libft/*.h get_next_line/*.
 add_executable(cub3D ${SOURCE_FILES})
 
 #gcc -g *.c ./libft/libft.a ./minilibx/libmlx.a -framework OpenGL -framework Appkit
+#gcc libft/*.c get_next_line/*.c srcs/*.c -lXext -lX11 -lm -lz -lbsd ./mlx/libmlx.a -o cube3d
+#gcc libft/*.c get_next_line/*.c srcs/*.c -lXext -lX11 -lm -lz -lbsd ./mlx/libmlx.a -o cube3d

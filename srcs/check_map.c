@@ -98,8 +98,8 @@ int		ch_wall(t_mprms *mprms, char **arr)
 			if (arr[i][j] == 'N' || arr[i][j] == 'E' || arr[i][j] == 'S'
 				|| arr[i][j] == 'W')
 			{
-				mprms->plr.x = i;
-				mprms->plr.y = j;
+				mprms->plr.x = i + 0.5;
+				mprms->plr.y = j + 0.5;
 			}
 			j++;
 		}

@@ -23,6 +23,12 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->plr.y = 0;
 	mprms->plr.dir_x = 0;
 	mprms->plr.dir_y = 0;
+	mprms->pres.up = 0;
+	mprms->pres.down= 0;
+	mprms->pres.right = 0;
+	mprms->pres.left = 0;
+	mprms->pres.turnright = 0;
+	mprms->pres.turnleft = 0;
 }
 
 void	struct_init(t_mprms *mprms)
