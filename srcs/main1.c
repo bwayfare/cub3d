@@ -108,45 +108,48 @@ int 		key_release(int key, t_mprms * mprms)
 
 int 		move_plr(t_mprms *mprms)
 {
+	double speed;
+
+	speed = 0.01;
 //		write(1, "test\n", 5);
 //	printf("key = %d \n", key);
 	if(mprms->pres.up)
 	{
-		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * 0.005)] != '1')
-			mprms->plr.x += mprms->plr.dir_x * 0.005;
-		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * 0.005)][(int)(mprms->plr.x)] != '1')
-			mprms->plr.y += mprms->plr.dir_y * 0.005;
+		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * speed)] != '1')
+			mprms->plr.x += mprms->plr.dir_x * speed;
+		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * speed)][(int)(mprms->plr.x)] != '1')
+			mprms->plr.y += mprms->plr.dir_y * speed;
 		write(1, "test\n", 5);
 	}
 	//move backwards if no wall behind you
 	if(mprms->pres.down)
 	{
-		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * 0.005)] != '1')
-			mprms->plr.x -= mprms->plr.dir_x * 0.005;
-		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * 0.005)][(int)(mprms->plr.x)] != '1')
-			mprms->plr.y -= mprms->plr.dir_y * 0.005;
+		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * speed)] != '1')
+			mprms->plr.x -= mprms->plr.dir_x * speed;
+		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * speed)][(int)(mprms->plr.x)] != '1')
+			mprms->plr.y -= mprms->plr.dir_y * speed;
 		write(1, "test2\n", 6);
 	}
 	if (mprms->pres.right)
 	{
 		//both camera direction and camera plane must be rotated
 		mprms->ray.oldDirX = mprms->plr.dir_x;
-		mprms->plr.dir_x = mprms->plr.dir_x * cos(-0.005) - mprms->plr.dir_y * sin(-0.005);
-		mprms->plr.dir_y = mprms->ray.oldDirX * sin(-0.005) + mprms->plr.dir_y * cos(-0.005);
+		mprms->plr.dir_x = mprms->plr.dir_x * cos(-speed) - mprms->plr.dir_y * sin(-speed);
+		mprms->plr.dir_y = mprms->ray.oldDirX * sin(-speed) + mprms->plr.dir_y * cos(-speed);
 		mprms->ray.oldPlaneX = mprms->plr.pl_x;
-		mprms->plr.pl_x = mprms->plr.pl_x * cos(-0.005) - mprms->plr.pl_y * sin(-0.005);
-		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(-0.005) + mprms->plr.pl_y * cos(-0.005);
+		mprms->plr.pl_x = mprms->plr.pl_x * cos(-speed) - mprms->plr.pl_y * sin(-speed);
+		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(-speed) + mprms->plr.pl_y * cos(-speed);
 	}
 	//rotate to the left
 	if (mprms->pres.left)
 	{
 		//both camera direction and camera plane must be rotated
 		mprms->ray.oldDirX = mprms->plr.dir_x;
-		mprms->plr.dir_x = mprms->plr.dir_x * cos(0.005) - mprms->plr.dir_y * sin(0.005);
-		mprms->plr.dir_y = mprms->ray.oldDirX * sin(0.005) + mprms->plr.dir_y * cos(0.005);
+		mprms->plr.dir_x = mprms->plr.dir_x * cos(speed) - mprms->plr.dir_y * sin(speed);
+		mprms->plr.dir_y = mprms->ray.oldDirX * sin(speed) + mprms->plr.dir_y * cos(speed);
 		mprms->ray.oldPlaneX = mprms->plr.pl_x;
-		mprms->plr.pl_x = mprms->plr.pl_x * cos(0.005) - mprms->plr.pl_y * sin(0.005);
-		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(0.005) + mprms->plr.pl_y * cos(0.005);
+		mprms->plr.pl_x = mprms->plr.pl_x * cos(speed) - mprms->plr.pl_y * sin(speed);
+		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(speed) + mprms->plr.pl_y * cos(speed);
 	}
 //	mprms->ray.color += 1;
 	draw(mprms);
@@ -182,8 +185,8 @@ int 		move_plr(t_mprms *mprms)
 int		draw(t_mprms *mprms)
 {
 	int x = -1;
-	W = 500;
-	H = 500;
+	W = 800;
+	H = 600;
 	while (++x < W)
 	{
 		mprms->ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
@@ -297,14 +300,14 @@ int		draw(t_mprms *mprms)
 			if(mprms->ray.side == 1) mprms->ray.color = 0xff00ff; // (mprms->ray.color >> 1) & 8355711;
 //			printf("x - %d, y - %d\n", x, y);
 			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor_color.trns);
-			my_mlx_pixel_put(mprms, x, y, mprms->ray.color); // mprms->ray.color);
+			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor_color.trns);//mprms->ray.color); // mprms->ray.color);
 		}
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
 	mprms->data.addr = NULL;
 	mprms->data.img = NULL;
-	mprms->data.img = mlx_new_image(mprms->data.mlx, 500, 500);
+	mprms->data.img = mlx_new_image(mprms->data.mlx, 800, 600);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
 }
 
@@ -322,8 +325,8 @@ int main(int argc, char **argv)
 
 
 	mprms.data.mlx = mlx_init();
-	mprms.data.win = mlx_new_window(mprms.data.mlx, 500, 500, "cub3d");
-	mprms.data.img = mlx_new_image(mprms.data.mlx, 500, 500);
+	mprms.data.win = mlx_new_window(mprms.data.mlx, 800, 600, "cub3d");
+	mprms.data.img = mlx_new_image(mprms.data.mlx, 800, 600);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);
 
 	mprms.colors.floor_color.trns = create_trgb(mprms.colors.floor_color.r, mprms.colors.floor_color.g, mprms.colors.floor_color.b);

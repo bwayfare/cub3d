@@ -8,9 +8,9 @@ R 500 500
  EA /home/bwayfare/C_Project/cub3D/textures/tex3.xpm
  S /home/bwayfare/C_Project/cub3D/textures/tex4.xpm
 
-F 0, 0, 0
+F 122, 200, 25
 
-C 0, 0, 0
+C 122, 200, 25
 
 1111111111111111111111111111
 1000000000000000000000000001
