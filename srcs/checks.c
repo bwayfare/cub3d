@@ -14,28 +14,28 @@
 
 int		ft_check_clr(t_mprms *mprms)
 {
-	if (mprms->full.c_clr == 1 || mprms->colors.cell_color.r != -1)
+	if (mprms->full.c_clr == 1 || mprms->colors.ceil.r != -1)
 	{
-		if (mprms->colors.cell_color.r < 0 ||
-				mprms->colors.cell_color.r > 255)
+		if (mprms->colors.ceil.r < 0 ||
+			mprms->colors.ceil.r > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
-		if (mprms->colors.cell_color.g < 0 ||
-				mprms->colors.cell_color.g > 255)
+		if (mprms->colors.ceil.g < 0 ||
+			mprms->colors.ceil.g > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
-		if (mprms->colors.cell_color.b < 0 ||
-				mprms->colors.cell_color.b > 255)
+		if (mprms->colors.ceil.b < 0 ||
+			mprms->colors.ceil.b > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
 	}
-	if (mprms->full.f_clr == 1 || mprms->colors.floor_color.r != -1)
+	if (mprms->full.f_clr == 1 || mprms->colors.floor.r != -1)
 	{
-		if (mprms->colors.floor_color.r < 0 ||
-				mprms->colors.floor_color.r > 255)
+		if (mprms->colors.floor.r < 0 ||
+			mprms->colors.floor.r > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
-		if (mprms->colors.floor_color.g < 0 ||
-				mprms->colors.floor_color.g > 255)
+		if (mprms->colors.floor.g < 0 ||
+			mprms->colors.floor.g > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
-		if (mprms->colors.floor_color.b < 0 ||
-				mprms->colors.floor_color.b > 255)
+		if (mprms->colors.floor.b < 0 ||
+			mprms->colors.floor.b > 255)
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
 	}
 	return (1);

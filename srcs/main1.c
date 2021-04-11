@@ -5,8 +5,8 @@ int		draw(t_mprms *mprms);
 void print(t_mprms *mprms)
 {
 	printf("R = %ld %ld\n", mprms->res.x, mprms->res.y);
-	printf("C = %d %d %d\n", mprms->colors.cell_color.r, mprms->colors.cell_color.g, mprms->colors.cell_color.b);
-	printf("F = %d %d %d\n", mprms->colors.floor_color.r, mprms->colors.floor_color.g, mprms->colors.floor_color.b);
+	printf("C = %d %d %d\n", mprms->colors.ceil.r, mprms->colors.ceil.g, mprms->colors.ceil.b);
+	printf("F = %d %d %d\n", mprms->colors.floor.r, mprms->colors.floor.g, mprms->colors.floor.b);
 	printf("S = %s\n", mprms->paths.sprt);
 	printf("SO = %s\n", mprms->paths.so);
 	printf("NO = %s\n", mprms->paths.no);
@@ -88,6 +88,8 @@ int 		key_press(int key, t_mprms *mprms)
 		mprms->pres.right = 1;
 	if (key == 97)
 		mprms->pres.left = 1;
+	if (key == 65307)
+		mprms->pres.esc = 1;
 	write(1, "press\n", 6);
 	return (0);
 }
@@ -106,27 +108,60 @@ int 		key_release(int key, t_mprms * mprms)
 	return (0);
 }
 
+void 		draw_floor_ceil(t_mprms *mprms)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (y < mprms->res.y / 2)
+	{
+		while (x < mprms->res.x)
+		{
+			my_mlx_pixel_put(mprms, x, y, mprms->colors.ceil.trns);
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+	while (y < mprms->res.y)
+	{
+		while (x < mprms->res.x)
+		{
+			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor.trns);
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+}
+
 int 		move_plr(t_mprms *mprms)
 {
 	double speed;
 
-	speed = 0.01;
+	speed = 0.05;
 //		write(1, "test\n", 5);
 //	printf("key = %d \n", key);
 	if(mprms->pres.up)
 	{
-		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * speed)] != '1')
+		if(mprms->map.map[(int)(mprms->plr.x + mprms->plr.dir_x * speed)][(int)(mprms->plr.y)] != '1' &&
+				mprms->map.map[(int)(mprms->plr.x + mprms->plr.dir_x * speed)][(int)(mprms->plr.y)] != '2')
 			mprms->plr.x += mprms->plr.dir_x * speed;
-		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * speed)][(int)(mprms->plr.x)] != '1')
+		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y + mprms->plr.dir_y * speed)] != '1' &&
+				mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y + mprms->plr.dir_y * speed)] != '2')
 			mprms->plr.y += mprms->plr.dir_y * speed;
 		write(1, "test\n", 5);
 	}
 	//move backwards if no wall behind you
 	if(mprms->pres.down)
 	{
-		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * speed)] != '1')
+		if(mprms->map.map[(int)(mprms->plr.x - mprms->plr.dir_x * speed)][(int)(mprms->plr.y)] != '1' &&
+				mprms->map.map[(int)(mprms->plr.x - mprms->plr.dir_x * speed)][(int)(mprms->plr.y)] != '2')
 			mprms->plr.x -= mprms->plr.dir_x * speed;
-		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * speed)][(int)(mprms->plr.x)] != '1')
+		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y - mprms->plr.dir_y * speed)] != '1' &&
+				mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y - mprms->plr.dir_y * speed)] != '2')
 			mprms->plr.y -= mprms->plr.dir_y * speed;
 		write(1, "test2\n", 6);
 	}
@@ -152,41 +187,17 @@ int 		move_plr(t_mprms *mprms)
 		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(speed) + mprms->plr.pl_y * cos(speed);
 	}
 //	mprms->ray.color += 1;
-	draw(mprms);
-	return (0);
+	draw_floor_ceil(mprms);
+	if (!mprms->pres.esc)
+		draw(mprms);
+	return (1);
 }
-
-//int		key_press(int key, t_mprms *mprms)
-//{
-////	write(1, "test\n", 5);
-//	printf("key = %d \n", key);
-//	if(key == 119)
-//	{
-//		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x + mprms->plr.dir_x * 0.5)] != '1')
-//			mprms->plr.x += mprms->plr.dir_x * 0.5;
-//		if(mprms->map.map[(int)(mprms->plr.y + mprms->plr.dir_y * 0.05)][(int)(mprms->plr.x)] != '1')
-//			mprms->plr.y += mprms->plr.dir_y * 0.5;
-//		write(1, "test\n", 5);
-//	}
-//	//move backwards if no wall behind you
-//	if(key == 115)
-//	{
-//		if(mprms->map.map[(int)(mprms->plr.y)][(int)(mprms->plr.x - mprms->plr.dir_x * 0.5)] != '1')
-//			mprms->plr.x -= mprms->plr.dir_x * 0.5;
-//		if(mprms->map.map[(int)(mprms->plr.y - mprms->plr.dir_y * 0.5)][(int)(mprms->plr.x)] != '1')
-//			mprms->plr.y -= mprms->plr.dir_y * 0.5;
-//		write(1, "test2\n", 6);
-//	}
-//	draw(mprms);
-//	return (0);
-//	//rotate to the right
-//}
 
 int		draw(t_mprms *mprms)
 {
 	int x = -1;
-	W = 800;
-	H = 600;
+	W = mprms->res.x;
+	H = mprms->res.y;
 	while (++x < W)
 	{
 		mprms->ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
@@ -245,7 +256,7 @@ int		draw(t_mprms *mprms)
 //			write(1, "tes1\n", 5);
 //			printf("x = %d y = %d\n\n", mprms->ray.mapY, mprms->ray.mapX);
 //			printf("%c", WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX]);
-			if (WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX] == '1')
+			if (WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] == '1')
 				mprms->ray.hit = 1;
 //			write(1, "tes2\n", 5);
 		}
@@ -271,7 +282,7 @@ int		draw(t_mprms *mprms)
 		if(mprms->ray.drawEnd >= H) mprms->ray.drawEnd = H - 1;
 
 		//texturing calculations
-		mprms->ray.texNum = WWORLDMAP[mprms->ray.mapY][mprms->ray.mapX] - 1; //1 subtracted from it so that texture 0 can be used!
+		mprms->ray.texNum = WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] - 1; //1 subtracted from it so that texture 0 can be used!
 
 		//calculate value of wallX
 		mprms->ray.wallX; //where exactly the wall was hit
@@ -292,6 +303,8 @@ int		draw(t_mprms *mprms)
 //		printf("x - %d\n", x);
 //		printf("drawStart - %d\n", mprms->ray.drawStart);
 //		printf("drawEnd - %d\n", mprms->ray.drawEnd);
+
+
 		for(int y = mprms->ray.drawStart; y < mprms->ray.drawEnd; y++)
 		{
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
@@ -299,15 +312,14 @@ int		draw(t_mprms *mprms)
 			mprms->ray.texPos += mprms->ray.step;
 			if(mprms->ray.side == 1) mprms->ray.color = 0xff00ff; // (mprms->ray.color >> 1) & 8355711;
 //			printf("x - %d, y - %d\n", x, y);
-			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor_color.trns);
-			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor_color.trns);//mprms->ray.color); // mprms->ray.color);
+			my_mlx_pixel_put(mprms, x, y, mprms->ray.color); // mprms->ray.color);
 		}
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
 	mprms->data.addr = NULL;
 	mprms->data.img = NULL;
-	mprms->data.img = mlx_new_image(mprms->data.mlx, 800, 600);
+	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)mprms->res.x, (int)mprms->res.y);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
 }
 
@@ -325,12 +337,12 @@ int main(int argc, char **argv)
 
 
 	mprms.data.mlx = mlx_init();
-	mprms.data.win = mlx_new_window(mprms.data.mlx, 800, 600, "cub3d");
-	mprms.data.img = mlx_new_image(mprms.data.mlx, 800, 600);
+	mprms.data.win = mlx_new_window(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y, "cub3d");
+	mprms.data.img = mlx_new_image(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);
 
-	mprms.colors.floor_color.trns = create_trgb(mprms.colors.floor_color.r, mprms.colors.floor_color.g, mprms.colors.floor_color.b);
-	mprms.colors.cell_color.trns = create_trgb(mprms.colors.cell_color.r, mprms.colors.cell_color.g, mprms.colors.cell_color.b);
+	mprms.colors.floor.trns = create_trgb(mprms.colors.floor.r, mprms.colors.floor.g, mprms.colors.floor.b);
+	mprms.colors.ceil.trns = create_trgb(mprms.colors.ceil.r, mprms.colors.ceil.g, mprms.colors.ceil.b);
 	mprms.plr.dir_x = -1.0;
 	mprms.plr.dir_y = 0.0;
 	mprms.plr.pl_x = 0.0;
@@ -340,6 +352,7 @@ int main(int argc, char **argv)
 //	mlx_key_hook(mprms.data.win, key_press, &mprms);
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
 	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
+//	mlx_hook(mprms.data.win, 17, (1L << 0), &key_press, &mprms);
 	mlx_loop_hook(mprms.data.mlx, &move_plr, &mprms);
 	mlx_loop(mprms.data.mlx);
 	free_list(&list);

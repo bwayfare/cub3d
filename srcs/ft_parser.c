@@ -40,15 +40,15 @@ int	prs_clr1(t_mprms *mprms, char *line)
 	if (*line != 32 || mprms->full.c_clr == 1)
 		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n\0")));
 	if (ft_jmp_sp(&line, line, '0') != -1)
-		mprms->colors.cell_color.r = ft_atoi(&line);
+		mprms->colors.ceil.r = ft_atoi(&line);
 	else
 		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
 	if (ft_jmp_sp(&line, line, ',') != -1)
-		mprms->colors.cell_color.g = ft_atoi(&line);
+		mprms->colors.ceil.g = ft_atoi(&line);
 	else
 		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
 	if (ft_jmp_sp(&line, line, ',') != -1)
-		mprms->colors.cell_color.b = ft_atoi(&line);
+		mprms->colors.ceil.b = ft_atoi(&line);
 	else
 		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
 	if (ft_jmp_sp(&line, line, '\0') == -1)
@@ -64,15 +64,15 @@ int	prs_clr(t_mprms *mprms, char *line)
 		if (*++line != 32 || mprms->full.f_clr == 1)
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
 		if (ft_jmp_sp(&line, line, '0') != -1)
-			mprms->colors.floor_color.r = ft_atoi(&line);
+			mprms->colors.floor.r = ft_atoi(&line);
 		else
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
 		if (ft_jmp_sp(&line, line, ',') != -1)
-			mprms->colors.floor_color.g = ft_atoi(&line);
+			mprms->colors.floor.g = ft_atoi(&line);
 		else
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
 		if (ft_jmp_sp(&line, line, ',') != -1)
-			mprms->colors.floor_color.b = ft_atoi(&line);
+			mprms->colors.floor.b = ft_atoi(&line);
 		else
 			return (-1 + (mprms->check = put_rtfm("Invalid floor color\n")));
 		if (ft_jmp_sp(&line, line, '\0') == -1)

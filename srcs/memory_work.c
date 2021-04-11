@@ -29,16 +29,17 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->pres.left = 0;
 	mprms->pres.turnright = 0;
 	mprms->pres.turnleft = 0;
+	mprms->pres.esc = 0;
 }
 
 void	struct_init(t_mprms *mprms)
 {
-	mprms->colors.floor_color.r = -1;
-	mprms->colors.floor_color.g = -1;
-	mprms->colors.floor_color.b = -1;
-	mprms->colors.cell_color.r = -1;
-	mprms->colors.cell_color.g = -1;
-	mprms->colors.cell_color.b = -1;
+	mprms->colors.floor.r = -1;
+	mprms->colors.floor.g = -1;
+	mprms->colors.floor.b = -1;
+	mprms->colors.ceil.r = -1;
+	mprms->colors.ceil.g = -1;
+	mprms->colors.ceil.b = -1;
 	mprms->full.f_clr = 0;
 	mprms->full.c_clr = 0;
 	mprms->full.sprt = 0;

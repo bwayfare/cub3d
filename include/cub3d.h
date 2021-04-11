@@ -51,6 +51,7 @@ typedef struct s_pres
 	short 		left;
 	short 		turnright;
 	short 		turnleft;
+	short 		esc;
 }				t_pres;
 
 typedef struct		s_res {
@@ -73,8 +74,8 @@ typedef struct		s_cclr {
 }					t_cclr;
 
 typedef struct		s_clrs {
-	t_fclr			floor_color;
-	t_cclr			cell_color;
+	t_fclr			floor;
+	t_cclr			ceil;
 }					t_clrs;
 
 typedef struct		s_paths {
@@ -146,6 +147,7 @@ typedef struct	s_ray
 	double		rotSpeed; // = frameTime * 3.0; //the constant value is in radians/second
 	double		oldDirX; // = dirX;
 	double		oldPlaneX; // = planeX;
+
 }				t_ray;
 
 typedef struct		s_mprms
