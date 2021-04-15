@@ -88,6 +88,10 @@ int 		key_press(int key, t_mprms *mprms)
 		mprms->pres.right = 1;
 	if (key == 97)
 		mprms->pres.left = 1;
+	if (key == 101)
+		mprms->pres.turnright = 1;
+	if (key == 113)
+		mprms->pres.turnleft = 1;
 	if (key == 65307)
 		mprms->pres.esc = 1;
 	write(1, "press\n", 6);
@@ -104,6 +108,10 @@ int 		key_release(int key, t_mprms * mprms)
 		mprms->pres.right = 0;
 	if (key == 97)
 		mprms->pres.left = 0;
+	if (key == 101)
+		mprms->pres.turnright = 0;
+	if (key == 113)
+		mprms->pres.turnleft = 0;
 	write(1, "releas\n", 7);
 	return (0);
 }
@@ -186,6 +194,34 @@ int 		move_plr(t_mprms *mprms)
 		mprms->plr.pl_x = mprms->plr.pl_x * cos(speed) - mprms->plr.pl_y * sin(speed);
 		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(speed) + mprms->plr.pl_y * cos(speed);
 	}
+
+	if (mprms->pres.turnleft)
+	{
+		if (mprms->map.map[(int) (mprms->plr.x - mprms->plr.dir_y * 0.05)]
+			[(int) (mprms->plr.y)] != '1')
+		{
+			mprms->plr.x -= mprms->plr.dir_y * 0.05;
+		}
+		if (mprms->map.map[(int) (mprms->plr.x)]
+			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.05)] != '1')
+		{
+			mprms->plr.y += mprms->plr.dir_x * 0.05;
+		}
+	}
+	if (mprms->pres.turnright)
+	{
+		if (mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.05)]
+			[(int) (mprms->plr.y)] != '1')
+		{
+			mprms->plr.x += mprms->plr.dir_y * 0.05;
+		}
+		if (mprms->map.map[(int) (mprms->plr.x)]
+			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.05)] != '1')
+		{
+			mprms->plr.y -= mprms->plr.dir_x * 0.05;
+		}
+	}
+
 //	mprms->ray.color += 1;
 	draw_floor_ceil(mprms);
 	if (!mprms->pres.esc)
@@ -323,13 +359,63 @@ int		draw(t_mprms *mprms)
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
 }
 
+//void	ft_init_sprite(t_mprms *mprms)
+//{
+//	t_spr_info	sprite;
+//
+//	sprite.s_img.img = mlx_xpm_file_to_image(mprms->win.mlx, \
+//		mprms->info.spr_path, &(sprite.width), &(sprite.height));
+//	sprite.s_img.addr = mlx_get_data_addr(sprite.s_img.img, \
+//		&(sprite.s_img.bpp), &(sprite.s_img.line_l), &(sprite.s_img.end));
+//	mprms->sprite = sprite;
+//}
+
+void	ft_convert_file_to_image(t_mprms *mprms)
+{
+	mprms->tex.north.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
+		mprms->paths.no, &(mprms->tex.north.width), \
+		&(mprms->tex.north.height));
+	mprms->tex.south.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
+		mprms->paths.so, &(mprms->tex.south.width), \
+		&(mprms->tex.south.height));
+	mprms->tex.west.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
+		mprms->paths.we, &(mprms->tex.west.width), \
+		&(mprms->tex.west.height));
+	mprms->tex.east.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
+		mprms->paths.ea, &(mprms->tex.east.width), \
+		&(mprms->tex.east.height));
+}
+
+void	ft_get_addr(t_all_tex *textures)
+{
+	textures->north.w_img.addr = mlx_get_data_addr(textures->north.w_img.img, \
+		&(textures->north.w_img.bpp), &(textures->north.w_img.line_l), \
+		&(textures->north.w_img.end));
+	textures->south.w_img.addr = mlx_get_data_addr(textures->south.w_img.img, \
+		&(textures->south.w_img.bpp), &(textures->south.w_img.line_l), \
+		&(textures->south.w_img.end));
+	textures->west.w_img.addr = mlx_get_data_addr(textures->west.w_img.img, \
+		&(textures->west.w_img.bpp), &(textures->west.w_img.line_l), \
+		&(textures->west.w_img.end));
+	textures->east.w_img.addr = mlx_get_data_addr(textures->east.w_img.img, \
+		&(textures->east.w_img.bpp), &(textures->east.w_img.line_l), \
+		&(textures->east.w_img.end));
+}
+
+void	ft_init_all_textures(t_mprms *mprms)
+{
+	ft_convert_file_to_image(mprms);
+	ft_get_addr(&(mprms->tex));
+}
+
+
+
 int main(int argc, char **argv)
 {
 	int fd;
 	t_mprms mprms;
 	int		x;
 	t_list *list;
-
 	fd = 0;
 	list = NULL;
 	if (argc == 2 || argc == 3)
@@ -337,6 +423,7 @@ int main(int argc, char **argv)
 
 
 	mprms.data.mlx = mlx_init();
+	ft_init_all_textures(&mprms);
 	mprms.data.win = mlx_new_window(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y, "cub3d");
 	mprms.data.img = mlx_new_image(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);

@@ -43,16 +43,40 @@ typedef struct	s_data
 	void		*win;
 }				t_data;
 
-typedef struct s_pres
+typedef struct		s_pres
 {
-	short 		up;
-	short		down;
-	short 		right;
-	short 		left;
-	short 		turnright;
-	short 		turnleft;
-	short 		esc;
-}				t_pres;
+	short 			up;
+	short			down;
+	short 			right;
+	short 			left;
+	short 			turnright;
+	short 			turnleft;
+	short 			esc;
+}					t_pres;
+
+typedef struct		s_img
+{
+	void			*img;
+	void			*addr;
+	int				line_l;
+	int				bpp;
+	int				end;
+}					t_img;
+
+typedef struct		s_tex
+{
+	t_img			w_img;
+	int				width;
+	int				height;
+}					t_tex;
+
+typedef struct		s_all_tex
+{
+	t_tex			north;
+	t_tex			south;
+	t_tex			east;
+	t_tex			west;
+}					t_all_tex;
 
 typedef struct		s_res {
 	long			x;
@@ -162,6 +186,7 @@ typedef struct		s_mprms
 	t_ray 			ray;
 	t_data 			data;
 	t_pres 			pres;
+	t_all_tex 		tex;
 }					t_mprms;
 
 void				ft_trimm_sp(char **line);
