@@ -23,6 +23,9 @@
 
 # define W mprms->res.x
 # define H mprms->res.y
+# define WW mprms.res.x
+# define HH mprms.res.y
+
 # define WORLDMAP mprms.map.map
 # define WWORLDMAP mprms->map.map
 # define screenWidth 640
@@ -81,6 +84,8 @@ typedef struct		s_all_tex
 typedef struct		s_res {
 	long			x;
 	long			y;
+	int 			screen_x;
+	int 			screen_y;
 }					t_res;
 
 typedef struct		s_fclr {

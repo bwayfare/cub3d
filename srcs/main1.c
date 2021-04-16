@@ -80,17 +80,17 @@ int 		key_press(int key, t_mprms *mprms)
 		printf("key = %d \n", key);
 //100
 //97
-	if (key == 119)
+	if (key == 13)//119)
 		mprms->pres.up = 1;
-	if (key == 115)
+	if (key == 1)//115)
 		mprms->pres.down = 1;
-	if (key == 100)
+	if (key == 2)//100)
 		mprms->pres.right = 1;
-	if (key == 97)
+	if (key == 0)//97)
 		mprms->pres.left = 1;
-	if (key == 101)
+	if (key == 14)//101)
 		mprms->pres.turnright = 1;
-	if (key == 113)
+	if (key == 12)//113)
 		mprms->pres.turnleft = 1;
 	if (key == 65307)
 		mprms->pres.esc = 1;
@@ -98,19 +98,29 @@ int 		key_press(int key, t_mprms *mprms)
 	return (0);
 }
 
+/*
+key = 12
+key = 13
+key = 14
+key = 0
+key = 1
+key = 2
+
+ */
+
 int 		key_release(int key, t_mprms * mprms)
 {
-	if (key == 119)
+	if (key == 13)//119)
 		mprms->pres.up = 0;
-	if (key == 115)
+	if (key == 1)//115)
 		mprms->pres.down = 0;
-	if (key == 100)
+	if (key == 2)//100)
 		mprms->pres.right = 0;
-	if (key == 97)
+	if (key == 0)//97)
 		mprms->pres.left = 0;
-	if (key == 101)
+	if (key == 14)//101)
 		mprms->pres.turnright = 0;
-	if (key == 113)
+	if (key == 12)//113)
 		mprms->pres.turnleft = 0;
 	write(1, "releas\n", 7);
 	return (0);
@@ -126,20 +136,14 @@ void 		draw_floor_ceil(t_mprms *mprms)
 	while (y < mprms->res.y / 2)
 	{
 		while (x < mprms->res.x)
-		{
-			my_mlx_pixel_put(mprms, x, y, mprms->colors.ceil.trns);
-			x++;
-		}
+			my_mlx_pixel_put(mprms, x++, y, mprms->colors.ceil.trns);
 		y++;
 		x = 0;
 	}
 	while (y < mprms->res.y)
 	{
 		while (x < mprms->res.x)
-		{
-			my_mlx_pixel_put(mprms, x, y, mprms->colors.floor.trns);
-			x++;
-		}
+			my_mlx_pixel_put(mprms, x++, y, mprms->colors.floor.trns);
 		y++;
 		x = 0;
 	}
@@ -232,8 +236,6 @@ int 		move_plr(t_mprms *mprms)
 int		draw(t_mprms *mprms)
 {
 	int x = -1;
-	W = mprms->res.x;
-	H = mprms->res.y;
 	while (++x < W)
 	{
 		mprms->ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
@@ -321,7 +323,7 @@ int		draw(t_mprms *mprms)
 		mprms->ray.texNum = WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] - 1; //1 subtracted from it so that texture 0 can be used!
 
 		//calculate value of wallX
-		mprms->ray.wallX; //where exactly the wall was hit
+//		mprms->ray.wallX; //where exactly the wall was hit
 		if(mprms->ray.side == 0) mprms->ray.wallX = mprms->plr.y + mprms->ray.perpWallDist * mprms->ray.rayDirY;
 		else mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist * mprms->ray.rayDirX;
 		mprms->ray.wallX -= floor((mprms->ray.wallX));
@@ -355,8 +357,9 @@ int		draw(t_mprms *mprms)
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
 	mprms->data.addr = NULL;
 	mprms->data.img = NULL;
-	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)mprms->res.x, (int)mprms->res.y);
+	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
+	return (0);
 }
 
 //void	ft_init_sprite(t_mprms *mprms)
@@ -408,6 +411,16 @@ void	ft_init_all_textures(t_mprms *mprms)
 	ft_get_addr(&(mprms->tex));
 }
 
+//void 	ft_get_screen_size(t_mprms *mprms)
+//{
+//	mlx_get_screen_size(mprms->data.mlx, &mprms->res.screen_x, &mprms->res.screen_y);
+//	if (mprms->res.screen_x < mprms->res.x)
+//		mprms->res.x = mprms->res.screen_x;
+//	if (mprms->res.screen_y < mprms->res.y)
+//		mprms->res.y = mprms->res.screen_y;
+//	printf("Width = %d Hight = %d\n", mprms->res.screen_x, mprms->res.screen_y);
+//}
+
 
 
 int main(int argc, char **argv)
@@ -424,8 +437,9 @@ int main(int argc, char **argv)
 
 	mprms.data.mlx = mlx_init();
 	ft_init_all_textures(&mprms);
-	mprms.data.win = mlx_new_window(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y, "cub3d");
-	mprms.data.img = mlx_new_image(mprms.data.mlx, (int)mprms.res.x, (int)mprms.res.y);
+//	ft_get_screen_size(&mprms);
+	mprms.data.win = mlx_new_window(mprms.data.mlx, (int)WW, (int)HH, "cub3d");
+	mprms.data.img = mlx_new_image(mprms.data.mlx, (int)WW, (int)HH);
 	mprms.data.addr = mlx_get_data_addr(mprms.data.img, &mprms.data.bits_per_pixel, &mprms.data.line_length, &mprms.data.endian);
 
 	mprms.colors.floor.trns = create_trgb(mprms.colors.floor.r, mprms.colors.floor.g, mprms.colors.floor.b);
