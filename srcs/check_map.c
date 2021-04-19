@@ -45,12 +45,15 @@ int		ft_ch_elem_map(t_mprms *mprms)
 		{
 			tmp = mprms->map.map[i][j];
 			ft_ch_elem_if(mprms, tmp);
+			if (mprms->map.map[i][j] == '2')
+				mprms->spr.count++;
 			j++;
 		}
 		i++;
 	}
 	if (mprms->plr.pl == '\0')
 		mprms->check = put_rtfm("No player\n");
+	mprms->spr.spr = (t_spr *) malloc(mprms->spr.count);
 	return (mprms->check);
 }
 
@@ -80,6 +83,18 @@ void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 	if (i < (mprms->map.size - 1) && !(arr[i + 1][j + 1] == '\0' ||
 		arr[i + 1][j + 1] == ' ' || arr[i + 1][j + 1] == '1'))
 		mprms->check = 0;
+}
+
+void 	get_spr(t_mprms *mprms, int i, int j)
+{
+	static int k;
+
+	k = 0;
+	if (mprms->map.map[i][j] == '2')
+	{
+		mprms->spr.spr[k].x = i;
+		mprms->spr.spr[k].y = j;
+	}
 }
 
 int		ch_wall(t_mprms *mprms, char **arr)

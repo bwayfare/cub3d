@@ -73,6 +73,13 @@ typedef struct		s_tex
 	int				height;
 }					t_tex;
 
+typedef struct		s_spr
+{
+	int 			x;
+	int 			y;
+	double 			dist;
+}					t_spr;
+
 typedef struct		s_all_tex
 {
 	t_tex			north;
@@ -80,6 +87,13 @@ typedef struct		s_all_tex
 	t_tex			east;
 	t_tex			west;
 }					t_all_tex;
+
+typedef struct		s_all_sprite
+{
+	int 			count;
+	t_tex 			obj;
+	t_spr 			*spr;
+}					t_all_sprite;
 
 typedef struct		s_res {
 	long			x;
@@ -176,8 +190,29 @@ typedef struct	s_ray
 	double		rotSpeed; // = frameTime * 3.0; //the constant value is in radians/second
 	double		oldDirX; // = dirX;
 	double		oldPlaneX; // = planeX;
+	double 		*ZBuffer;
 
 }				t_ray;
+
+typedef struct 		s_draw_spr
+{
+	double 			spriteX;
+	double 			spriteY;
+	double 			invDet;
+	double transformX;
+	double transformY;
+	int spriteScreenX;
+	int spriteHeight;
+	int drawStartY;
+	int drawEndY;
+	int spriteWidth;
+	int drawStartX;
+	int drawEndX;
+	int texX;
+	int d;
+	int texY;
+	unsigned int	*color;
+}					t_draw_spr;
 
 typedef struct		s_mprms
 {
@@ -192,6 +227,8 @@ typedef struct		s_mprms
 	t_data 			data;
 	t_pres 			pres;
 	t_all_tex 		tex;
+	t_all_sprite 	spr;
+	t_draw_spr		draw_spr;
 }					t_mprms;
 
 void				ft_trimm_sp(char **line);
@@ -214,5 +251,6 @@ int					put_rtfm(char *str);
 void				free_line(char **line);
 void				ft_init_all_textures(t_mprms *mprms);
 unsigned int	*ft_pixel_take(t_tex tex, int x, int y);
+void 	draw_spr(t_mprms *mprms);
 
 #endif

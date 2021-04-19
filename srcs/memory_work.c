@@ -30,6 +30,8 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->pres.turnright = 0;
 	mprms->pres.turnleft = 0;
 	mprms->pres.esc = 0;
+	mprms->spr.count = 0;
+	mprms->spr.spr = NULL;
 }
 
 void	struct_init(t_mprms *mprms)

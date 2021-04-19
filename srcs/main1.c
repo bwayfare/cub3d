@@ -233,6 +233,34 @@ int 		move_plr(t_mprms *mprms)
 	return (1);
 }
 
+void sort_sprites(t_spr *spr, int count)
+{
+	t_spr tmp;
+	int i;
+	int j;
+
+	i = 0;
+	while (i < count - 1)
+	{
+		j = i + 1;
+		while (j < count)
+		{
+			if (spr[i].dist < spr[j].dist)
+			{
+				tmp = spr[i];
+				spr[i] = spr[j];
+				spr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	for (int k = 0; k < count; k++)
+	{
+		printf("sprdist =%f\n", spr[k].dist);
+	}
+}
+
 int		draw(t_mprms *mprms)
 {
 	int x = -1;
@@ -347,6 +375,7 @@ int		draw(t_mprms *mprms)
 //		printf("drawEnd - %d\n", mprms->ray.drawEnd);
 
 
+
 		for(int y = mprms->ray.drawStart; y < mprms->ray.drawEnd; y++)
 		{
 			t_tex tex;
@@ -366,6 +395,7 @@ int		draw(t_mprms *mprms)
 			mprms->ray.color = ft_pixel_take(tex, mprms->ray.texX, mprms->ray.texY);
 			my_mlx_pixel_put(mprms, x, y, (int)(*mprms->ray.color)); // mprms->ray.color);
 		}
+		mprms->ray.ZBuffer[x] = mprms->ray.perpWallDist;
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
@@ -373,7 +403,76 @@ int		draw(t_mprms *mprms)
 	mprms->data.img = NULL;
 	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
+	draw_spr(mprms);
 	return (0);
+}
+
+void 	draw_spr(t_mprms *mprms)
+{
+	for (int i = 0; i < mprms->spr.count; i++)
+	{
+		//translate sprite position to relative to camera
+		mprms->draw_spr.spriteX = mprms->spr.spr[i].x - mprms->plr.x;
+		mprms->draw_spr.spriteY = mprms->spr.spr[i].y - mprms->plr.y;
+
+		mprms->draw_spr.invDet = 1.0 / (mprms->plr.pl_x * mprms->plr.dir_y - mprms->plr.dir_x *
+																			 mprms->plr.pl_y); //required for correct matrix multiplication
+
+		mprms->draw_spr.transformX = mprms->draw_spr.invDet * (mprms->plr.dir_y * mprms->draw_spr.spriteX -
+															   mprms->plr.dir_x * mprms->draw_spr.spriteY);
+		mprms->draw_spr.transformY = mprms->draw_spr.invDet * (-mprms->plr.pl_y * mprms->draw_spr.spriteX +
+															   mprms->plr.pl_x *
+															   mprms->draw_spr.spriteY); //this is actually the depth inside the screen, that what Z is in 3D
+
+		mprms->draw_spr.spriteScreenX = (int) ((W / 2) * (1 + mprms->draw_spr.transformX / mprms->draw_spr.transformY));
+
+		//calculate height of the sprite on screen
+		mprms->draw_spr.spriteHeight = abs((int) (H / (mprms->draw_spr.transformY))); //using 'transformY' instead of the real distance prevents fisheye
+		//calculate lowest and highest pixel to fill in current stripe
+		mprms->draw_spr.drawStartY = -mprms->draw_spr.spriteHeight / 2 + H / 2;
+		if (mprms->draw_spr.drawStartY < 0)
+			mprms->draw_spr.drawStartY = 0;
+		mprms->draw_spr.drawEndY = mprms->draw_spr.spriteHeight / 2 + H / 2;
+		if (mprms->draw_spr.drawEndY >= H)
+			mprms->draw_spr.drawEndY = H - 1;
+
+		//calculate width of the sprite
+		mprms->draw_spr.spriteWidth = abs((int) (H / (mprms->draw_spr.transformY)));
+		mprms->draw_spr.drawStartX = -mprms->draw_spr.spriteWidth / 2 + mprms->draw_spr.spriteScreenX;
+		if (mprms->draw_spr.drawStartX < 0)
+			mprms->draw_spr.drawStartX = 0;
+		mprms->draw_spr.drawEndX = mprms->draw_spr.spriteWidth / 2 + mprms->draw_spr.spriteScreenX;
+		if (mprms->draw_spr.drawEndX >= W)
+			mprms->draw_spr.drawEndX = W - 1;
+
+		//loop through every vertical stripe of the sprite on screen
+		printf("mprms->draw_spr.drawStartX = %d\n mprms->draw_spr.drawEndX = %d\n", mprms->draw_spr.drawStartX,mprms->draw_spr.drawEndX);
+		for (int stripe = mprms->draw_spr.drawStartX; stripe < mprms->draw_spr.drawEndX; stripe++)
+		{
+			mprms->draw_spr.texX =
+					(int) (256 * (stripe - (-mprms->draw_spr.spriteWidth / 2 + mprms->draw_spr.spriteScreenX)) *
+						   texWidth / mprms->draw_spr.spriteWidth) / 256;
+			//the conditions in the if are:
+			//1) it's in front of camera plane so you don't see things behind you
+			//2) it's on the screen (left)
+			//3) it's on the screen (right)
+			//4) ZBuffer, with perpendicular distance
+			if (mprms->draw_spr.transformY > 0 && stripe > 0 && stripe < W &&
+				mprms->draw_spr.transformY < mprms->ray.ZBuffer[stripe])
+				for (int y = mprms->draw_spr.drawStartY;
+					 y < mprms->draw_spr.drawEndY; y++) //for every pixel of the current stripe
+				{
+					mprms->draw_spr.d = (y) * 256 - H * 128 +
+										mprms->draw_spr.spriteHeight * 128; //256 and 128 factors to avoid floats
+					mprms->draw_spr.texY = ((mprms->draw_spr.d * texHeight) / mprms->draw_spr.spriteHeight) / 256;
+					mprms->draw_spr.color = ft_pixel_take(mprms->spr.obj, mprms->draw_spr.texX,
+														  mprms->draw_spr.texY);//get current color from the texture
+					my_mlx_pixel_put(mprms->data.mlx, stripe, y, (int)(*mprms->draw_spr.color));
+					write(1, "1", 1);
+//					if((mprms->draw_spr.color & 0x00FFFFFF) != 0) buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
+				}
+		}
+	}
 }
 
 //void	ft_init_sprite(t_mprms *mprms)
@@ -413,6 +512,14 @@ void	ft_convert_file_to_image(t_mprms *mprms)
 	if (mprms->tex.east.w_img.img == NULL || mprms->tex.east.height != 64
 		|| mprms->tex.east.width != 64)
 		put_rtfm("Error\nTexture crahed\n");
+	mprms->spr.obj.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx,
+		mprms->paths.sprt, &(mprms->spr.obj.width), &(mprms->spr.obj.height));
+	if (mprms->spr.obj.w_img.img == NULL || mprms->spr.obj.width != 64
+		|| mprms->spr.obj.height != 64)
+		put_rtfm("Error\nTexture crahed\n");
+	mprms->spr.obj.w_img.addr = mlx_get_data_addr(mprms->spr.obj.w_img.img,
+		&(mprms->spr.obj.w_img.bpp), &(mprms->spr.obj.w_img.line_l),
+		&(mprms->spr.obj.w_img.end));
 }
 
 void	ft_get_addr(t_all_tex *textures)
@@ -468,6 +575,7 @@ int main(int argc, char **argv)
 
 	mprms.data.mlx = mlx_init();
 	ft_init_all_textures(&mprms);
+	mprms.ray.ZBuffer = (double *) malloc(mprms.res.x * sizeof (double));
 //	ft_get_screen_size(&mprms);
 	mprms.data.win = mlx_new_window(mprms.data.mlx, (int)WW, (int)HH, "cub3d");
 	mprms.data.img = mlx_new_image(mprms.data.mlx, (int)WW, (int)HH);
@@ -475,10 +583,17 @@ int main(int argc, char **argv)
 
 	mprms.colors.floor.trns = create_trgb(mprms.colors.floor.r, mprms.colors.floor.g, mprms.colors.floor.b);
 	mprms.colors.ceil.trns = create_trgb(mprms.colors.ceil.r, mprms.colors.ceil.g, mprms.colors.ceil.b);
-	mprms.plr.dir_x = -1.0;
-	mprms.plr.dir_y = 0.0;
-	mprms.plr.pl_x = 0.0;
-	mprms.plr.pl_y = 0.66;
+	mprms.plr.dir_x = 0.0;
+	mprms.plr.dir_y = -1.0;
+	mprms.plr.pl_x = -0.66;
+	mprms.plr.pl_y = 0.00;
+	printf("count spr = %d\n", mprms.spr.count);
+	for(int i = 0; i < mprms.spr.count; i++)
+	{
+		mprms.spr.spr[i].dist = ((mprms.plr.x - mprms.spr.spr[i].x) * (mprms.plr.x - mprms.spr.spr[i].x) +
+								  (mprms.plr.y - mprms.spr.spr[i].y) * (mprms.plr.y - mprms.spr.spr[i].y)); //sqrt not taken, unneeded
+	}
+	sort_sprites(mprms.spr.spr, mprms.spr.count);
 	draw(&mprms);
 
 //	mlx_key_hook(mprms.data.win, key_press, &mprms);
