@@ -92,8 +92,8 @@ int 		key_press(int key, t_mprms *mprms)
 		mprms->pres.turnright = 1;
 	if (key == 12)//113)
 		mprms->pres.turnleft = 1;
-	if (key == 65307)
-		mprms->pres.esc = 1;
+	if (key == 53)//65307)
+		exit(0);
 	write(1, "press\n", 6);
 	return (0);
 }
@@ -201,26 +201,26 @@ int 		move_plr(t_mprms *mprms)
 
 	if (mprms->pres.turnleft)
 	{
-		if (mprms->map.map[(int) (mprms->plr.x - mprms->plr.dir_y * 0.05)]
+		if (mprms->map.map[(int) (mprms->plr.x - mprms->plr.dir_y * 0.1)]
 			[(int) (mprms->plr.y)] != '1')
 		{
 			mprms->plr.x -= mprms->plr.dir_y * 0.05;
 		}
 		if (mprms->map.map[(int) (mprms->plr.x)]
-			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.05)] != '1')
+			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.1)] != '1')
 		{
 			mprms->plr.y += mprms->plr.dir_x * 0.05;
 		}
 	}
 	if (mprms->pres.turnright)
 	{
-		if (mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.05)]
+		if (mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.1)]
 			[(int) (mprms->plr.y)] != '1')
 		{
-			mprms->plr.x += mprms->plr.dir_y * 0.05;
+			mprms->plr.x += mprms->plr.dir_y * 0.1;
 		}
 		if (mprms->map.map[(int) (mprms->plr.x)]
-			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.05)] != '1')
+			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.1)] != '1')
 		{
 			mprms->plr.y -= mprms->plr.dir_x * 0.05;
 		}
@@ -324,8 +324,12 @@ int		draw(t_mprms *mprms)
 
 		//calculate value of wallX
 //		mprms->ray.wallX; //where exactly the wall was hit
+//		if(mprms->ray.side == 0) mprms->ray.wallX = mprms->plr.y + mprms->ray.perpWallDist * mprms->ray.rayDirY;
+//		else mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist * mprms->ray.rayDirX;
+//		mprms->ray.wallX -= floor((mprms->ray.wallX));
+
 		if(mprms->ray.side == 0) mprms->ray.wallX = mprms->plr.y + mprms->ray.perpWallDist * mprms->ray.rayDirY;
-		else mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist * mprms->ray.rayDirX;
+		else          mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist * mprms->ray.rayDirX;
 		mprms->ray.wallX -= floor((mprms->ray.wallX));
 
 		//x coordinate on the texture
@@ -345,12 +349,22 @@ int		draw(t_mprms *mprms)
 
 		for(int y = mprms->ray.drawStart; y < mprms->ray.drawEnd; y++)
 		{
+			t_tex tex;
+			if (mprms->ray.side == 0 && mprms->ray.stepX > 0)
+				tex = mprms->tex.east;
+			else if (mprms->ray.side == 0 && mprms->ray.stepX < 0)
+				tex = mprms->tex.west;
+			else if (mprms->ray.side == 1 && mprms->ray.stepY > 0)
+				tex = mprms->tex.south;
+			else //if (mprms->ray.side == 0 && mprms->ray.stepY < 0)
+				tex = mprms->tex.north;
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			mprms->ray.texY = (int)mprms->ray.texPos & (texHeight - 1);
 			mprms->ray.texPos += mprms->ray.step;
-			if(mprms->ray.side == 1) mprms->ray.color = 0xff00ff; // (mprms->ray.color >> 1) & 8355711;
+//			if(mprms->ray.side == 1) mprms->ray.color = 0xff00ff; // (mprms->ray.color >> 1) & 8355711;
 //			printf("x - %d, y - %d\n", x, y);
-			my_mlx_pixel_put(mprms, x, y, mprms->ray.color); // mprms->ray.color);
+			mprms->ray.color = ft_pixel_take(tex, mprms->ray.texX, mprms->ray.texY);
+			my_mlx_pixel_put(mprms, x, y, (int)(*mprms->ray.color)); // mprms->ray.color);
 		}
 	}
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
@@ -378,15 +392,27 @@ void	ft_convert_file_to_image(t_mprms *mprms)
 	mprms->tex.north.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
 		mprms->paths.no, &(mprms->tex.north.width), \
 		&(mprms->tex.north.height));
+	if (mprms->tex.north.w_img.img == NULL || mprms->tex.north.height != 64
+		|| mprms->tex.north.width != 64)
+		put_rtfm("Error\nTexture crahed\n");
 	mprms->tex.south.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
 		mprms->paths.so, &(mprms->tex.south.width), \
 		&(mprms->tex.south.height));
+	if (mprms->tex.south.w_img.img == NULL || mprms->tex.south.height != 64
+		|| mprms->tex.south.width != 64)
+		put_rtfm("Error\nTexture crahed\n");
 	mprms->tex.west.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
 		mprms->paths.we, &(mprms->tex.west.width), \
 		&(mprms->tex.west.height));
+	if (mprms->tex.west.w_img.img == NULL || mprms->tex.west.height != 64
+		|| mprms->tex.west.width != 64)
+		put_rtfm("Error\nTexture crahed\n");
 	mprms->tex.east.w_img.img = mlx_xpm_file_to_image(mprms->data.mlx, \
 		mprms->paths.ea, &(mprms->tex.east.width), \
 		&(mprms->tex.east.height));
+	if (mprms->tex.east.w_img.img == NULL || mprms->tex.east.height != 64
+		|| mprms->tex.east.width != 64)
+		put_rtfm("Error\nTexture crahed\n");
 }
 
 void	ft_get_addr(t_all_tex *textures)
@@ -409,6 +435,11 @@ void	ft_init_all_textures(t_mprms *mprms)
 {
 	ft_convert_file_to_image(mprms);
 	ft_get_addr(&(mprms->tex));
+}
+
+unsigned int	*ft_pixel_take(t_tex tex, int x, int y)
+{
+	return ((unsigned int *)(tex.w_img.addr + (y * tex.w_img.line_l + x * (tex.w_img.bpp / 8))));
 }
 
 //void 	ft_get_screen_size(t_mprms *mprms)

@@ -1,11 +1,11 @@
-R 1366 768
+R 800 600
 
- SO /Users/bwayfare/Learn/cub3d/textures/te.xpm
- NO /Users/bwayfare/Learn/cub3d/textures/te1.xpm
+ SO /Users/bwayfare/Learn/cub3d/textures/bluestone.xpm
+ NO /Users/bwayfare/Learn/cub3d/textures/greystone.xpm
 
 
- WE /Users/bwayfare/Learn/cub3d/textures/te2.xpm
- EA /Users/bwayfare/Learn/cub3d/textures/tex3.xpm
+ WE /Users/bwayfare/Learn/cub3d/textures/purplestone.xpm
+ EA /Users/bwayfare/Learn/cub3d/textures/redbrick.xpm
  S /Users/bwayfare/Learn/cub3d/textures/barrel.xpm
 
 C 133, 160, 254

@@ -106,6 +106,6 @@ int		ch_wall(t_mprms *mprms, char **arr)
 		i++;
 	}
 	if (mprms->check == 0)
-		put_rtfm("Invalid wall in map\n");
+		put_rtfm("Error\nInvalid wall in map\n");
 	return (mprms->check);
 }

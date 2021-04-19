@@ -159,7 +159,7 @@ typedef struct	s_ray
 	double		perpWallDist;
 	int			stepX;
 	int			stepY;
-	int			color;
+	unsigned int	*color;
 	int			hit; // = 0; //was there a wall hit?
 	int			side; //was a NS or a EW wall hit?
 	int			lineHeight; // = (int)(h / perpWallDist);
@@ -212,5 +212,7 @@ int					ft_ch_elem_map(t_mprms *mprms);
 int					ch_wall(t_mprms *mprms, char **arr);
 int					put_rtfm(char *str);
 void				free_line(char **line);
+void				ft_init_all_textures(t_mprms *mprms);
+unsigned int	*ft_pixel_take(t_tex tex, int x, int y);
 
 #endif
