@@ -4,7 +4,7 @@ int		draw(t_mprms *mprms);
 
 void print(t_mprms *mprms)
 {
-	printf("R = %ld %ld\n", mprms->res.x, mprms->res.y);
+	printf("R = %d %d\n", mprms->res.x, mprms->res.y);
 	printf("C = %d %d %d\n", mprms->colors.ceil.r, mprms->colors.ceil.g, mprms->colors.ceil.b);
 	printf("F = %d %d %d\n", mprms->colors.floor.r, mprms->colors.floor.g, mprms->colors.floor.b);
 	printf("S = %s\n", mprms->paths.sprt);
@@ -202,12 +202,14 @@ int 		move_plr(t_mprms *mprms)
 	if (mprms->pres.turnleft)
 	{
 		if (mprms->map.map[(int) (mprms->plr.x - mprms->plr.dir_y * 0.1)]
-			[(int) (mprms->plr.y)] != '1')
+			[(int) (mprms->plr.y)] != '1' && mprms->map.map[(int) (mprms->plr.x - mprms->plr.dir_y * 0.1)]
+			[(int) (mprms->plr.y)] != '2')
 		{
 			mprms->plr.x -= mprms->plr.dir_y * 0.05;
 		}
 		if (mprms->map.map[(int) (mprms->plr.x)]
-			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.1)] != '1')
+			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.1)] != '1' && mprms->map.map[(int) (mprms->plr.x)]
+			[(int) (mprms->plr.y + mprms->plr.dir_x * 0.1)] != '2')
 		{
 			mprms->plr.y += mprms->plr.dir_x * 0.05;
 		}
@@ -215,12 +217,14 @@ int 		move_plr(t_mprms *mprms)
 	if (mprms->pres.turnright)
 	{
 		if (mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.1)]
-			[(int) (mprms->plr.y)] != '1')
+			[(int) (mprms->plr.y)] != '1' && mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.1)]
+			[(int) (mprms->plr.y)] != '2')
 		{
 			mprms->plr.x += mprms->plr.dir_y * 0.1;
 		}
 		if (mprms->map.map[(int) (mprms->plr.x)]
-			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.1)] != '1')
+			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.1)] != '1' && mprms->map.map[(int) (mprms->plr.x)]
+			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.1)] != '2')
 		{
 			mprms->plr.y -= mprms->plr.dir_x * 0.05;
 		}
@@ -588,6 +592,7 @@ int main(int argc, char **argv)
 	mprms.plr.pl_x = -0.66;
 	mprms.plr.pl_y = 0.00;
 	printf("count spr = %d\n", mprms.spr.count);
+	getchar();
 	for(int i = 0; i < mprms.spr.count; i++)
 	{
 		mprms.spr.spr[i].dist = ((mprms.plr.x - mprms.spr.spr[i].x) * (mprms.plr.x - mprms.spr.spr[i].x) +

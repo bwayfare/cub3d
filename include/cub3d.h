@@ -18,6 +18,7 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include <stdio.h>
+
 # include "../minilibx/mlx.h"
 # include <math.h>
 
@@ -96,8 +97,8 @@ typedef struct		s_all_sprite
 }					t_all_sprite;
 
 typedef struct		s_res {
-	long			x;
-	long			y;
+	int				x;
+	int 			y;
 	int 			screen_x;
 	int 			screen_y;
 }					t_res;

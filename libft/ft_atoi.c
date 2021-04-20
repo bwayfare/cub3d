@@ -42,7 +42,7 @@ void			ft_getres(char **str, long int *res)
 	}
 }
 
-long			ft_atoi(char **str)
+int				ft_atoi(char **str)
 {
 	long		res;
 	int			znak;
@@ -52,5 +52,5 @@ long			ft_atoi(char **str)
 	*str = ft_gofast(str);
 	*str = ft_znak(str, &znak);
 	ft_getres(str, &res);
-	return (res * znak);
+	return ((int)res * znak);
 }
