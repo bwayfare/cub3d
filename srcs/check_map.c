@@ -53,7 +53,14 @@ int		ft_ch_elem_map(t_mprms *mprms)
 	}
 	if (mprms->plr.pl == '\0')
 		mprms->check = put_rtfm("No player\n");
-	mprms->spr.spr = (t_spr *) malloc(mprms->spr.count);
+	if (mprms->spr.count != 0)
+		mprms->spr.spr = (t_spr *) malloc(mprms->spr.count * sizeof(t_spr));
+	/*mprms->spr.spr[0].dist = 123;
+	mprms->spr.spr[1].dist = 1234;
+	for (int k = 0; k < mprms->spr.count; k++)
+	{
+		printf("malloc sprdist =%f, x = %f, y = %f\n", mprms->spr.spr[k].dist, mprms->spr.spr[k].x, mprms->spr.spr[k].y);
+	}*/
 	return (mprms->check);
 }
 
@@ -85,24 +92,20 @@ void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 		mprms->check = 0;
 }
 
-void 	get_spr(t_mprms *mprms, int i, int j)
+void 	get_spr(t_mprms *mprms, int i, int j, int *k)
 {
-	static int k;
-
-	k = 0;
-	if (mprms->map.map[i][j] == '2')
-	{
-		mprms->spr.spr[k].x = i;
-		mprms->spr.spr[k].y = j;
-	}
+		mprms->spr.spr[*k].x = i;
+		mprms->spr.spr[*k].y = j;
 }
 
 int		ch_wall(t_mprms *mprms, char **arr)
 {
 	int		i;
 	int		j;
+	int 	k;
 
 	i = 0;
+	k = 0;
 	while (i < mprms->map.size && mprms->check)
 	{
 		j = 0;
@@ -115,6 +118,12 @@ int		ch_wall(t_mprms *mprms, char **arr)
 			{
 				mprms->plr.x = i + 0.5;
 				mprms->plr.y = j + 0.5;
+			}
+			write(1, "1", 1);
+			if (arr[i][j] == '2' && mprms->spr.count != 0)
+			{
+				get_spr(mprms, i, j, &k);
+				k++;
 			}
 			j++;
 		}

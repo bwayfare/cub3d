@@ -19,7 +19,8 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
-# include "../minilibx/mlx.h"
+//# include "../minilibx/mlx.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 
 # define W mprms->res.x
@@ -76,8 +77,8 @@ typedef struct		s_tex
 
 typedef struct		s_spr
 {
-	int 			x;
-	int 			y;
+	double 			x;
+	double 			y;
 	double 			dist;
 }					t_spr;
 

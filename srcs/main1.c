@@ -77,24 +77,24 @@ void            my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
 
 int 		key_press(int key, t_mprms *mprms)
 {
-		printf("key = %d \n", key);
+//		printf("key = %d \n", key);
 //100
 //97
-	if (key == 13)//119)
+	if (key == /*13)*/119)
 		mprms->pres.up = 1;
-	if (key == 1)//115)
+	if (key == /*1)*/115)
 		mprms->pres.down = 1;
-	if (key == 2)//100)
+	if (key == /*2)*/100)
 		mprms->pres.right = 1;
-	if (key == 0)//97)
+	if (key == /*0)*/97)
 		mprms->pres.left = 1;
-	if (key == 14)//101)
+	if (key == /*14)*/101)
 		mprms->pres.turnright = 1;
-	if (key == 12)//113)
+	if (key == /*12)*/113)
 		mprms->pres.turnleft = 1;
-	if (key == 53)//65307)
+	if (key == /*53)*/65307)
 		exit(0);
-	write(1, "press\n", 6);
+//	write(1, "press\n", 6);
 	return (0);
 }
 
@@ -110,19 +110,19 @@ key = 2
 
 int 		key_release(int key, t_mprms * mprms)
 {
-	if (key == 13)//119)
+	if (key == /*13)*/119)
 		mprms->pres.up = 0;
-	if (key == 1)//115)
+	if (key == /*1)*/115)
 		mprms->pres.down = 0;
-	if (key == 2)//100)
+	if (key == /*2)*/100)
 		mprms->pres.right = 0;
-	if (key == 0)//97)
+	if (key == /*0)*/97)
 		mprms->pres.left = 0;
-	if (key == 14)//101)
+	if (key == /*14)*/101)
 		mprms->pres.turnright = 0;
-	if (key == 12)//113)
+	if (key == /*12)*/113)
 		mprms->pres.turnleft = 0;
-	write(1, "releas\n", 7);
+//	write(1, "releas\n", 7);
 	return (0);
 }
 
@@ -164,7 +164,7 @@ int 		move_plr(t_mprms *mprms)
 		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y + mprms->plr.dir_y * speed)] != '1' &&
 				mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y + mprms->plr.dir_y * speed)] != '2')
 			mprms->plr.y += mprms->plr.dir_y * speed;
-		write(1, "test\n", 5);
+//		write(1, "test\n", 5);
 	}
 	//move backwards if no wall behind you
 	if(mprms->pres.down)
@@ -175,7 +175,7 @@ int 		move_plr(t_mprms *mprms)
 		if(mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y - mprms->plr.dir_y * speed)] != '1' &&
 				mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y - mprms->plr.dir_y * speed)] != '2')
 			mprms->plr.y -= mprms->plr.dir_y * speed;
-		write(1, "test2\n", 6);
+//		write(1, "test2\n", 6);
 	}
 	if (mprms->pres.right)
 	{
@@ -220,7 +220,7 @@ int 		move_plr(t_mprms *mprms)
 			[(int) (mprms->plr.y)] != '1' && mprms->map.map[(int) (mprms->plr.x + mprms->plr.dir_y * 0.1)]
 			[(int) (mprms->plr.y)] != '2')
 		{
-			mprms->plr.x += mprms->plr.dir_y * 0.1;
+			mprms->plr.x += mprms->plr.dir_y * 0.05;
 		}
 		if (mprms->map.map[(int) (mprms->plr.x)]
 			[(int) (mprms->plr.y - mprms->plr.dir_x * 0.1)] != '1' && mprms->map.map[(int) (mprms->plr.x)]
@@ -246,7 +246,7 @@ void sort_sprites(t_spr *spr, int count)
 	i = 0;
 	while (i < count - 1)
 	{
-		j = i + 1;
+		j = i;
 		while (j < count)
 		{
 			if (spr[i].dist < spr[j].dist)
@@ -258,10 +258,6 @@ void sort_sprites(t_spr *spr, int count)
 			j++;
 		}
 		i++;
-	}
-	for (int k = 0; k < count; k++)
-	{
-		printf("sprdist =%f\n", spr[k].dist);
 	}
 }
 
@@ -377,9 +373,6 @@ int		draw(t_mprms *mprms)
 //		printf("x - %d\n", x);
 //		printf("drawStart - %d\n", mprms->ray.drawStart);
 //		printf("drawEnd - %d\n", mprms->ray.drawEnd);
-
-
-
 		for(int y = mprms->ray.drawStart; y < mprms->ray.drawEnd; y++)
 		{
 			t_tex tex;
@@ -401,23 +394,32 @@ int		draw(t_mprms *mprms)
 		}
 		mprms->ray.ZBuffer[x] = mprms->ray.perpWallDist;
 	}
+//	printf("spr count = %d\n", mprms->spr.count);
+	if (mprms->spr.count)
+		draw_spr(mprms);
+//	printf("spr count = %d\n", mprms->spr.count);
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win, mprms->data.img, 0, 0);
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
 	mprms->data.addr = NULL;
 	mprms->data.img = NULL;
 	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
-	draw_spr(mprms);
 	return (0);
 }
 
 void 	draw_spr(t_mprms *mprms)
 {
+	for(int i = 0; i < mprms->spr.count; i++)
+	{
+		mprms->spr.spr[i].dist = ((mprms->plr.x - mprms->spr.spr[i].x) * (mprms->plr.x - mprms->spr.spr[i].x) +
+								 (mprms->plr.y - mprms->spr.spr[i].y) * (mprms->plr.y - mprms->spr.spr[i].y)); //sqrt not taken, unneeded
+	}
+	sort_sprites(mprms->spr.spr, mprms->spr.count);
 	for (int i = 0; i < mprms->spr.count; i++)
 	{
 		//translate sprite position to relative to camera
-		mprms->draw_spr.spriteX = mprms->spr.spr[i].x - mprms->plr.x;
-		mprms->draw_spr.spriteY = mprms->spr.spr[i].y - mprms->plr.y;
+		mprms->draw_spr.spriteX = mprms->spr.spr[i].x - mprms->plr.x + 0.5;
+		mprms->draw_spr.spriteY = mprms->spr.spr[i].y - mprms->plr.y + 0.5;
 
 		mprms->draw_spr.invDet = 1.0 / (mprms->plr.pl_x * mprms->plr.dir_y - mprms->plr.dir_x *
 																			 mprms->plr.pl_y); //required for correct matrix multiplication
@@ -450,7 +452,9 @@ void 	draw_spr(t_mprms *mprms)
 			mprms->draw_spr.drawEndX = W - 1;
 
 		//loop through every vertical stripe of the sprite on screen
-		printf("mprms->draw_spr.drawStartX = %d\n mprms->draw_spr.drawEndX = %d\n", mprms->draw_spr.drawStartX,mprms->draw_spr.drawEndX);
+//		printf("mprms->draw_spr.drawStartX = %d\n mprms->draw_spr.drawEndX = %d\n W = %d H = %d\n",
+//		 mprms->draw_spr.drawStartX,mprms->draw_spr.drawEndX, W, H);
+//			getchar();
 		for (int stripe = mprms->draw_spr.drawStartX; stripe < mprms->draw_spr.drawEndX; stripe++)
 		{
 			mprms->draw_spr.texX =
@@ -466,13 +470,18 @@ void 	draw_spr(t_mprms *mprms)
 				for (int y = mprms->draw_spr.drawStartY;
 					 y < mprms->draw_spr.drawEndY; y++) //for every pixel of the current stripe
 				{
+//					write(1, "1", 1);
 					mprms->draw_spr.d = (y) * 256 - H * 128 +
 										mprms->draw_spr.spriteHeight * 128; //256 and 128 factors to avoid floats
+//					write(1, "2", 1);
 					mprms->draw_spr.texY = ((mprms->draw_spr.d * texHeight) / mprms->draw_spr.spriteHeight) / 256;
+//					write(1, "3", 1);
 					mprms->draw_spr.color = ft_pixel_take(mprms->spr.obj, mprms->draw_spr.texX,
 														  mprms->draw_spr.texY);//get current color from the texture
-					my_mlx_pixel_put(mprms->data.mlx, stripe, y, (int)(*mprms->draw_spr.color));
-					write(1, "1", 1);
+//					write(1, "4", 1);
+					if ((int)(*mprms->draw_spr.color) != 0x000000)
+						my_mlx_pixel_put(mprms, stripe, y, (int)(*mprms->draw_spr.color));
+//					write(1, "5", 1);
 //					if((mprms->draw_spr.color & 0x00FFFFFF) != 0) buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
 				}
 		}
@@ -591,14 +600,12 @@ int main(int argc, char **argv)
 	mprms.plr.dir_y = -1.0;
 	mprms.plr.pl_x = -0.66;
 	mprms.plr.pl_y = 0.00;
-	printf("count spr = %d\n", mprms.spr.count);
-	getchar();
-	for(int i = 0; i < mprms.spr.count; i++)
-	{
-		mprms.spr.spr[i].dist = ((mprms.plr.x - mprms.spr.spr[i].x) * (mprms.plr.x - mprms.spr.spr[i].x) +
-								  (mprms.plr.y - mprms.spr.spr[i].y) * (mprms.plr.y - mprms.spr.spr[i].y)); //sqrt not taken, unneeded
-	}
-	sort_sprites(mprms.spr.spr, mprms.spr.count);
+//	for(int i = 0; i < mprms.spr.count; i++)
+//	{
+//		mprms.spr.spr[i].dist = ((mprms.plr.x - mprms.spr.spr[i].x) * (mprms.plr.x - mprms.spr.spr[i].x) +
+//								  (mprms.plr.y - mprms.spr.spr[i].y) * (mprms.plr.y - mprms.spr.spr[i].y)); //sqrt not taken, unneeded
+//	}
+//	sort_sprites(mprms.spr.spr, mprms.spr.count);
 	draw(&mprms);
 
 //	mlx_key_hook(mprms.data.win, key_press, &mprms);
