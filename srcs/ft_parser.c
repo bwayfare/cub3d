@@ -16,20 +16,20 @@ int	prs_res(t_mprms *mprms, char *line)
 {
 	line++;
 	if (*line != 32 || mprms->full.res == 1)
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid resolutione\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EIR)));
 	if (ft_res_check(line) == -1)
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid resolutione\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EIR)));
 	if (ft_jmp_sp(&line, line, '0') != -1)
 		mprms->res.x = ft_atoi(&line);
 	else
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid resolutione\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EIR)));
 	if (ft_jmp_sp(&line, line, '0') != -1)
 		mprms->res.y = ft_atoi(&line);
 	else
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid resolutione\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EIR)));
 	if (ft_jmp_sp(&line, line, '\0') == -1 || mprms->res.x < 1 ||
 		mprms->res.y < 1)
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid resolutione\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EIR)));
 	mprms->full.res = 1;
 	return (1);
 }
@@ -38,21 +38,21 @@ int	prs_clr1(t_mprms *mprms, char *line)
 {
 	line++;
 	if (*line != 32 || mprms->full.c_clr == 1)
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid ceil color\n\0")));
+		return (-1 + (mprms->check = put_rtfm(EICC)));
 	if (ft_jmp_sp(&line, line, '0') != -1)
 		mprms->colors.ceil.r = ft_atoi(&line);
 	else
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid ceil color\n")));
+		return (-1 + (mprms->check = put_rtfm(EICC)));
 	if (ft_jmp_sp(&line, line, ',') != -1)
 		mprms->colors.ceil.g = ft_atoi(&line);
 	else
-		return (-1 + (mprms->check = put_rtfm("Error\nInvalid ceil color\n")));
+		return (-1 + (mprms->check = put_rtfm(EICC)));
 	if (ft_jmp_sp(&line, line, ',') != -1)
 		mprms->colors.ceil.b = ft_atoi(&line);
 	else
-		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
+		return (-1 + (mprms->check = put_rtfm(EICC)));
 	if (ft_jmp_sp(&line, line, '\0') == -1)
-		return (-1 + (mprms->check = put_rtfm("Invalid ceil color\n")));
+		return (-1 + (mprms->check = put_rtfm(EICC)));
 	mprms->full.c_clr = 1;
 	return (1);
 }
@@ -62,27 +62,27 @@ int	prs_clr(t_mprms *mprms, char *line)
 	if (*line == 'F')
 	{
 		if (*++line != 32 || mprms->full.f_clr == 1)
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid floor color\n")));
+			return (-1 + (mprms->check = put_rtfm(EIFC)));
 		if (ft_jmp_sp(&line, line, '0') != -1)
 			mprms->colors.floor.r = ft_atoi(&line);
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid floor color\n")));
+			return (-1 + (mprms->check = put_rtfm(EIFC)));
 		if (ft_jmp_sp(&line, line, ',') != -1)
 			mprms->colors.floor.g = ft_atoi(&line);
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid floor color\n")));
+			return (-1 + (mprms->check = put_rtfm(EIFC)));
 		if (ft_jmp_sp(&line, line, ',') != -1)
 			mprms->colors.floor.b = ft_atoi(&line);
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid floor color\n")));
+			return (-1 + (mprms->check = put_rtfm(EIFC)));
 		if (ft_jmp_sp(&line, line, '\0') == -1)
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid floor color\n")));
+			return (-1 + (mprms->check = put_rtfm(EIFC)));
 		mprms->full.f_clr = 1;
-		return (ft_check_clr(mprms));
+		return (ft_check_clr(mprms, EIFC));
 	}
 	if (*line == 'C')
 		prs_clr1(mprms, line);
-	return (ft_check_clr(mprms));
+	return (ft_check_clr(mprms, EICC));
 }
 
 int	parse_line(t_mprms *mprms, char *line)

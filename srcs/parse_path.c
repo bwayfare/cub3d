@@ -18,13 +18,13 @@ int		check_path(char *str)
 	char	*end;
 
 	if (str == NULL)
-		return (put_rtfm("Error\nInvalid path\n"));
+		return (put_rtfm(EIP));
 	end = str;
 	while (*end)
 		end++;
 	if (*--end != 'm' || *--end != 'p' || *--end != 'x' ||
 	*--end != '.' || !ft_isalnum(*--end))
-		return (put_rtfm("Error\nInvalid path\n"));
+		return (put_rtfm(EIP));
 	fd = open(str, O_RDONLY);
 	if (fd > 0)
 	{
@@ -32,7 +32,7 @@ int		check_path(char *str)
 		return (1);
 	}
 	close(fd);
-	return (put_rtfm("Error\nInvalid path\n"));
+	return (put_rtfm(EIP));
 }
 
 char	*get_path(char *line)
@@ -73,7 +73,7 @@ int		prs_pth_third(t_mprms *mprms, char *line)
 			mprms->check = mprms->full.sprt;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param\n")));
+			return (-1 + (mprms->check = put_rtfm(EIParam)));
 		return (mprms->check);
 	}
 	return (-1);
@@ -90,7 +90,7 @@ int		prs_pth_second(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.we;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param")));
+			return (-1 + (mprms->check = put_rtfm(EIParam)));
 		return (1);
 	}
 	else if (*st == 'E' && *(st + 1) == 'A')
@@ -102,7 +102,7 @@ int		prs_pth_second(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.ea;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param")));
+			return (-1 + (mprms->check = put_rtfm(EIParam)));
 		return (1);
 	}
 	return (prs_pth_third(mprms, st));
@@ -119,7 +119,7 @@ int		prs_pth(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.no;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param")));
+			return (-1 + (mprms->check = put_rtfm(EIParam)));
 		return (1);
 	}
 	else if (*st == 'S' && *(st + 1) == 'O')
@@ -131,7 +131,7 @@ int		prs_pth(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.so;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param")));
+			return (-1 + (mprms->check = put_rtfm(EIParam)));
 		return (mprms->check);
 	}
 	return (prs_pth_second(mprms, st));

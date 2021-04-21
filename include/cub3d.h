@@ -18,6 +18,7 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include <stdio.h>
+# include "define_error.h"
 
 //# include "../minilibx/mlx.h"
 # include "../mlx/mlx.h"
@@ -231,6 +232,8 @@ typedef struct		s_mprms
 	t_all_tex 		tex;
 	t_all_sprite 	spr;
 	t_draw_spr		draw_spr;
+	int 			screenshot;
+	int 			argc;
 }					t_mprms;
 
 void				ft_trimm_sp(char **line);
@@ -238,7 +241,7 @@ int					parse_line(t_mprms *mparams, char *line);
 int					ft_jmp_sp(char **line, char *str, char flag);
 int					ft_size_n(int n);
 int					ft_res_check(char *line);
-int					ft_check_clr(t_mprms *mprms);
+int					ft_check_clr(t_mprms *mprms, char *str);
 int					prs_pth(t_mprms *mprms, char *st);
 void				struct_init(t_mprms *mprms);
 void				clean_struct(t_mprms *mprms);
@@ -251,8 +254,33 @@ int					ft_ch_elem_map(t_mprms *mprms);
 int					ch_wall(t_mprms *mprms, char **arr);
 int					put_rtfm(char *str);
 void				free_line(char **line);
-void				ft_init_all_textures(t_mprms *mprms);
-unsigned int	*ft_pixel_take(t_tex tex, int x, int y);
+void				init_texture(t_mprms *mprms);
+unsigned int		*ft_pixel_take(t_tex tex, int x, int y);
+void				draw_spr(t_mprms *mprms);
+void				turn_player(t_mprms *mprms);
+int					key_press(int key, t_mprms *mprms);
+int					key_release(int key, t_mprms * mprms);
+void				sort_sprites(t_spr *spr, int count);
+int					create_trgb(int r, int g, int b);
+void				draw_floor_ceil(t_mprms *mprms);
+void				my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color);
+unsigned int		*ft_pixel_take(t_tex tex, int x, int y);
+int move_left(t_mprms *mprms, double speed);
+int move_right(t_mprms *mprms, double speed);
+int 	main_move_plr(t_mprms *mprms);
+int		draw(t_mprms *mprms);
+void 	wall_draw_init(t_mprms *mprms, int x);
+void 	wall_draw_init_2(t_mprms *mprms, int x);
+void 	while_ray_hit(t_mprms *mprms);
+void 	calculate_draw_wall(t_mprms *mprms);
+void 	circle_draw(t_mprms *mprms, int x, int y);
+void 	dist_sort(t_mprms *mprms);
+void 	draw_spr_param_init(t_mprms *mprms, int i);
+void 	draw_spr_param_init_2(t_mprms *mprms);
+void 	circle_drap_spr(t_mprms *mprms, int stripe);
 void 	draw_spr(t_mprms *mprms);
+void	ft_make_bmp(t_mprms *mprms);
+void	ft_create_header(int fd, int bmp_size);
+void	ft_create_info(t_mprms *mprms, int fd);
 
 #endif

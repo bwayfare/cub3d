@@ -24,10 +24,10 @@ void	ft_ch_elem_if(t_mprms *mprms, char tmp)
 						if (mprms->plr.pl == '\0')
 							mprms->plr.pl = tmp;
 						else
-							mprms->check = put_rtfm("Invalid map\n");
+							mprms->check = put_rtfm(EUPinM);
 					}
 					else
-						mprms->check = put_rtfm("Invalid map\n");
+						mprms->check = put_rtfm(EUPinM);
 				}
 }
 
@@ -52,15 +52,11 @@ int		ft_ch_elem_map(t_mprms *mprms)
 		i++;
 	}
 	if (mprms->plr.pl == '\0')
-		mprms->check = put_rtfm("No player\n");
+		mprms->check = put_rtfm(ENP);
 	if (mprms->spr.count != 0)
-		mprms->spr.spr = (t_spr *) malloc(mprms->spr.count * sizeof(t_spr));
-	/*mprms->spr.spr[0].dist = 123;
-	mprms->spr.spr[1].dist = 1234;
-	for (int k = 0; k < mprms->spr.count; k++)
-	{
-		printf("malloc sprdist =%f, x = %f, y = %f\n", mprms->spr.spr[k].dist, mprms->spr.spr[k].x, mprms->spr.spr[k].y);
-	}*/
+		if (!(mprms->spr.spr = (t_spr *) malloc(mprms->spr.count *
+				sizeof(t_spr))))
+			put_rtfm(EIM);
 	return (mprms->check);
 }
 
@@ -94,8 +90,18 @@ void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 
 void 	get_spr(t_mprms *mprms, int i, int j, int *k)
 {
+	if (mprms->map.map[i][j] == 'N' || mprms->map.map[i][j] == 'E' ||
+		mprms->map.map[i][j] == 'S'	|| mprms->map.map[i][j] == 'W')
+	{
+		mprms->plr.x = i + 0.5;
+		mprms->plr.y = j + 0.5;
+	}
+	if (mprms->map.map[i][j] == '2' && mprms->spr.count != 0)
+	{
 		mprms->spr.spr[*k].x = i;
 		mprms->spr.spr[*k].y = j;
+		(*k)++;
+	}
 }
 
 int		ch_wall(t_mprms *mprms, char **arr)
@@ -113,23 +119,12 @@ int		ch_wall(t_mprms *mprms, char **arr)
 		{
 			if (arr[i][j] == ' ')
 				ch_wall_if(mprms, arr, i, j);
-			if (arr[i][j] == 'N' || arr[i][j] == 'E' || arr[i][j] == 'S'
-				|| arr[i][j] == 'W')
-			{
-				mprms->plr.x = i + 0.5;
-				mprms->plr.y = j + 0.5;
-			}
-			write(1, "1", 1);
-			if (arr[i][j] == '2' && mprms->spr.count != 0)
-			{
-				get_spr(mprms, i, j, &k);
-				k++;
-			}
+			get_spr(mprms, i, j, &k);
 			j++;
 		}
 		i++;
 	}
 	if (mprms->check == 0)
-		put_rtfm("Error\nInvalid wall in map\n");
+		put_rtfm(EIWinM);
 	return (mprms->check);
 }
