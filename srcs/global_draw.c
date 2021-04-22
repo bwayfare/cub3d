@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 07:10:13 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:57:54 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		draw(t_mprms *mprms, int x)
 		wall_draw_init_2(mprms, x);
 		while_ray_hit(mprms);
 		calculate_draw_wall(mprms);
-		circle_draw(mprms, x, mprms->ray.drawStart);
+		circle_draw(mprms, x, mprms->ray.drw_start);
 	}
 	if (mprms->spr.count)
 		draw_spr(mprms);
@@ -50,8 +50,8 @@ void	draw_spr(t_mprms *mprms)
 	{
 		draw_spr_param_init(mprms, i);
 		draw_spr_param_init_2(mprms);
-		stripe = mprms->draw_spr.drawStartX;
-		while (stripe < mprms->draw_spr.drawEndX)
+		stripe = mprms->draw_spr.drw_strt_x;
+		while (stripe < mprms->draw_spr.drw_end_x)
 		{
 			circle_drap_spr(mprms, stripe);
 			stripe++;

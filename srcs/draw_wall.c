@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 07:02:29 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/04/22 08:13:49 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:56:10 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,53 @@
 void	wall_draw_init(t_mprms *mprms, int x)
 {
 	mprms->ray.cam_x = 2 * x / (double)W - 1;
-	mprms->ray.rayDirX = mprms->plr.dir_x + mprms->plr.pl_x *
+	mprms->ray.r_dir_x = mprms->plr.dir_x + mprms->plr.pl_x *
 			mprms->ray.cam_x;
-	mprms->ray.rayDirY = mprms->plr.dir_y + mprms->plr.pl_y *
-			mprms->ray.cam_x;
-	mprms->ray.mapX = (int)mprms->plr.x;
-	mprms->ray.mapY = (int)mprms->plr.y;
-	if (mprms->ray.rayDirY == 0)
-		mprms->ray.deltaDistX = 0;
-	else if (mprms->ray.rayDirX == 0)
-		mprms->ray.deltaDistX = 1;
+	mprms->ray.r_dir_y = mprms->plr.dir_y + mprms->plr.pl_y *
+											mprms->ray.cam_x;
+	mprms->ray.mp_x = (int)mprms->plr.x;
+	mprms->ray.mp_y = (int)mprms->plr.y;
+	if (mprms->ray.r_dir_y == 0)
+		mprms->ray.dlt_dst_x = 0;
+	else if (mprms->ray.r_dir_x == 0)
+		mprms->ray.dlt_dst_x = 1;
 	else
-		mprms->ray.deltaDistX = fabs(1 / mprms->ray.rayDirX);
-	if (mprms->ray.rayDirX == 0)
-		mprms->ray.deltaDistY = 0;
-	else if (mprms->ray.rayDirY == 0)
-		mprms->ray.deltaDistY = 1;
+		mprms->ray.dlt_dst_x = fabs(1 / mprms->ray.r_dir_x);
+	if (mprms->ray.r_dir_x == 0)
+		mprms->ray.dlt_dst_y = 0;
+	else if (mprms->ray.r_dir_y == 0)
+		mprms->ray.dlt_dst_y = 1;
 	else
-		mprms->ray.deltaDistY = fabs(1 / mprms->ray.rayDirY);
+		mprms->ray.dlt_dst_y = fabs(1 / mprms->ray.r_dir_y);
 	mprms->ray.hit = 0;
-	mprms->ray.sideDistX = 0;
+	mprms->ray.sd_dst_x = 0;
 }
 
 void	wall_draw_init_2(t_mprms *mprms, int x)
 {
-	if (mprms->ray.rayDirX < 0)
+	if (mprms->ray.r_dir_x < 0)
 	{
-		mprms->ray.stepX = -1;
-		mprms->ray.sideDistX = (mprms->plr.x - mprms->ray.mapX) *
-				mprms->ray.deltaDistX;
+		mprms->ray.stp_x = -1;
+		mprms->ray.sd_dst_x = (mprms->plr.x - mprms->ray.mp_x) *
+							  mprms->ray.dlt_dst_x;
 	}
 	else
 	{
-		mprms->ray.stepX = 1;
-		mprms->ray.sideDistX = (mprms->ray.mapX + 1.0 - mprms->plr.x) *
-				mprms->ray.deltaDistX;
+		mprms->ray.stp_x = 1;
+		mprms->ray.sd_dst_x = (mprms->ray.mp_x + 1.0 - mprms->plr.x) *
+							  mprms->ray.dlt_dst_x;
 	}
-	if (mprms->ray.rayDirY < 0)
+	if (mprms->ray.r_dir_y < 0)
 	{
-		mprms->ray.stepY = -1;
-		mprms->ray.sideDistY = (mprms->plr.y - mprms->ray.mapY) *
-				mprms->ray.deltaDistY;
+		mprms->ray.stp_y = -1;
+		mprms->ray.sd_dts_y = (mprms->plr.y - mprms->ray.mp_y) *
+							  mprms->ray.dlt_dst_y;
 	}
 	else
 	{
-		mprms->ray.stepY = 1;
-		mprms->ray.sideDistY = (mprms->ray.mapY + 1.0 - mprms->plr.y) *
-				mprms->ray.deltaDistY;
+		mprms->ray.stp_y = 1;
+		mprms->ray.sd_dts_y = (mprms->ray.mp_y + 1.0 - mprms->plr.y) *
+							  mprms->ray.dlt_dst_y;
 	}
 }
 
@@ -69,19 +69,19 @@ void	while_ray_hit(t_mprms *mprms)
 {
 	while (mprms->ray.hit == 0)
 	{
-		if (mprms->ray.sideDistX < mprms->ray.sideDistY)
+		if (mprms->ray.sd_dst_x < mprms->ray.sd_dts_y)
 		{
-			mprms->ray.sideDistX += mprms->ray.deltaDistX;
-			mprms->ray.mapX += mprms->ray.stepX;
+			mprms->ray.sd_dst_x += mprms->ray.dlt_dst_x;
+			mprms->ray.mp_x += mprms->ray.stp_x;
 			mprms->ray.side = 0;
 		}
 		else
 		{
-			mprms->ray.sideDistY += mprms->ray.deltaDistY;
-			mprms->ray.mapY += mprms->ray.stepY;
+			mprms->ray.sd_dts_y += mprms->ray.dlt_dst_y;
+			mprms->ray.mp_y += mprms->ray.stp_y;
 			mprms->ray.side = 1;
 		}
-		if (WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] == '1')
+		if (WWORLDMAP[mprms->ray.mp_x][mprms->ray.mp_y] == '1')
 			mprms->ray.hit = 1;
 	}
 }
@@ -89,56 +89,56 @@ void	while_ray_hit(t_mprms *mprms)
 void	calculate_draw_wall(t_mprms *mprms)
 {
 	if (mprms->ray.side == 0)
-		mprms->ray.perpWallDist = (mprms->ray.mapX - mprms->plr.x +
-				(1.0 - mprms->ray.stepX) / 2) / mprms->ray.rayDirX;
+		mprms->ray.prp_wall_dst = (mprms->ray.mp_x - mprms->plr.x +
+								   (1.0 - mprms->ray.stp_x) / 2) / mprms->ray.r_dir_x;
 	else
-		mprms->ray.perpWallDist = (mprms->ray.mapY - mprms->plr.y +
-				(1.0 - mprms->ray.stepY) / 2) / mprms->ray.rayDirY;
-	mprms->ray.lineHeight = (int)(H / mprms->ray.perpWallDist);
-	mprms->ray.drawStart = -mprms->ray.lineHeight / 2 + H / 2;
-	if (mprms->ray.drawStart < 0)
-		mprms->ray.drawStart = 0;
-	mprms->ray.drawEnd = mprms->ray.lineHeight / 2 + H / 2;
-	if (mprms->ray.drawEnd >= H)
-		mprms->ray.drawEnd = H - 1;
-	mprms->ray.texNum = WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] - 1;
+		mprms->ray.prp_wall_dst = (mprms->ray.mp_y - mprms->plr.y +
+								   (1.0 - mprms->ray.stp_y) / 2) / mprms->ray.r_dir_y;
+	mprms->ray.line_hght = (int)(H / mprms->ray.prp_wall_dst);
+	mprms->ray.drw_start = -mprms->ray.line_hght / 2 + H / 2;
+	if (mprms->ray.drw_start < 0)
+		mprms->ray.drw_start = 0;
+	mprms->ray.drw_end = mprms->ray.line_hght / 2 + H / 2;
+	if (mprms->ray.drw_end >= H)
+		mprms->ray.drw_end = H - 1;
+	mprms->ray.tx_num = WWORLDMAP[mprms->ray.mp_x][mprms->ray.mp_y] - 1;
 	if (mprms->ray.side == 0)
-		mprms->ray.wallX = mprms->plr.y + mprms->ray.perpWallDist *
-				mprms->ray.rayDirY;
+		mprms->ray.wll_x = mprms->plr.y + mprms->ray.prp_wall_dst *
+										  mprms->ray.r_dir_y;
 	else
-		mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist *
-				mprms->ray.rayDirX;
-	mprms->ray.wallX -= floor((mprms->ray.wallX));
-	mprms->ray.texX = (int)(mprms->ray.wallX * (double)TEXWIDTH);
-	if (mprms->ray.side == 0 && mprms->ray.rayDirX > 0)
-		mprms->ray.texX = TEXWIDTH - mprms->ray.texX - 1;
+		mprms->ray.wll_x = mprms->plr.x + mprms->ray.prp_wall_dst *
+										  mprms->ray.r_dir_x;
+	mprms->ray.wll_x -= floor((mprms->ray.wll_x));
+	mprms->ray.tx_x = (int)(mprms->ray.wll_x * (double)TEXWIDTH);
+	if (mprms->ray.side == 0 && mprms->ray.r_dir_x > 0)
+		mprms->ray.tx_x = TEXWIDTH - mprms->ray.tx_x - 1;
 }
 
 void	circle_draw(t_mprms *mprms, int x, int y)
 {
 	t_tex tex;
 
-	if (mprms->ray.side == 1 && mprms->ray.rayDirY < 0)
-		mprms->ray.texX = TEXWIDTH - mprms->ray.texX - 1;
-	mprms->ray.step = 1.0 * TEXHEIGHT / mprms->ray.lineHeight;
-	mprms->ray.texPos = (mprms->ray.drawStart - H / 2.0 +
-			mprms->ray.lineHeight / 2.0) * mprms->ray.step;
-	while (y < mprms->ray.drawEnd)
+	if (mprms->ray.side == 1 && mprms->ray.r_dir_y < 0)
+		mprms->ray.tx_x = TEXWIDTH - mprms->ray.tx_x - 1;
+	mprms->ray.step = 1.0 * TEXHEIGHT / mprms->ray.line_hght;
+	mprms->ray.tx_pos = (mprms->ray.drw_start - H / 2.0 +
+						 mprms->ray.line_hght / 2.0) * mprms->ray.step;
+	while (y < mprms->ray.drw_end)
 	{
-		if (mprms->ray.side == 0 && mprms->ray.stepX > 0)
+		if (mprms->ray.side == 0 && mprms->ray.stp_x > 0)
 			tex = mprms->tex.east;
-		else if (mprms->ray.side == 0 && mprms->ray.stepX < 0)
+		else if (mprms->ray.side == 0 && mprms->ray.stp_x < 0)
 			tex = mprms->tex.west;
-		else if (mprms->ray.side == 1 && mprms->ray.stepY > 0)
+		else if (mprms->ray.side == 1 && mprms->ray.stp_y > 0)
 			tex = mprms->tex.south;
 		else
 			tex = mprms->tex.north;
-		mprms->ray.texY = (int)mprms->ray.texPos & (TEXHEIGHT - 1);
-		mprms->ray.texPos += mprms->ray.step;
-		mprms->ray.color = ft_pixel_take(tex, mprms->ray.texX,
-		mprms->ray.texY);
+		mprms->ray.tx_y = (int)mprms->ray.tx_pos & (TEXHEIGHT - 1);
+		mprms->ray.tx_pos += mprms->ray.step;
+		mprms->ray.color = ft_pixel_take(tex, mprms->ray.tx_x,
+		mprms->ray.tx_y);
 		my_mlx_pixel_put(mprms, x, y, (int)(*mprms->ray.color));
 		y++;
 	}
-	mprms->ray.ZBuffer[x] = mprms->ray.perpWallDist;
+	mprms->ray.z_buffer[x] = mprms->ray.prp_wall_dst;
 }

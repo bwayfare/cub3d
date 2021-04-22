@@ -50,15 +50,15 @@ void	turn_right(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.right)
 	{
-		mprms->ray.oldDirX = mprms->plr.dir_x;
+		mprms->ray.ld_dr_x = mprms->plr.dir_x;
 		mprms->plr.dir_x = mprms->plr.dir_x * cos(-speed) -
 				mprms->plr.dir_y * sin(-speed);
-		mprms->plr.dir_y = mprms->ray.oldDirX * sin(-speed) +
+		mprms->plr.dir_y = mprms->ray.ld_dr_x * sin(-speed) +
 				mprms->plr.dir_y * cos(-speed);
-		mprms->ray.oldPlaneX = mprms->plr.pl_x;
+		mprms->ray.ld_pln_x = mprms->plr.pl_x;
 		mprms->plr.pl_x = mprms->plr.pl_x * cos(-speed) -
 				mprms->plr.pl_y * sin(-speed);
-		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(-speed) +
+		mprms->plr.pl_y = mprms->ray.ld_pln_x * sin(-speed) +
 				mprms->plr.pl_y * cos(-speed);
 	}
 }
@@ -67,15 +67,15 @@ void	turn_left(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.left)
 	{
-		mprms->ray.oldDirX = mprms->plr.dir_x;
+		mprms->ray.ld_dr_x = mprms->plr.dir_x;
 		mprms->plr.dir_x = mprms->plr.dir_x * cos(speed) -
 				mprms->plr.dir_y * sin(speed);
-		mprms->plr.dir_y = mprms->ray.oldDirX * sin(speed) +
+		mprms->plr.dir_y = mprms->ray.ld_dr_x * sin(speed) +
 				mprms->plr.dir_y * cos(speed);
-		mprms->ray.oldPlaneX = mprms->plr.pl_x;
+		mprms->ray.ld_pln_x = mprms->plr.pl_x;
 		mprms->plr.pl_x = mprms->plr.pl_x * cos(speed) -
 				mprms->plr.pl_y * sin(speed);
-		mprms->plr.pl_y = mprms->ray.oldPlaneX * sin(speed) +
+		mprms->plr.pl_y = mprms->ray.ld_pln_x * sin(speed) +
 				mprms->plr.pl_y * cos(speed);
 	}
 }

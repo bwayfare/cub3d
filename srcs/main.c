@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 07:17:34 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:45:43 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 	ft_get_screen_size(fd, argv, mprms, list);
 	mprms->data.mlx = mlx_init();
 	init_texture(mprms);
-	mprms->ray.ZBuffer = (double *)malloc(mprms->res.x * sizeof(double));
+	mprms->ray.z_buffer = (double *)malloc(mprms->res.x * sizeof(double));
 	mprms->colors.floor.trns = create_trgb(mprms->colors.floor.r,
 	mprms->colors.floor.g, mprms->colors.floor.b);
 	mprms->colors.ceil.trns = create_trgb(mprms->colors.ceil.r,
@@ -115,6 +115,8 @@ int		main(int argc, char **argv)
 	list = NULL;
 	if ((mprms.argc = argc) == 2 || argc == 3)
 		start_create_param(&fd, argv, &mprms, &list);
+	else
+		put_rtfm("Error\nNeed 2 or 3 arguments\n");
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
 	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
 	mlx_hook(mprms.data.win, 17, 0, &ft_exit, &mprms);

@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:15:08 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/04/22 08:13:49 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/23 01:04:26 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB_CUB3D_H
@@ -25,17 +25,9 @@
 
 # define W mprms->res.x
 # define H mprms->res.y
-# define WW mprms.res.x
-# define HH mprms.res.y
-
-# define WORLDMAP mprms.map.map
 # define WWORLDMAP mprms->map.map
-# define SCREENWIDTH 640
-# define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-# define MAPWIDTH 24
-# define MAPHEIGHT 24
 
 typedef struct		s_data
 {
@@ -168,55 +160,52 @@ typedef struct		s_player
 
 typedef struct		s_ray
 {
-	double			cam_x; // = 2 * x / (double)w - 1; //x-coordinate in camera space
-	double			rayDirX; // = dirX + planeX*cam_x;
-	double			rayDirY; // = dirY + planeY*cam_x;
-	int				mapX; // = int(posX);
-	int				mapY; // = int(posY);
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX; // = std::abs(1 / rayDirX);
-	double			deltaDistY; // = std::abs(1 / rayDirY);
-	double			perpWallDist;
-	int				stepX;
-	int				stepY;
+	double			cam_x;
+	double			r_dir_x;
+	double			r_dir_y;
+	int				mp_x;
+	int				mp_y;
+	double			sd_dst_x;
+	double			sd_dts_y;
+	double			dlt_dst_x;
+	double			dlt_dst_y;
+	double			prp_wall_dst;
+	int				stp_x;
+	int				stp_y;
 	unsigned int	*color;
-	int				hit; // = 0; //was there a wall hit?
-	int				side; //was a NS or a EW wall hit?
-	int				lineHeight; // = (int)(h / perpWallDist);
-	int				drawStart; // = -lineHeight / 2 + h / 2;
-	int				drawEnd; // = lineHeight / 2 + h / 2;
-	int				texNum; // = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
-	double			wallX; //where exactly the wall was hit
-	int				texX; // = int(wallX * double(texWidth));
-	double			step; // = 1.0 * texHeight / lineHeight;
-	double			texPos; // = (drawStart - h / 2 + lineHeight / 2) * step;
-	int				texY; // = (int)texPos & (texHeight - 1);
-	double			frameTime; //= (time - oldTime) / 1000.0; //frametime is the time this frame has taken, in seconds
-	double			moveSpeed; // = frameTime * 5.0; //the constant value is in squares/second
-	double			rotSpeed; // = frameTime * 3.0; //the constant value is in radians/second
-	double			oldDirX; // = dirX;
-	double			oldPlaneX; // = planeX;
-	double			*ZBuffer;
+	int				hit;
+	int				side;
+	int				line_hght;
+	int				drw_start;
+	int				drw_end;
+	int				tx_num;
+	double			wll_x;
+	int				tx_x;
+	double			step;
+	double			tx_pos;
+	int				tx_y;
+	double			ld_dr_x;
+	double			ld_pln_x;
+	double			*z_buffer;
 }					t_ray;
 
 typedef struct		s_draw_spr
 {
-	double			spriteX;
-	double			spriteY;
-	double			invDet;
-	double			transformX;
-	double			transformY;
-	int				spriteScreenX;
-	int				spriteHeight;
-	int				drawStartY;
-	int				drawEndY;
-	int				spriteWidth;
-	int				drawStartX;
-	int				drawEndX;
-	int				texX;
+	double			sprt_x;
+	double			sprt_y;
+	double			nv_det;
+	double			transf_x;
+	double			transf_y;
+	int				sprt_scrn_x;
+	int				sprt_hght;
+	int				drw_strt_y;
+	int				drw_end_y;
+	int				sprt_wdth;
+	int				drw_strt_x;
+	int				drw_end_x;
+	int				tx_x;
 	int				d;
-	int				texY;
+	int				tx_y;
 	unsigned int	*color;
 }					t_draw_spr;
 
@@ -283,5 +272,6 @@ void				draw_spr_param_init_2(t_mprms *mprms);
 void				circle_drap_spr(t_mprms *mprms, int stripe);
 void				draw_spr(t_mprms *mprms);
 void				screenshot(t_mprms *mprms);
+int					ft_exit(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 00:53:11 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/02/28 20:17:05 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:45:43 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
-int					ft_exit();
 
 #endif
