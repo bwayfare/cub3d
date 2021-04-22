@@ -117,6 +117,7 @@ int		main(int argc, char **argv)
 		start_create_param(&fd, argv, &mprms, &list);
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
 	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
+	mlx_hook(mprms.data.win, 17, 0, &ft_exit, &mprms);
 	mlx_loop_hook(mprms.data.mlx, &main_move_plr, &mprms);
 	mlx_loop(mprms.data.mlx);
 	free_list(&list);

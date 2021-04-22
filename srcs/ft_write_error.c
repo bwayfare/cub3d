@@ -17,3 +17,8 @@ int		put_rtfm(char *str)
 	write(1, str, ft_strlen(str));
 	exit(0);
 }
+
+int		ft_exit()
+{
+	exit (0);
+}
