@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main1.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:17:34 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
+void	f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 {
 	int res;
 
@@ -23,7 +35,7 @@ void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 	}
 }
 
-int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
+int		ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
 {
 	char		*line;
 
@@ -31,7 +43,7 @@ int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
 	if (!(*fd = open(argv, O_RDONLY)))
 		return (0);
 	while (mprms->check && ft_check_full(mprms) != 8 &&
-		   get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
+	get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
 		free_line(&line);
 	if (line)
 		free_line(&line);
@@ -40,9 +52,14 @@ int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
 	return (1);
 }
 
-void 	ft_get_screen_size(t_mprms *mprms)
+void	ft_get_screen_size(int *fd, char **argv, t_mprms *mprms, t_list **list)
 {
-	mlx_get_screen_size(mprms->data.mlx, &(mprms->res.screen_x), &(mprms->res.screen_y));
+	if (mprms->screenshot == 0 && mprms->argc == 2)
+		ft_creat_mprms(fd, argv[1], mprms, list);
+	else
+		ft_creat_mprms(fd, argv[2], mprms, list);
+	mlx_get_screen_size(mprms->data.mlx, &(mprms->res.screen_x),
+	&(mprms->res.screen_y));
 	if (mprms->screenshot == 0)
 	{
 		if (mprms->res.screen_x < mprms->res.x)
@@ -59,7 +76,7 @@ void 	ft_get_screen_size(t_mprms *mprms)
 	}
 }
 
-void start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
+void	start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 {
 	if (mprms->argc == 3 && argv[1][0] == '-' && argv[1][1] == '-' &&
 		argv[1][2] == 's' && argv[1][3] == 'a' && argv[1][4] == 'v' &&
@@ -67,38 +84,37 @@ void start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 		mprms->screenshot = 1;
 	else
 		mprms->screenshot = 0;
-	if (mprms->screenshot == 0 && mprms->argc == 2)
-		ft_creat_mprms(fd, argv[1], mprms, list);
-	else
-		ft_creat_mprms(fd, argv[2], mprms, list);
-	ft_get_screen_size(mprms);
+	ft_get_screen_size(fd, argv, mprms, list);
 	mprms->data.mlx = mlx_init();
 	init_texture(mprms);
-	mprms->ray.ZBuffer = (double *) malloc(mprms->res.x * sizeof (double));
-	mprms->colors.floor.trns = create_trgb(mprms->colors.floor.r, mprms->colors.floor.g, mprms->colors.floor.b);
-	mprms->colors.ceil.trns = create_trgb(mprms->colors.ceil.r, mprms->colors.ceil.g, mprms->colors.ceil.b);
+	mprms->ray.ZBuffer = (double *)malloc(mprms->res.x * sizeof(double));
+	mprms->colors.floor.trns = create_trgb(mprms->colors.floor.r,
+	mprms->colors.floor.g, mprms->colors.floor.b);
+	mprms->colors.ceil.trns = create_trgb(mprms->colors.ceil.r,
+	mprms->colors.ceil.g, mprms->colors.ceil.b);
 	if (mprms->screenshot == 0)
-		mprms->data.win = mlx_new_window(mprms->data.mlx, (int)W, (int)H, "cub3d");
+		mprms->data.win = mlx_new_window(mprms->data.mlx,
+		(int)W, (int)H, "cub3d");
 	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
-	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
+	mprms->data.addr = mlx_get_data_addr(mprms->data.img,
+	&mprms->data.bits_per_pixel, &mprms->data.line_length,
+	&mprms->data.endian);
 	turn_player(mprms);
 	draw(mprms, -1);
 	if (mprms->screenshot == 1)
-		exit (0);
+		exit(0);
 }
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	int fd;
-	t_mprms mprms;
-	int		x;
-	t_list *list;
+	int		fd;
+	t_mprms	mprms;
+	t_list	*list;
 
 	fd = 0;
 	list = NULL;
 	if ((mprms.argc = argc) == 2 || argc == 3)
 		start_create_param(&fd, argv, &mprms, &list);
-
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
 	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
 	mlx_loop_hook(mprms.data.mlx, &main_move_plr, &mprms);

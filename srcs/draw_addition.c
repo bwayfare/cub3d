@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_addition.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 06:56:58 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-void            my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
+void			my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color)
 {
-	char    *dst;
+	char	*dst;
 
 	dst = mprms->data.addr + (y * mprms->data.line_length +
 			x * (mprms->data.bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
-void 		draw_floor_ceil(t_mprms *mprms)
+void			draw_floor_ceil(t_mprms *mprms)
 {
 	int x;
 	int y;
@@ -32,16 +44,16 @@ void 		draw_floor_ceil(t_mprms *mprms)
 	}
 }
 
-int		create_trgb(int r, int g, int b)
+int				create_trgb(int r, int g, int b)
 {
-	return(r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
 
-void sort_sprites(t_spr *spr, int count)
+void			sort_sprites(t_spr *spr, int count)
 {
-	t_spr tmp;
-	int i;
-	int j;
+	t_spr	tmp;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < count - 1)

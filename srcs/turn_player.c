@@ -1,6 +1,18 @@
-# include "../include/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turn_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:22:28 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void 	turn_player_2(t_mprms *mprms)
+#include "../include/cub3d.h"
+
+void	turn_player_2(t_mprms *mprms)
 {
 	if (mprms->plr.pl == 'S')
 	{
@@ -18,7 +30,7 @@ void 	turn_player_2(t_mprms *mprms)
 	}
 }
 
-void 	turn_player(t_mprms *mprms)
+void	turn_player(t_mprms *mprms)
 {
 	if (mprms->plr.pl == 'E')
 	{

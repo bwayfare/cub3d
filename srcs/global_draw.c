@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   global_draw.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:10:13 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 int		draw(t_mprms *mprms, int x)
@@ -27,12 +39,15 @@ int		draw(t_mprms *mprms, int x)
 	return (0);
 }
 
-void 	draw_spr(t_mprms *mprms)
+void	draw_spr(t_mprms *mprms)
 {
+	int stripe;
+	int i;
+
+	i = 0;
 	dist_sort(mprms);
-	for (int i = 0; i < mprms->spr.count; i++)
+	while (i < mprms->spr.count)
 	{
-		int stripe;
 		draw_spr_param_init(mprms, i);
 		draw_spr_param_init_2(mprms);
 		stripe = mprms->draw_spr.drawStartX;
@@ -41,5 +56,6 @@ void 	draw_spr(t_mprms *mprms)
 			circle_drap_spr(mprms, stripe);
 			stripe++;
 		}
+		i++;
 	}
 }

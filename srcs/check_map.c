@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:13 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/31 22:20:44 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	ft_ch_elem_if(t_mprms *mprms, char tmp)
 						if (mprms->plr.pl == '\0')
 							mprms->plr.pl = tmp;
 						else
-							mprms->check = put_rtfm(EUPinM);
+							mprms->check = put_rtfm(EUPINM);
 					}
 					else
-						mprms->check = put_rtfm(EUPinM);
+						mprms->check = put_rtfm(EUPINM);
 				}
 }
 
@@ -54,7 +54,7 @@ int		ft_ch_elem_map(t_mprms *mprms)
 	if (mprms->plr.pl == '\0')
 		mprms->check = put_rtfm(ENP);
 	if (mprms->spr.count != 0)
-		if (!(mprms->spr.spr = (t_spr *) malloc(mprms->spr.count *
+		if (!(mprms->spr.spr = (t_spr *)malloc(mprms->spr.count *
 				sizeof(t_spr))))
 			put_rtfm(EIM);
 	return (mprms->check);
@@ -88,10 +88,10 @@ void	ch_wall_if(t_mprms *mprms, char **arr, int i, int j)
 		mprms->check = 0;
 }
 
-void 	get_spr(t_mprms *mprms, int i, int j, int *k)
+void	get_spr(t_mprms *mprms, int i, int j, int *k)
 {
-	if (mprms->map.map[i][j] == 'N' || mprms->map.map[i][j] == 'E' ||
-		mprms->map.map[i][j] == 'S'	|| mprms->map.map[i][j] == 'W')
+	if (mprms->map.map[i][j] == 'N' || mprms->map.map[i][j] == 'E'
+	|| mprms->map.map[i][j] == 'S' || mprms->map.map[i][j] == 'W')
 	{
 		mprms->plr.x = i + 0.5;
 		mprms->plr.y = j + 0.5;
@@ -108,7 +108,7 @@ int		ch_wall(t_mprms *mprms, char **arr)
 {
 	int		i;
 	int		j;
-	int 	k;
+	int		k;
 
 	i = 0;
 	k = 0;
@@ -125,6 +125,6 @@ int		ch_wall(t_mprms *mprms, char **arr)
 		i++;
 	}
 	if (mprms->check == 0)
-		put_rtfm(EIWinM);
+		put_rtfm(EIWINM);
 	return (mprms->check);
 }

@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:36 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/27 22:43:35 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		prs_pth_third(t_mprms *mprms, char *line)
 			mprms->check = mprms->full.sprt;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm(EIParam)));
+			return (-1 + (mprms->check = put_rtfm(EIPARAM)));
 		return (mprms->check);
 	}
 	return (-1);
@@ -90,7 +90,7 @@ int		prs_pth_second(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.we;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm(EIParam)));
+			return (-1 + (mprms->check = put_rtfm(EIPARAM)));
 		return (1);
 	}
 	else if (*st == 'E' && *(st + 1) == 'A')
@@ -102,7 +102,7 @@ int		prs_pth_second(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.ea;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm(EIParam)));
+			return (-1 + (mprms->check = put_rtfm(EIPARAM)));
 		return (1);
 	}
 	return (prs_pth_third(mprms, st));
@@ -119,7 +119,7 @@ int		prs_pth(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.no;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm(EIParam)));
+			return (-1 + (mprms->check = put_rtfm(EIPARAM)));
 		return (1);
 	}
 	else if (*st == 'S' && *(st + 1) == 'O')
@@ -131,7 +131,7 @@ int		prs_pth(t_mprms *mprms, char *st)
 			mprms->check = mprms->full.so;
 		}
 		else
-			return (-1 + (mprms->check = put_rtfm(EIParam)));
+			return (-1 + (mprms->check = put_rtfm(EIPARAM)));
 		return (mprms->check);
 	}
 	return (prs_pth_second(mprms, st));

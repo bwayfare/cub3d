@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_wall.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:02:29 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:13:49 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-void 	wall_draw_init(t_mprms *mprms, int x)
+void	wall_draw_init(t_mprms *mprms, int x)
 {
-	mprms->ray.cameraX = 2 * x / (double)W - 1;
-	mprms->ray.rayDirX = mprms->plr.dir_x + mprms->plr.pl_x * mprms->ray.cameraX;
-	mprms->ray.rayDirY = mprms->plr.dir_y + mprms->plr.pl_y * mprms->ray.cameraX;
+	mprms->ray.cam_x = 2 * x / (double)W - 1;
+	mprms->ray.rayDirX = mprms->plr.dir_x + mprms->plr.pl_x *
+			mprms->ray.cam_x;
+	mprms->ray.rayDirY = mprms->plr.dir_y + mprms->plr.pl_y *
+			mprms->ray.cam_x;
 	mprms->ray.mapX = (int)mprms->plr.x;
 	mprms->ray.mapY = (int)mprms->plr.y;
 	if (mprms->ray.rayDirY == 0)
@@ -23,9 +37,9 @@ void 	wall_draw_init(t_mprms *mprms, int x)
 	mprms->ray.sideDistX = 0;
 }
 
-void 	wall_draw_init_2(t_mprms *mprms, int x)
+void	wall_draw_init_2(t_mprms *mprms, int x)
 {
-	if(mprms->ray.rayDirX < 0)
+	if (mprms->ray.rayDirX < 0)
 	{
 		mprms->ray.stepX = -1;
 		mprms->ray.sideDistX = (mprms->plr.x - mprms->ray.mapX) *
@@ -37,7 +51,7 @@ void 	wall_draw_init_2(t_mprms *mprms, int x)
 		mprms->ray.sideDistX = (mprms->ray.mapX + 1.0 - mprms->plr.x) *
 				mprms->ray.deltaDistX;
 	}
-	if(mprms->ray.rayDirY < 0)
+	if (mprms->ray.rayDirY < 0)
 	{
 		mprms->ray.stepY = -1;
 		mprms->ray.sideDistY = (mprms->plr.y - mprms->ray.mapY) *
@@ -51,7 +65,7 @@ void 	wall_draw_init_2(t_mprms *mprms, int x)
 	}
 }
 
-void 	while_ray_hit(t_mprms *mprms)
+void	while_ray_hit(t_mprms *mprms)
 {
 	while (mprms->ray.hit == 0)
 	{
@@ -72,7 +86,7 @@ void 	while_ray_hit(t_mprms *mprms)
 	}
 }
 
-void 	calculate_draw_wall(t_mprms *mprms)
+void	calculate_draw_wall(t_mprms *mprms)
 {
 	if (mprms->ray.side == 0)
 		mprms->ray.perpWallDist = (mprms->ray.mapX - mprms->plr.x +
@@ -82,33 +96,35 @@ void 	calculate_draw_wall(t_mprms *mprms)
 				(1.0 - mprms->ray.stepY) / 2) / mprms->ray.rayDirY;
 	mprms->ray.lineHeight = (int)(H / mprms->ray.perpWallDist);
 	mprms->ray.drawStart = -mprms->ray.lineHeight / 2 + H / 2;
-	if(mprms->ray.drawStart < 0) mprms->ray.drawStart = 0;
+	if (mprms->ray.drawStart < 0)
+		mprms->ray.drawStart = 0;
 	mprms->ray.drawEnd = mprms->ray.lineHeight / 2 + H / 2;
-	if(mprms->ray.drawEnd >= H) mprms->ray.drawEnd = H - 1;
+	if (mprms->ray.drawEnd >= H)
+		mprms->ray.drawEnd = H - 1;
 	mprms->ray.texNum = WWORLDMAP[mprms->ray.mapX][mprms->ray.mapY] - 1;
-
-	if(mprms->ray.side == 0)
+	if (mprms->ray.side == 0)
 		mprms->ray.wallX = mprms->plr.y + mprms->ray.perpWallDist *
 				mprms->ray.rayDirY;
 	else
 		mprms->ray.wallX = mprms->plr.x + mprms->ray.perpWallDist *
 				mprms->ray.rayDirX;
 	mprms->ray.wallX -= floor((mprms->ray.wallX));
-	mprms->ray.texX = (int)(mprms->ray.wallX * (double)texWidth);
-	if(mprms->ray.side == 0 && mprms->ray.rayDirX > 0)
-		mprms->ray.texX = texWidth - mprms->ray.texX - 1;
-	if(mprms->ray.side == 1 && mprms->ray.rayDirY < 0)
-		mprms->ray.texX = texWidth - mprms->ray.texX - 1;
+	mprms->ray.texX = (int)(mprms->ray.wallX * (double)TEXWIDTH);
+	if (mprms->ray.side == 0 && mprms->ray.rayDirX > 0)
+		mprms->ray.texX = TEXWIDTH - mprms->ray.texX - 1;
 }
 
-void 	circle_draw(t_mprms *mprms, int x, int y)
+void	circle_draw(t_mprms *mprms, int x, int y)
 {
-	mprms->ray.step = 1.0 * texHeight / mprms->ray.lineHeight;
+	t_tex tex;
+
+	if (mprms->ray.side == 1 && mprms->ray.rayDirY < 0)
+		mprms->ray.texX = TEXWIDTH - mprms->ray.texX - 1;
+	mprms->ray.step = 1.0 * TEXHEIGHT / mprms->ray.lineHeight;
 	mprms->ray.texPos = (mprms->ray.drawStart - H / 2.0 +
 			mprms->ray.lineHeight / 2.0) * mprms->ray.step;
-	while(y < mprms->ray.drawEnd)
+	while (y < mprms->ray.drawEnd)
 	{
-		t_tex tex;
 		if (mprms->ray.side == 0 && mprms->ray.stepX > 0)
 			tex = mprms->tex.east;
 		else if (mprms->ray.side == 0 && mprms->ray.stepX < 0)
@@ -117,10 +133,10 @@ void 	circle_draw(t_mprms *mprms, int x, int y)
 			tex = mprms->tex.south;
 		else
 			tex = mprms->tex.north;
-		mprms->ray.texY = (int)mprms->ray.texPos & (texHeight - 1);
+		mprms->ray.texY = (int)mprms->ray.texPos & (TEXHEIGHT - 1);
 		mprms->ray.texPos += mprms->ray.step;
 		mprms->ray.color = ft_pixel_take(tex, mprms->ray.texX,
-								   mprms->ray.texY);
+		mprms->ray.texY);
 		my_mlx_pixel_put(mprms, x, y, (int)(*mprms->ray.color));
 		y++;
 	}

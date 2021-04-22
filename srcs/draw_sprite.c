@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_sprite.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:00:10 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-void 	dist_sort(t_mprms *mprms)
+void	dist_sort(t_mprms *mprms)
 {
 	int i;
 
@@ -10,12 +22,12 @@ void 	dist_sort(t_mprms *mprms)
 		mprms->spr.spr[i].dist = ((mprms->plr.x - mprms->spr.spr[i].x) *
 				(mprms->plr.x - mprms->spr.spr[i].x) + (mprms->plr.y -
 				mprms->spr.spr[i].y) * (mprms->plr.y - mprms->spr.spr[i].y));
-	i++;
+		i++;
 	}
 	sort_sprites(mprms->spr.spr, mprms->spr.count);
 }
 
-void 	draw_spr_param_init(t_mprms *mprms, int i)
+void	draw_spr_param_init(t_mprms *mprms, int i)
 {
 	mprms->draw_spr.spriteX = mprms->spr.spr[i].x - mprms->plr.x + 0.5;
 	mprms->draw_spr.spriteY = mprms->spr.spr[i].y - mprms->plr.y + 0.5;
@@ -39,7 +51,7 @@ void 	draw_spr_param_init(t_mprms *mprms, int i)
 		mprms->draw_spr.drawEndY = H - 1;
 }
 
-void 	draw_spr_param_init_2(t_mprms *mprms)
+void	draw_spr_param_init_2(t_mprms *mprms)
 {
 	mprms->draw_spr.spriteWidth = abs((int)(H / (mprms->draw_spr.transformY)));
 	mprms->draw_spr.drawStartX = -mprms->draw_spr.spriteWidth /
@@ -52,12 +64,13 @@ void 	draw_spr_param_init_2(t_mprms *mprms)
 		mprms->draw_spr.drawEndX = W - 1;
 }
 
-void 	circle_drap_spr(t_mprms *mprms, int stripe)
+void	circle_drap_spr(t_mprms *mprms, int stripe)
 {
 	int y;
+
 	mprms->draw_spr.texX = (int)(256 * (stripe -
 			(-mprms->draw_spr.spriteWidth / 2 +
-			mprms->draw_spr.spriteScreenX)) * texWidth /
+			mprms->draw_spr.spriteScreenX)) * TEXWIDTH /
 					mprms->draw_spr.spriteWidth) / 256;
 	y = mprms->draw_spr.drawStartY;
 	if (mprms->draw_spr.transformY > 0 && stripe > 0 && stripe < W &&
@@ -66,14 +79,14 @@ void 	circle_drap_spr(t_mprms *mprms, int stripe)
 		{
 			mprms->draw_spr.d = (y) * 256 - H * 128 +
 								mprms->draw_spr.spriteHeight * 128;
-			mprms->draw_spr.texY = ((mprms->draw_spr.d * texHeight) /
+			mprms->draw_spr.texY = ((mprms->draw_spr.d * TEXHEIGHT) /
 					mprms->draw_spr.spriteHeight) / 256;
 			mprms->draw_spr.color = ft_pixel_take(mprms->spr.obj,
-										 mprms->draw_spr.texX,
-										 mprms->draw_spr.texY);
+			mprms->draw_spr.texX,
+			mprms->draw_spr.texY);
 			if ((int)(*mprms->draw_spr.color) != 0x000000)
 				my_mlx_pixel_put(mprms, stripe, y,
-					 (int)(*mprms->draw_spr.color));
+				(int)(*mprms->draw_spr.color));
 			y++;
 		}
 }

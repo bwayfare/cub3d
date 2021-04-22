@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   screenshot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 07:21:21 by bwayfare          #+#    #+#             */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-static void head(t_mprms *mprms, int fd, int *num)
+static void		head(t_mprms *mprms, int fd, int *num)
 {
-	unsigned int sz;
-	unsigned char bmp[54];
+	unsigned int	sz;
+	unsigned char	bmp[54];
 
 	*num = (4 - (mprms->res.x * 3) % 4) % 4;
 	sz = 54 + (*num + (mprms->res.x * 3)) * mprms->res.y;
@@ -29,12 +41,12 @@ static void head(t_mprms *mprms, int fd, int *num)
 	write(fd, bmp, 54);
 }
 
-void screenshot(t_mprms *mprms)
+void			screenshot(t_mprms *mprms)
 {
-	int    fd;
-	int    i;
-	int    num;
-	unsigned char bmp[3];
+	int				fd;
+	int				i;
+	int				num;
+	unsigned char	bmp[3];
 
 	bmp[0] = (unsigned char)0;
 	bmp[1] = (unsigned char)0;
@@ -45,7 +57,8 @@ void screenshot(t_mprms *mprms)
 	{
 		i = -1;
 		while (++i < mprms->res.x)
-			write(fd, &((int *)mprms->data.addr)[mprms->res.y * mprms->res.x + i], 3);
+			write(fd, &((int *)mprms->data.addr)[mprms->res.y *
+			mprms->res.x + i], 3);
 		write(fd, bmp, num);
 	}
 	close(fd);

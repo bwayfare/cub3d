@@ -121,9 +121,9 @@ int		draw(t_mprms *mprms)
 	H = 500;
 	while (++x < W)
 	{
-		mprms->ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
-		mprms->ray.rayDirX = mprms->plr.dir_x + mprms->plr.pl_x * mprms->ray.cameraX;
-		mprms->ray.rayDirY = mprms->plr.dir_y + mprms->plr.pl_y * mprms->ray.cameraX;
+		mprms->ray.cam_x = 2 * x / (double)W - 1; //x-coordinate in camera space
+		mprms->ray.r_dr_x = mprms->plr.dir_x + mprms->plr.pl_x * mprms->ray.cam_x;
+		mprms->ray.rayDirY = mprms->plr.dir_y + mprms->plr.pl_y * mprms->ray.cam_x;
 
 		//which box of the map we're in
 		mprms->ray.mapX = (int)mprms->plr.x;
@@ -257,9 +257,9 @@ int main(int argc, char **argv) {
 	draw(&mprms);
 //	while (++x < W)
 //	{
-//		all.ray.cameraX = 2 * x / (double)W - 1; //x-coordinate in camera space
-//		all.ray.rayDirX = all.character.dirX + all.character.planeX*all.ray.cameraX;
-//		all.ray.rayDirY = all.character.dirY + all.character.planeY*all.ray.cameraX;
+//		all.ray.cam_x = 2 * x / (double)W - 1; //x-coordinate in camera space
+//		all.ray.rayDirX = all.character.dirX + all.character.planeX*all.ray.cam_x;
+//		all.ray.rayDirY = all.character.dirY + all.character.planeY*all.ray.cam_x;
 //
 //		//which box of the map we're in
 //		all.ray.mapX = (int)all.character.posX;

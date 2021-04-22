@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:13:23 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/31 20:47:27 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/22 08:10:37 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	struct_init_2(t_mprms *mprms)
 	mprms->plr.dir_x = 0;
 	mprms->plr.dir_y = 0;
 	mprms->pres.up = 0;
-	mprms->pres.down= 0;
+	mprms->pres.down = 0;
 	mprms->pres.right = 0;
 	mprms->pres.left = 0;
 	mprms->pres.turnright = 0;
@@ -106,7 +106,7 @@ void	free_list(t_list **head)
 	}
 }
 
-void 	free_line(char **line)
+void	free_line(char **line)
 {
 	free(*line);
 	*line = NULL;
