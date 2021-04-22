@@ -1,25 +1,5 @@
 #include "../include/cub3d.h"
 
-void print(t_mprms *mprms)
-{
-	printf("screenshot = %d\n", mprms->screenshot);
-	printf("R = %d %d\n", mprms->res.x, mprms->res.y);
-	printf("C = %d %d %d\n", mprms->colors.ceil.r, mprms->colors.ceil.g, mprms->colors.ceil.b);
-	printf("F = %d %d %d\n", mprms->colors.floor.r, mprms->colors.floor.g, mprms->colors.floor.b);
-	printf("S = %s\n", mprms->paths.sprt);
-	printf("SO = %s\n", mprms->paths.so);
-	printf("NO = %s\n", mprms->paths.no);
-	printf("EA = %s\n", mprms->paths.ea);
-	printf("WE = %s\n", mprms->paths.we);
-	printf("check = %d %d %d %d %d %d %d %d = %d\n", mprms->full.res, mprms->full.c_clr, mprms->full.f_clr,
-		   mprms->full.sprt, mprms->full.so, mprms->full.no, mprms->full.ea, mprms->full.we, mprms->check);
-	for(int i = 0; mprms->map.map && mprms->map.map[i]; i++)
-		printf("%s\n", mprms->map.map[i]);
-	printf("size map = %d %d\n", mprms->map.len, mprms->map.size);
-	printf("player position x = %f y = %f\n", mprms->plr.x, mprms->plr.y);
-	printf("screenshot = %d\n", mprms->screenshot);
-}
-
 void f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 {
 	int res;
@@ -57,19 +37,27 @@ int ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
 		free_line(&line);
 	if (mprms->check)
 		f_get_map(&line, list, fd, mprms);
-	print(mprms);
 	return (1);
 }
 
-//void 	ft_get_screen_size(t_mprms *mprms)
-//{
-//	mlx_get_screen_size(mprms->data.mlx, &mprms->res.screen_x, &mprms->res.screen_y);
-//	if (mprms->res.screen_x < mprms->res.x)
-//		mprms->res.x = mprms->res.screen_x;
-//	if (mprms->res.screen_y < mprms->res.y)
-//		mprms->res.y = mprms->res.screen_y;
-//	printf("Width = %d Hight = %d\n", mprms->res.screen_x, mprms->res.screen_y);
-//}
+void 	ft_get_screen_size(t_mprms *mprms)
+{
+	mlx_get_screen_size(mprms->data.mlx, &(mprms->res.screen_x), &(mprms->res.screen_y));
+	if (mprms->screenshot == 0)
+	{
+		if (mprms->res.screen_x < mprms->res.x)
+			mprms->res.x = mprms->res.screen_x;
+		if (mprms->res.screen_y < mprms->res.y)
+			mprms->res.y = mprms->res.screen_y;
+	}
+	else
+	{
+		if (mprms->res.screen_x < mprms->res.x)
+			mprms->res.x = 10000;
+		if (mprms->res.screen_y < mprms->res.y)
+			mprms->res.y = 10000;
+	}
+}
 
 void start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 {
@@ -83,26 +71,20 @@ void start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 		ft_creat_mprms(fd, argv[1], mprms, list);
 	else
 		ft_creat_mprms(fd, argv[2], mprms, list);
+	ft_get_screen_size(mprms);
 	mprms->data.mlx = mlx_init();
 	init_texture(mprms);
 	mprms->ray.ZBuffer = (double *) malloc(mprms->res.x * sizeof (double));
 	mprms->colors.floor.trns = create_trgb(mprms->colors.floor.r, mprms->colors.floor.g, mprms->colors.floor.b);
 	mprms->colors.ceil.trns = create_trgb(mprms->colors.ceil.r, mprms->colors.ceil.g, mprms->colors.ceil.b);
-	mprms->data.win = mlx_new_window(mprms->data.mlx, (int)W, (int)H, "cub3d");
+	if (mprms->screenshot == 0)
+		mprms->data.win = mlx_new_window(mprms->data.mlx, (int)W, (int)H, "cub3d");
 	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img, &mprms->data.bits_per_pixel, &mprms->data.line_length, &mprms->data.endian);
 	turn_player(mprms);
-	draw(mprms);
-//	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win,
-//							mprms->data.img, 0, 0);
-//	mlx_destroy_image(mprms->data.mlx, mprms->data.img);
-//	mprms->data.addr = NULL;
-//	mprms->data.img = NULL;
+	draw(mprms, -1);
 	if (mprms->screenshot == 1)
-	{
-		ft_make_bmp(mprms);
-		exit(0);
-	}
+		exit (0);
 }
 
 int main(int argc, char **argv)

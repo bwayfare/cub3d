@@ -1,10 +1,8 @@
 #include "../include/cub3d.h"
 
-int		draw(t_mprms *mprms)
+int		draw(t_mprms *mprms, int x)
 {
-	int x;
-
-	x = -1;
+	draw_floor_ceil(mprms);
 	while (++x < W)
 	{
 		wall_draw_init(mprms, x);
@@ -15,6 +13,8 @@ int		draw(t_mprms *mprms)
 	}
 	if (mprms->spr.count)
 		draw_spr(mprms);
+	if (mprms->screenshot == 1)
+		screenshot(mprms);
 	mlx_put_image_to_window(mprms->data.mlx, mprms->data.win,
 							mprms->data.img, 0, 0);
 	mlx_destroy_image(mprms->data.mlx, mprms->data.img);

@@ -17,11 +17,11 @@
 # include <unistd.h>
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include <stdio.h>
 # include "define_error.h"
 
-//# include "../minilibx/mlx.h"
-# include "../mlx/mlx.h"
+# include "../minilibx/mlx.h"
+# include "../minilibx_mms_20200219/mlx1.h"
+//# include "../mlx/mlx.h"
 # include <math.h>
 
 # define W mprms->res.x
@@ -265,10 +265,10 @@ int					create_trgb(int r, int g, int b);
 void				draw_floor_ceil(t_mprms *mprms);
 void				my_mlx_pixel_put(t_mprms *mprms, int x, int y, int color);
 unsigned int		*ft_pixel_take(t_tex tex, int x, int y);
-int move_left(t_mprms *mprms, double speed);
-int move_right(t_mprms *mprms, double speed);
+void move_left(t_mprms *mprms, double speed);
+void move_right(t_mprms *mprms, double speed);
 int 	main_move_plr(t_mprms *mprms);
-int		draw(t_mprms *mprms);
+int		draw(t_mprms *mprms, int x);
 void 	wall_draw_init(t_mprms *mprms, int x);
 void 	wall_draw_init_2(t_mprms *mprms, int x);
 void 	while_ray_hit(t_mprms *mprms);
@@ -279,8 +279,6 @@ void 	draw_spr_param_init(t_mprms *mprms, int i);
 void 	draw_spr_param_init_2(t_mprms *mprms);
 void 	circle_drap_spr(t_mprms *mprms, int stripe);
 void 	draw_spr(t_mprms *mprms);
-void	ft_make_bmp(t_mprms *mprms);
-void	ft_create_header(int fd, int bmp_size);
-void	ft_create_info(t_mprms *mprms, int fd);
+void screenshot(t_mprms *mprms);
 
 #endif

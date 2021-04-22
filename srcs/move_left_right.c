@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-int move_left(t_mprms *mprms, double speed)
+void move_left(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.turnleft)
 	{
@@ -17,7 +17,7 @@ int move_left(t_mprms *mprms, double speed)
 	}
 }
 
-int move_right(t_mprms *mprms, double speed)
+void move_right(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.turnright)
 	{

@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-int 	move_front(t_mprms *mprms, double speed)
+void 	move_front(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.up)
 	{
@@ -17,7 +17,7 @@ int 	move_front(t_mprms *mprms, double speed)
 	}
 }
 
-int 	move_back(t_mprms *mprms, double speed)
+void 	move_back(t_mprms *mprms, double speed)
 {
 	if(mprms->pres.down)
 	{
@@ -34,7 +34,7 @@ int 	move_back(t_mprms *mprms, double speed)
 	}
 }
 
-int 	turn_right(t_mprms *mprms, double speed)
+void 	turn_right(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.right)
 	{
@@ -51,7 +51,7 @@ int 	turn_right(t_mprms *mprms, double speed)
 	}
 }
 
-int 	turn_left(t_mprms *mprms, double speed)
+void 	turn_left(t_mprms *mprms, double speed)
 {
 	if (mprms->pres.left)
 	{
@@ -81,6 +81,6 @@ int 	main_move_plr(t_mprms *mprms)
 	move_left(mprms, speed);
 	draw_floor_ceil(mprms);
 	if (!mprms->pres.esc)
-		draw(mprms);
+		draw(mprms, -1);
 	return (1);
 }
