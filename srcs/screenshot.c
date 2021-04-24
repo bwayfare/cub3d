@@ -51,7 +51,7 @@ void			screenshot(t_mprms *mprms)
 	bmp[0] = (unsigned char)0;
 	bmp[1] = (unsigned char)0;
 	bmp[2] = (unsigned char)0;
-	fd = open("screen.bmp", O_RDWR | O_CREAT, S_IRWXU, S_IRWXG);
+	fd = open("screenshot.bmp", O_RDWR | O_CREAT, S_IRWXU, S_IRWXG);
 	head(mprms, fd, &num);
 	while (--mprms->res.y >= 0)
 	{

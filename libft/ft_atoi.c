@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 00:48:14 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/03/28 23:51:43 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/24 14:15:27 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char		*ft_znak(char **str, int *znak)
 	return (*str);
 }
 
-void			ft_getres(char **str, long int *res)
+void		ft_getres(char **str, long int *res)
 {
 	while (**str && **str >= '0' && **str <= '9')
 	{
@@ -42,10 +42,10 @@ void			ft_getres(char **str, long int *res)
 	}
 }
 
-int				ft_atoi(char **str)
+int			ft_atoi(char **str)
 {
-	long		res;
-	int			znak;
+	long	res;
+	int		znak;
 
 	res = 0;
 	znak = 1;

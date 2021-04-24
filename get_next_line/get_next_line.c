@@ -6,7 +6,7 @@
 /*   By: bwayfare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 03:26:35 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/02/28 20:17:05 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/24 14:16:07 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int		get_next_line(int fd, char **line)
 	{
 		tmp = buf;
 		*line = ft_substr_gnl(buf, 0, len);
-		buf = ft_substr_gnl(tmp, len + 1, ft_strlen_gnl(buf) - ft_strlen_gnl(*line));
+		buf = ft_substr_gnl(tmp, len + 1,
+				ft_strlen_gnl(buf) - ft_strlen_gnl(*line));
 		free(tmp);
 		return (1);
 	}

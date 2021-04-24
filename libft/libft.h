@@ -6,7 +6,7 @@
 /*   By: bwayfare <bwayfare@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 00:53:11 by bwayfare          #+#    #+#             */
-/*   Updated: 2021/04/23 00:45:43 by bwayfare         ###   ########.fr       */
+/*   Updated: 2021/04/24 14:14:42 by bwayfare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char				*ft_strchr(const char *str, int ch);
 char				*ft_strrchr(const char *str, int ch);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *lit, size_t len);
-int 				ft_atoi(char **str);
+int					ft_atoi(char **str);
 int					ft_isalpha(int ch);
 int					ft_isdigit(int ch);
 int					ft_isalnum(int ch);

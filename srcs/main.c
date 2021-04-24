@@ -78,13 +78,12 @@ void	ft_get_screen_size(int *fd, char **argv, t_mprms *mprms, t_list **list)
 
 void	start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 {
-	if (mprms->argc == 3 && argv[1][0] == '-' && argv[1][1] == '-' &&
-		argv[1][2] == 's' && argv[1][3] == 'a' && argv[1][4] == 'v' &&
-		argv[1][5] == 'e' && !argv[1][6])
+	if (mprms->argc == 3)
 		mprms->screenshot = 1;
 	else
 		mprms->screenshot = 0;
 	ft_get_screen_size(fd, argv, mprms, list);
+	turn_player(mprms);
 	mprms->data.mlx = mlx_init();
 	init_texture(mprms);
 	mprms->ray.z_buffer = (double *)malloc(mprms->res.x * sizeof(double));
@@ -94,7 +93,7 @@ void	start_create_param(int *fd, char **argv, t_mprms *mprms, t_list **list)
 	mprms->colors.ceil.g, mprms->colors.ceil.b);
 	if (mprms->screenshot == 0)
 		mprms->data.win = mlx_new_window(mprms->data.mlx,
-		(int)W, (int)H, "cub3d");
+		(int)W, (int)H, "cub3D");
 	mprms->data.img = mlx_new_image(mprms->data.mlx, (int)W, (int)H);
 	mprms->data.addr = mlx_get_data_addr(mprms->data.img,
 	&mprms->data.bits_per_pixel, &mprms->data.line_length,
@@ -113,10 +112,12 @@ int		main(int argc, char **argv)
 
 	fd = 0;
 	list = NULL;
-	if ((mprms.argc = argc) == 2 || argc == 3)
+	if ((mprms.argc = argc) == 2 || (argc == 3 && argv[1][0] == '-' &&
+	argv[1][1] == '-' && argv[1][2] == 's' && argv[1][3] == 'a' &&
+	argv[1][4] == 'v' && argv[1][5] == 'e' && !argv[1][6]))
 		start_create_param(&fd, argv, &mprms, &list);
 	else
-		put_rtfm("Error\nNeed 2 or 3 arguments\n");
+		put_rtfm("Error\nInvalid arguments\n");
 	mlx_hook(mprms.data.win, 2, (1L << 0), &key_press, &mprms);
 	mlx_hook(mprms.data.win, 3, (1L << 1), &key_release, &mprms);
 	mlx_hook(mprms.data.win, 17, 0, &ft_exit, &mprms);
