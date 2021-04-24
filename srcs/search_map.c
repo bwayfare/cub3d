@@ -14,6 +14,8 @@
 
 int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
 {
+	if (*tmp == '\0' && (*res == 3))
+		put_rtfm(EIMORDP);
 	while (tmp && *tmp == 32)
 		tmp++;
 	if ((*tmp == '1' || *tmp == '\0') && *res != 2)
@@ -21,7 +23,7 @@ int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
 		if (*tmp == '\0')
 		{
 			if (*res == 3)
-				*res = 0;
+				*res = 4;
 			if (*res == 1)
 				*res = 3;
 			return (1);
@@ -30,11 +32,7 @@ int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
 		return (0);
 	}
 	else
-	{
-		*res = 2;
-		mprms->check = 0;
-	}
-	return (-1 + (mprms->check = put_rtfm(EIMORDP)));
+		return (-1 + (mprms->check = put_rtfm(EIMORDP)));
 }
 
 int		size_map(t_list *list, t_mprms *mprms)

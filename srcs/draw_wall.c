@@ -100,7 +100,7 @@ void	calculate_draw_wall(t_mprms *mprms)
 		mprms->ray.drw_start = 0;
 	mprms->ray.drw_end = mprms->ray.line_hght / 2 + H / 2;
 	if (mprms->ray.drw_end >= H)
-		mprms->ray.drw_end = H - 1;
+		mprms->ray.drw_end = H;
 	mprms->ray.tx_num = WWORLDMAP[mprms->ray.mp_x][mprms->ray.mp_y] - 1;
 	if (mprms->ray.side == 0)
 		mprms->ray.wll_x = mprms->plr.y + mprms->ray.prp_wall_dst *

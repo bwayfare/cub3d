@@ -18,7 +18,7 @@
 # define EIFC "Error\nInvalid floor color\n"
 # define EIP "Error\nInvalid path\n"
 # define EIPARAM "Error\nInvalid param\n"
-# define EIMORDP "Error\nInvalid map or double param\n"
+# define EIMORDP "Error\nInvalid map\n"
 # define EIM "Error\nInvalid malloc\n"
 # define EIWINM "Error\nInvalid wall in map\n"
 # define EUPINM "Error\nUndefined parameters in the map\n"

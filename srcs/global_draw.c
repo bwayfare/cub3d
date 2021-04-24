@@ -56,6 +56,8 @@ void	draw_spr(t_mprms *mprms)
 			circle_drap_spr(mprms, stripe);
 			stripe++;
 		}
+		if (stripe == mprms->draw_spr.drw_end_x)
+			circle_drap_spr(mprms, stripe);
 		i++;
 	}
 }

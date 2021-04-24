@@ -45,12 +45,12 @@ void	draw_spr_param_init(t_mprms *mprms, int i)
 		mprms->draw_spr.drw_strt_y = 0;
 	mprms->draw_spr.drw_end_y = mprms->draw_spr.sprt_hght / 2 + H / 2;
 	if (mprms->draw_spr.drw_end_y >= H)
-		mprms->draw_spr.drw_end_y = H - 1;
+		mprms->draw_spr.drw_end_y = H;
 }
 
 void	draw_spr_param_init_2(t_mprms *mprms)
 {
-	mprms->draw_spr.sprt_wdth = abs((int)(H / (mprms->draw_spr.transf_y)));
+	mprms->draw_spr.sprt_wdth = abs((int)(W / (mprms->draw_spr.transf_y)));
 	mprms->draw_spr.drw_strt_x = -mprms->draw_spr.sprt_wdth /
 	2 + mprms->draw_spr.sprt_scrn_x;
 	if (mprms->draw_spr.drw_strt_x < 0)
@@ -68,21 +68,19 @@ void	circle_drap_spr(t_mprms *mprms, int stripe)
 	mprms->draw_spr.tx_x = (int)(256 * (stripe -
 	(-mprms->draw_spr.sprt_wdth / 2 + mprms->draw_spr.sprt_scrn_x)) *
 	TEXWIDTH / mprms->draw_spr.sprt_wdth) / 256;
-	y = mprms->draw_spr.drw_strt_y;
-	if (mprms->draw_spr.transf_y > 0 && stripe > 0 && stripe < W &&
+	y = mprms->draw_spr.drw_strt_y - 1;
+	if (mprms->draw_spr.transf_y >= 0 && stripe >= 0 && stripe < W &&
 		mprms->draw_spr.transf_y < mprms->ray.z_buffer[stripe])
-		while (y < mprms->draw_spr.drw_end_y)
+		while (++y < mprms->draw_spr.drw_end_y)
 		{
-			mprms->draw_spr.d = (y) * 256 - H * 128 +
+			mprms->draw_spr.d = y * 256 - H * 128 +
 			mprms->draw_spr.sprt_hght * 128;
-			mprms->draw_spr.tx_y = ((mprms->draw_spr.d * TEXHEIGHT) /
+			mprms->draw_spr.tx_y = ((mprms->draw_spr.d * TEXWIDTH) /
 			mprms->draw_spr.sprt_hght) / 256;
 			mprms->draw_spr.color = ft_pixel_take(mprms->spr.obj,
-			mprms->draw_spr.tx_x,
-			mprms->draw_spr.tx_y);
+			mprms->draw_spr.tx_x, mprms->draw_spr.tx_y);
 			if ((int)(*mprms->draw_spr.color) != 0x000000)
 				my_mlx_pixel_put(mprms, stripe, y,
 				(int)(*mprms->draw_spr.color));
-			y++;
 		}
 }

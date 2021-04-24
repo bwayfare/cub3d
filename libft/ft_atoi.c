@@ -36,8 +36,10 @@ void		ft_getres(char **str, long int *res)
 {
 	while (**str && **str >= '0' && **str <= '9')
 	{
-		if (*res < MAX_INT)
+		if (*res < MAX_INT / 10)
 			*res = *res * 10 + (**str - '0');
+		else
+			*res = MAX_INT - 1;
 		(*str)++;
 	}
 }

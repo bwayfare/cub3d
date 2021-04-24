@@ -17,14 +17,14 @@ void	move_front(t_mprms *mprms, double speed)
 	if (mprms->pres.up)
 	{
 		if (mprms->map.map[(int)(mprms->plr.x + mprms->plr.dir_x *
-			speed)][(int)(mprms->plr.y)] != '1' &&
+			(speed * 1.3))][(int)(mprms->plr.y)] != '1' &&
 			mprms->map.map[(int)(mprms->plr.x +
-			mprms->plr.dir_x * speed)][(int)(mprms->plr.y)] != '2')
+			mprms->plr.dir_x * (speed * 1.3))][(int)(mprms->plr.y)] != '2')
 			mprms->plr.x += mprms->plr.dir_x * speed;
 		if (mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y +
-			mprms->plr.dir_y * speed)] != '1' &&
+			mprms->plr.dir_y * (speed * 1.3))] != '1' &&
 			mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y +
-			mprms->plr.dir_y * speed)] != '2')
+			mprms->plr.dir_y * (speed * 1.3))] != '2')
 			mprms->plr.y += mprms->plr.dir_y * speed;
 	}
 }
@@ -34,14 +34,14 @@ void	move_back(t_mprms *mprms, double speed)
 	if (mprms->pres.down)
 	{
 		if (mprms->map.map[(int)(mprms->plr.x - mprms->plr.dir_x *
-			speed)][(int)(mprms->plr.y)] != '1' &&
+		(speed * 1.3))][(int)(mprms->plr.y)] != '1' &&
 			mprms->map.map[(int)(mprms->plr.x - mprms->plr.dir_x *
 			speed)][(int)(mprms->plr.y)] != '2')
 			mprms->plr.x -= mprms->plr.dir_x * speed;
 		if (mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y -
-			mprms->plr.dir_y * speed)] != '1' &&
+			mprms->plr.dir_y * (speed * 1.3))] != '1' &&
 			mprms->map.map[(int)(mprms->plr.x)][(int)(mprms->plr.y -
-			mprms->plr.dir_y * speed)] != '2')
+			mprms->plr.dir_y * (speed * 1.3))] != '2')
 			mprms->plr.y -= mprms->plr.dir_y * speed;
 	}
 }
@@ -84,7 +84,7 @@ int		main_move_plr(t_mprms *mprms)
 {
 	double speed;
 
-	speed = 0.05;
+	speed = 0.07;
 	move_front(mprms, speed);
 	move_back(mprms, speed);
 	turn_right(mprms, speed);

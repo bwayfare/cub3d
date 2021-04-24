@@ -89,11 +89,12 @@ int	parse_line(t_mprms *mprms, char *line)
 {
 	ft_trimm_sp(&line);
 	if (ft_strlen(line) == 1)
-		return (-1 + (mprms->check = 0));
+		return (-1 + (mprms->check = put_rtfm("Error\nInvalid param\n")));
 	while (line && *line)
 	{
-		if (*line == 32)
-			line++;
+		if (!(*line == 'R' || *line == 'F' || *line == 'C' || *line == 'N' ||
+		*line == 'W' || *line == 'E' || *line == 'S'))
+			return (-1 + (mprms->check = put_rtfm("Error\nInvalid param\n")));
 		else if (*line == 'R')
 			return (prs_res(mprms, line));
 		else if (*line == 'F' || *line == 'C')
