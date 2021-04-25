@@ -1,11 +1,11 @@
 CC      =		gcc
 
-LIB     =		ar rc
-
-DIR     =		./srcs
+DIR     =		./srcs/
 
 HEADER  =		./include/cub3d.h \
-				./include/define_error.h
+				./include/define_error.h \
+				./get_next_line/get_next_line.h \
+				./libft/libft.h
 
 NAME    =		cub3D
 
@@ -29,7 +29,9 @@ SRCS	=		$(DIR)additional_ft.c \
 				$(DIR)parse_path.c \
 				$(DIR)screenshot.c \
 				$(DIR)search_map.c \
-				$(DIR)turn_player.c
+				$(DIR)turn_player.c \
+				./get_next_line/get_next_line.c \
+				./get_next_line/get_next_line_utils.c
 
 
 OBJS    =		$(SRCS:.c=.o)
@@ -39,14 +41,28 @@ OBJS    =		$(SRCS:.c=.o)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(HEADER)
-					$(LIB) $(NAME) $(OBJS)
+$(NAME):		$(OBJS)
+				@make bonus -C ./libft
+				@make -C ./minilibx
+				@make -C ./minilibx_mms_20200219
+				mv ./minilibx_mms_20200219/libmlx.dylib ./
+				$(CC) -g $(SRCS) ./libft/libft.a ./minilibx/libmlx.a ./libmlx.dylib -framework OpenGL -framework Appkit -o $(NAME)
+				rm -rf cub3D.dSYM
+
+%.o:			%c $(HEADER)
+				@gcc -c $<
 
 clean:
-				$(RM) $(OBJS) $(OBJS_B)
+				$(RM) $(OBJS)
+				@make clean -C ./libft
+				@make clean -C ./minilibx
+				@make clean -C ./minilibx_mms_20200219
+
 
 fclean:			clean
 					$(RM) $(NAME)
+					$(RM) libmlx.dylib
+					@make fclean -C ./libft
 
 re:				fclean all
 
