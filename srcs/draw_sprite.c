@@ -69,7 +69,7 @@ void	circle_drap_spr(t_mprms *mprms, int stripe)
 	(-mprms->draw_spr.sprt_wdth / 2 + mprms->draw_spr.sprt_scrn_x)) *
 	TEXWIDTH / mprms->draw_spr.sprt_wdth) / 256;
 	y = mprms->draw_spr.drw_strt_y - 1;
-	if (mprms->draw_spr.transf_y >= 0 && stripe > 0 && stripe < W &&
+	if (mprms->draw_spr.transf_y >= 0 && stripe >= 0 && stripe < W &&
 		mprms->draw_spr.transf_y < mprms->ray.z_buffer[stripe])
 		while (++y < mprms->draw_spr.drw_end_y)
 		{

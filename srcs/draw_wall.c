@@ -37,7 +37,7 @@ void	wall_draw_init(t_mprms *mprms, int x)
 	mprms->ray.sd_dst_x = 0;
 }
 
-void	wall_draw_init_2(t_mprms *mprms, int x)
+void	wall_draw_init_2(t_mprms *mprms)
 {
 	if (mprms->ray.r_dir_x < 0)
 	{

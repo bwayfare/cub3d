@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-int		ft_search_map(char *tmp, t_mprms *mprms, t_list *list, int *res)
+int		ft_search_map(char *tmp, t_mprms *mprms, int *res)
 {
 	if (*tmp == '\0' && (*res == 3))
 		put_rtfm(EIMORDP);

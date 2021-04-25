@@ -18,7 +18,7 @@ int		draw(t_mprms *mprms, int x)
 	while (++x < W)
 	{
 		wall_draw_init(mprms, x);
-		wall_draw_init_2(mprms, x);
+		wall_draw_init_2(mprms);
 		while_ray_hit(mprms);
 		calculate_draw_wall(mprms);
 		circle_draw(mprms, x, mprms->ray.drw_start);

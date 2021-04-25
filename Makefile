@@ -46,7 +46,7 @@ $(NAME):		$(OBJS)
 				@make -C ./minilibx
 				@make -C ./minilibx_mms_20200219
 				mv ./minilibx_mms_20200219/libmlx.dylib ./
-				$(CC) -g $(SRCS) ./libft/libft.a ./minilibx/libmlx.a ./libmlx.dylib -framework OpenGL -framework Appkit -o $(NAME)
+				$(CC) -Wall -Werror -Wextra -g $(SRCS) ./libft/libft.a ./minilibx/libmlx.a ./libmlx.dylib -framework OpenGL -framework Appkit -o $(NAME)
 				rm -rf cub3D.dSYM
 
 %.o:			%c $(HEADER)

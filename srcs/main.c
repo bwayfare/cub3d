@@ -18,12 +18,12 @@ void	f_get_map(char **line, t_list **list, int *fd, t_mprms *mprms)
 
 	res = 0;
 	while (get_next_line(*fd, line) > 0)
-		if (ft_search_map(*line, mprms, *list, &res) > -1
+		if (ft_search_map(*line, mprms, &res) > -1
 			&& (res == 1 || res == 3))
 			ft_lstadd_back(list, ft_lstnew(*line));
 		else
 			free_line(line);
-	if (ft_search_map(*line, mprms, *list, &res) == 0)
+	if (ft_search_map(*line, mprms, &res) == 0)
 		ft_lstadd_back(list, ft_lstnew(*line));
 	else
 		free_line(line);

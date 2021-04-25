@@ -240,7 +240,7 @@ void				struct_init(t_mprms *mprms);
 void				clean_struct(t_mprms *mprms);
 int					ft_check_full(t_mprms *mprms);
 int					ft_search_map(char *line, t_mprms *mprms,
-					t_list *list, int *res);
+					int *res);
 int					map_creator(t_list *list, t_mprms *mprms);
 void				free_list(t_list **head);
 int					ft_ch_elem_map(t_mprms *mprms);
@@ -263,7 +263,7 @@ void				move_right(t_mprms *mprms, double speed);
 int					main_move_plr(t_mprms *mprms);
 int					draw(t_mprms *mprms, int x);
 void				wall_draw_init(t_mprms *mprms, int x);
-void				wall_draw_init_2(t_mprms *mprms, int x);
+void				wall_draw_init_2(t_mprms *mprms);
 void				while_ray_hit(t_mprms *mprms);
 void				calculate_draw_wall(t_mprms *mprms);
 void				circle_draw(t_mprms *mprms, int x, int y);
