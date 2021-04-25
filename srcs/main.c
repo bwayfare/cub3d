@@ -41,7 +41,9 @@ int		ft_creat_mprms(int *fd, char *argv, t_mprms *mprms, t_list **list)
 
 	struct_init(mprms);
 	if (!(*fd = open(argv, O_RDONLY)))
-		return (0);
+		put_rtfm("Error\nInvalid config file\n");
+	if (read(*fd, &line, 0) < 0)
+		put_rtfm("Error\nIt is directory\n");
 	while (mprms->check && ft_check_full(mprms) != 8 &&
 	get_next_line(*fd, &line) > 0 && (parse_line(mprms, line) != -1))
 		free_line(&line);
